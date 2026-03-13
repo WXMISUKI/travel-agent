@@ -1,0 +1,61 @@
+2026-03-12 16:58:05.094 | INFO     | src.main:<module>:109 - 旅行规划助手 API 已启动
+2026-03-12 17:02:14.911 | INFO     | src.main:chat:66 - 收到用户消息: 帮我规划一个去上海的三天两夜旅行...
+2026-03-12 17:02:15.411 | INFO     | src.agent.graph:__init__:36 - Agent初始化完成，工具数量: 4
+2026-03-12 17:02:24.972 | INFO     | src.main:chat:77 - Agent响应: 您好！很高兴为您规划上海三天两夜的旅行！🎉
+
+为了给您提供更精准的行程规划，我需要了解一些信息：
+
+...
+2026-03-12 17:03:28.424 | INFO     | src.main:chat:66 - 收到用户消息: 我想明天出发，从宁波出发，预算舒适型，和女朋友出去，无特别偏好...
+2026-03-12 17:03:36.370 | INFO     | src.main:chat:77 - Agent响应: 好的！我来帮你规划这次上海三天两夜旅行。让我先查询一下相关信息。
+<minimax:tool_cal...
+2026-03-12 17:18:38.575 | INFO     | src.main:<module>:109 - 旅行规划助手 API 已启动
+2026-03-12 17:18:42.517 | INFO     | src.main:<module>:109 - 旅行规划助手 API 已启动
+2026-03-12 17:20:31.153 | INFO     | src.main:<module>:109 - 旅行规划助手 API 已启动
+2026-03-12 17:24:55.895 | INFO     | src.main:<module>:118 - 旅行规划助手 API 已启动
+2026-03-12 17:25:00.157 | INFO     | src.main:<module>:118 - 旅行规划助手 API 已启动
+2026-03-12 17:30:00.387 | INFO     | src.main:<module>:106 - 旅行规划助手 API 已启动
+2026-03-13 10:29:35.682 | INFO     | src.main:<module>:106 - 旅行规划助手 API 已启动
+2026-03-13 10:29:57.380 | INFO     | src.main:chat:63 - 收到用户消息: 你好，你有什么功能...
+2026-03-13 10:29:58.015 | INFO     | src.agent.graph:__init__:41 - Agent初始化完成，工具数量: 4
+2026-03-13 10:29:59.302 | ERROR    | src.agent.graph:run:136 - Agent运行失败: Error code: 400 - {'error': {'message': 'invalid params, invalid tool type:  (2013)', 'type': 'bad_request_error', 'param': None, 'code': None}, 'request_id': '0602a9a66353548ddb9b90072bea7a6f', 'type': 'error'}
+2026-03-13 10:29:59.426 | INFO     | src.main:chat:74 - Agent响应: 抱歉，服务出现了问题: Error code: 400 - {'error': {'message'...
+2026-03-13 10:37:24.565 | INFO     | src.main:<module>:106 - 旅行规划助手 API 已启动
+2026-03-13 10:38:01.244 | INFO     | src.main:<module>:106 - 旅行规划助手 API 已启动
+2026-03-13 10:38:13.723 | INFO     | src.main:chat:63 - 收到用户消息: 你好，你有什么功能...
+2026-03-13 10:38:14.171 | INFO     | src.agent.graph:__init__:44 - Agent初始化完成，工具数量: 4
+2026-03-13 10:38:33.347 | INFO     | src.main:chat:74 - Agent响应: 你好！很高兴认识你！我是你的旅行规划助手，可以帮你做以下事情：
+
+🎯 **我的功能**
+
+1. **...
+2026-03-13 10:39:38.829 | INFO     | src.main:chat:63 - 收到用户消息: 帮我规划一个去上海的三天两夜旅行，明天从宁波出发，预算是4000，我一个去玩，无特别偏好...
+2026-03-13 10:39:51.254 | INFO     | src.main:chat:74 - Agent响应: 好的！我来帮你规划这次上海三天两夜旅行！
+
+让我先查询一下相关信息：
+- 宁波→上海 的火车票
+- ...
+2026-03-13 10:48:01.727 | INFO     | src.main:<module>:106 - 旅行规划助手 API 已启动
+2026-03-13 10:48:12.675 | INFO     | src.main:<module>:106 - 旅行规划助手 API 已启动
+2026-03-13 10:48:25.112 | INFO     | src.main:chat:63 - 收到用户消息: 帮我规划一个去上海的三天两夜旅行，明天从宁波出发，预算是4000，我一个去玩，无特别偏好...
+2026-03-13 10:48:25.561 | INFO     | src.agent.graph:__init__:34 - Agent初始化完成，工具数量: 4
+2026-03-13 10:48:25.561 | INFO     | src.agent.graph:__init__:35 - 可用工具: ['get_weather', 'get_train_tickets', 'search_attractions', 'get_current_date']
+2026-03-13 10:48:25.561 | INFO     | src.agent.graph:run:40 - === 开始处理用户请求: 帮我规划一个去上海的三天两夜旅行，明天从宁波出发，预算是4000，我一个去玩，无特别偏好...
+2026-03-13 10:48:25.562 | INFO     | src.agent.graph:run:45 - 解析参数: {'destination': '上海', 'origin': '宁波', 'date': '2026-03-14', 'days': None, 'budget': None, 'need_weather': False, 'need_ticket': False, 'need_attractions': True}
+2026-03-13 10:48:25.562 | INFO     | src.agent.graph:_execute_attractions_query:240 - 查询景点: 上海
+2026-03-13 10:48:25.562 | ERROR    | src.agent.tools:search_attractions:96 - 景点搜索失败: asyncio.run() cannot be called from a running event loop
+2026-03-13 10:48:25.566 | INFO     | src.agent.graph:run:66 - 景点查询完成: {"error": "asyncio.run() cannot be called from a running event loop"}...
+2026-03-13 10:48:25.566 | INFO     | src.agent.graph:run:72 - 调用LLM生成最终回复...
+2026-03-13 10:49:06.278 | INFO     | src.agent.graph:run:79 - 最终回复: # 上海三天两夜旅行规划
+
+你好呀！根据你的需求，我帮你规划了一个**三天两夜的上海之旅**，预算4000元完全够用哦～
+
+---
+
+## 📋 基本信息
+
+| 项目 | 详情 |
+|------|--...
+2026-03-13 10:49:06.278 | INFO     | src.main:chat:74 - Agent响应: # 上海三天两夜旅行规划
+
+你好呀！根据你的需求，我帮你规划了一个**三天两夜的上海之旅**，预算4...

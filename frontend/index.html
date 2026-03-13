@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>旅行规划助手</title>
+    <link rel="stylesheet" href="./src/styles/main.css">
+</head>
+<body>
+    <div id="app">
+        <header class="header">
+            <div class="logo">✈️</div>
+            <div class="title">
+                <h1>旅行规划助手</h1>
+                <p>智能规划您的每一次旅行</p>
+            </div>
+        </header>
+        
+        <main class="chat-container">
+            <div class="messages" id="messages">
+                <div class="message assistant">
+                    <div class="avatar">✈️</div>
+                    <div class="content">
+                        <p>您好！我是您的旅行规划助手 ✈️</p>
+                        <p>我可以帮您：</p>
+                        <ul>
+                            <li>查询目的地天气 🌤️</li>
+                            <li>查询火车票/机票 🚄</li>
+                            <li>推荐景点和美食 �景点</li>
+                            <li>制定完整行程规划 📝</li>
+                        </ul>
+                        <p class="tip">请告诉我您想去哪里旅行？</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="input-area">
+                <input 
+                    type="text" 
+                    id="userInput" 
+                    placeholder="请输入您的旅行需求，如：帮我规划一个去上海的三天两夜旅行"
+                    @keyup.enter="sendMessage"
+                >
+                <button id="sendBtn" @click="sendMessage">发送</button>
+            </div>
+        </main>
+    </div>
+    
+    <script src="./src/main.js" type="module"></script>
+</body>
+</html>

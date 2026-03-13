@@ -1,0 +1,50 @@
+后端控制台报错：
+
+2026-03-13 10:38:01 | INFO     | src.main:<module>:106 - 旅行规划助手 API 已启动
+INFO:     Started server process [21872]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+2026-03-13 10:38:13 | INFO     | src.main:chat:63 - 收到用户消息: 你好，你有什么功能...
+2026-03-13 10:38:14 | INFO     | src.agent.graph:__init__:44 - Agent初始化完成，工具数量: 4
+2026-03-13 10:38:33 | INFO     | src.main:chat:74 - Agent响应: 你好！很高兴认识你！我是你的旅行规划助手 ，可以帮你做以下事情：
+
+🎯 **我的功能**
+
+1. **...
+INFO:     127.0.0.1:59794 - "POST /chat HTTP/1.1" 200 OK
+2026-03-13 10:39:38 | INFO     | src.main:chat:63 - 收到用户消息: 帮我规划一个去上海的三天两夜旅行，明天从宁波出发，预算是4000，我一个去玩，无特别偏好...
+2026-03-13 10:39:51 | INFO     | src.main:chat:74 - Agent响应: 好的！我来帮你规划这次上海三天两夜旅行！ 
+
+让我先查询一下相关信息：
+- 宁波→上海 的火车票
+- ...
+INFO:     127.0.0.1:63844 - "POST /chat HTTP/1.1" 200 OK
+
+浏览器控制台日志：
+﻿
+main.js:52 发送请求: 
+{message: '你好，你有什么功能', history: Array(1)}
+history
+: 
+[{…}]
+message
+: 
+"你好，你有什么功能"
+[[Prototype]]
+: 
+Object
+main.js:63 响应状态: 200
+main.js:70 响应数据: 
+{response: '你好！很高兴认识你！我是你的旅行规划助手，可以帮你做以下事情：\n\n🎯 **我的功能**\n\n1. *…\n- 有没有什么特别的要求或偏好？\n\n我就可以帮你安排得明明白白！ 😊\n\n你现在有想去的地方吗？'}
+main.js:52 发送请求: 
+{message: '帮我规划一个去上海的三天两夜旅行，明天从宁波出发，预算是4000，我一个去玩，无特别偏好', history: Array(3)}
+main.js:63 响应状态: 200
+main.js:70 响应数据: 
+{response: '好的！我来帮你规划这次上海三天两夜旅行！\n\n让我先查询一下相关信息：\n- 宁波→上海 的火车票\n- …ty">上海</parameter>\n</invoke>\n</minimax:tool_call>'}
+response
+: 
+"好的！我来帮你规划这次上海三天两夜旅行！\n\n让我先查询一下相关信息：\n- 宁波→上海 的火车票\n- 上海的天气\n- 上海的景点和美食\n- 旅行注意事项\n<minimax:tool_call>\n<invoke name=\"get_train_tickets\">\n<parameter name=\"departure\">宁波</parameter>\n<parameter name=\"destination\">上海</parameter>\n<parameter name=\"date\">2024-12-21</parameter>\n</invoke>\n<invoke name=\"get_weather\">\n<parameter name=\"city\">上海</parameter>\n</invoke>\n<invoke name=\"search_attractions\">\n<parameter name=\"city\">上海</parameter>\n</invoke>\n<invoke name=\"get_travel_tips\">\n<parameter name=\"city\">上海</parameter>\n</invoke>\n</minimax:tool_call>"
+[[Prototype]]
+: 
+Object
+
