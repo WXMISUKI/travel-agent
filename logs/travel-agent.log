@@ -59,3 +59,182 @@
 2026-03-13 10:49:06.278 | INFO     | src.main:chat:74 - Agent响应: # 上海三天两夜旅行规划
 
 你好呀！根据你的需求，我帮你规划了一个**三天两夜的上海之旅**，预算4...
+2026-03-13 12:36:08.502 | INFO     | src.main:<module>:299 - 旅行规划助手 API 已启动
+2026-03-13 13:58:56.709 | INFO     | src.main:<module>:299 - 旅行规划助手 API 已启动
+2026-03-13 14:00:02.487 | INFO     | src.main:chat_stream:215 - 收到流式请求: 帮我规划一个去北京的四天三夜旅行，两个人，预算是6000，明天从三明出发...
+2026-03-13 14:00:02.995 | INFO     | src.agent.graph:__init__:34 - Agent初始化完成，工具数量: 4
+2026-03-13 14:00:02.995 | INFO     | src.agent.graph:__init__:35 - 可用工具: ['get_weather', 'get_train_tickets', 'search_attractions', 'get_current_date']
+2026-03-13 14:00:03.917 | INFO     | src.agent.graph:_execute_attractions_query:240 - 查询景点: 北京
+2026-03-13 14:30:03.073 | INFO     | src.main:<module>:204 - 旅行规划助手 API 已启动
+2026-03-13 14:37:15.646 | INFO     | src.main:<module>:204 - 旅行规划助手 API 已启动
+2026-03-13 14:59:04.408 | INFO     | src.main:chat_stream:145 - 收到流式请求: 你好，请问这周在舟山的天气怎么样...
+2026-03-13 14:59:04.867 | INFO     | src.agent.graph:__init__:34 - Agent初始化完成，工具数量: 4
+2026-03-13 14:59:04.868 | INFO     | src.agent.graph:__init__:35 - 可用工具: ['get_weather', 'get_train_tickets', 'search_attractions', 'get_current_date']
+2026-03-13 15:07:43.559 | INFO     | src.main:<module>:204 - 旅行规划助手 API 已启动
+2026-03-13 15:12:43.987 | INFO     | src.main:<module>:204 - 旅行规划助手 API 已启动
+2026-03-13 15:13:10.522 | INFO     | src.main:<module>:204 - 旅行规划助手 API 已启动
+2026-03-13 15:13:28.941 | INFO     | src.main:chat_stream:145 - 收到流式请求: 这几天舟山的天气怎么样...
+2026-03-13 15:13:29.411 | INFO     | src.agent.graph:__init__:59 - Agent初始化完成，工具数量: 4
+2026-03-13 15:13:29.411 | INFO     | src.agent.graph:__init__:60 - 可用工具: ['get_weather', 'get_train_tickets', 'search_attractions', 'get_current_date']
+2026-03-13 15:13:29.417 | ERROR    | src.main:generate_stream_response:127 - 流式响应错误: 'TravelAgent' object has no attribute '_parse_user_request'
+2026-03-13 15:16:48.899 | INFO     | src.main:<module>:201 - 旅行规划助手 API 已启动
+2026-03-13 15:16:54.873 | INFO     | src.main:<module>:201 - 旅行规划助手 API 已启动
+2026-03-13 15:17:11.239 | INFO     | src.main:chat_stream:144 - 收到流式请求: 最近舟山天气怎么样...
+2026-03-13 15:17:11.688 | INFO     | src.agent.graph:__init__:59 - Agent初始化完成，工具数量: 4
+2026-03-13 15:17:11.688 | INFO     | src.agent.graph:__init__:60 - 可用工具: ['get_weather', 'get_train_tickets', 'search_attractions', 'get_current_date']
+2026-03-13 15:17:16.483 | INFO     | src.agent.graph:_parse_intent:142 - 意图解析结果: {'city': '舟山', 'origin': None, 'destination': None, 'date': None, 'needed_tools': ['get_weather'], 'reason': '用户询问舟山的天气情况，属于天气查询问题，需要调用get_weather工具来获取舟山的天气预报信息。'}
+2026-03-13 15:17:16.773 | INFO     | src.agent.graph:_execute_weather:173 - 查询天气: 舟山
+2026-03-13 15:41:21.722 | INFO     | src.main:chat_stream:144 - 收到流式请求: 帮我规划一个去舟山的四天三夜旅行，预算是5000，两个人从阜阳出发...
+2026-03-13 15:41:28.028 | INFO     | src.agent.graph:_parse_intent:142 - 意图解析结果: {'city': '舟山', 'origin': '阜阳', 'destination': '舟山', 'date': None, 'needed_tools': ['get_current_date', 'get_weather', 'get_train_tickets', 'search_attractions'], 'reason': '用户需要规划从阜阳到舟山的四天三夜旅行，涉及交通（火车票）、目的地天气和景点美食信息。需先获取当前日期确定出行时间，然后同时查询天气、火车票和景点信息。'}
+2026-03-13 15:41:28.339 | INFO     | src.agent.graph:_execute_weather:173 - 查询天气: 舟山
+2026-03-13 15:41:29.678 | INFO     | src.agent.graph:_execute_tickets:191 - 查询火车票: 阜阳 -> 舟山, 日期: 2026-03-13
+2026-03-13 15:41:54.045 | INFO     | src.agent.graph:_execute_attractions:210 - 查询景点: 舟山
+2026-03-13 15:43:08.838 | INFO     | src.main:<module>:201 - 旅行规划助手 API 已启动
+2026-03-13 15:44:43.532 | INFO     | src.main:chat_stream:144 - 收到流式请求: 帮我规划一个去舟山的三天两夜旅行，两个人从阜阳出发，预算是4500...
+2026-03-13 15:44:44.031 | INFO     | src.agent.graph:__init__:59 - Agent初始化完成，工具数量: 4
+2026-03-13 15:44:44.033 | INFO     | src.agent.graph:__init__:60 - 可用工具: ['get_weather', 'get_train_tickets', 'search_attractions', 'get_current_date']
+2026-03-13 15:45:00.454 | INFO     | src.agent.graph:_parse_intent:142 - 意图解析结果: {'city': '舟山', 'origin': '阜阳', 'destination': '舟山', 'date': '2025-01-17', 'needed_tools': ['get_current_date', 'get_weather', 'get_train_tickets', 'search_attractions'], 'reason': '用户需要规划从阜阳到舟山的三天两夜旅行，涉及交通（火车票）、住宿和景点推荐。需要查询天气了解气候条件，查询火车票了解往返交通方式，搜索景点和美食来安排行程。'}
+2026-03-13 15:45:00.764 | INFO     | src.agent.graph:_execute_weather:173 - 查询天气: 舟山
+2026-03-13 15:45:01.982 | INFO     | src.agent.graph:_execute_tickets:191 - 查询火车票: 阜阳 -> 舟山, 日期: 2025-01-17
+2026-03-13 15:45:26.452 | INFO     | src.agent.graph:_execute_attractions:210 - 查询景点: 舟山
+2026-03-13 16:13:59.403 | INFO     | src.main:<module>:201 - 旅行规划助手 API 已启动
+2026-03-13 16:15:10.168 | INFO     | src.main:chat_stream:144 - 收到流式请求: 帮我规划一个去广东惠州的一周旅行，两个人从舟山出发，预算是6000...
+2026-03-13 16:15:10.639 | INFO     | src.agent.graph:__init__:52 - Agent初始化完成，工具数量: 4
+2026-03-13 16:15:10.639 | INFO     | src.agent.graph:__init__:53 - 可用工具: ['get_weather', 'get_train_tickets', 'search_attractions', 'get_current_date']
+2026-03-13 16:15:22.098 | INFO     | src.agent.graph:_parse_intent:127 - 意图解析结果: {'city': '惠州', 'origin': '舟山', 'destination': '惠州', 'date': '待定（一周旅行）', 'needed_tools': ['get_current_date', 'get_weather', 'get_train_tickets', 'search_attractions'], 'reason': '用户需要规划从舟山到惠州的一周两人游，预算是6000元。需要查询：1）当前日期以确定出行日期；2）惠州天气以准备行李；3）舟山/宁波到惠州的火车票（舟山可能无直达火车，需从宁波出发）；4）惠州景点和美食信息以规划行程。'}
+2026-03-13 16:15:22.411 | INFO     | src.agent.graph:_execute_weather:154 - 查询天气: 惠州
+2026-03-13 16:15:22.413 | ERROR    | src.agent.tools:get_weather:74 - 天气查询失败: 暂不支持查询城市: 惠州，请尝试其他城市
+2026-03-13 16:15:22.722 | INFO     | src.agent.graph:_execute_tickets:172 - 查询火车票: 舟山 -> 惠州, 日期: 待定（一周旅行）
+2026-03-13 16:15:47.148 | INFO     | src.agent.graph:_execute_attractions:197 - 查询景点: 惠州
+2026-03-13 16:43:24.752 | INFO     | src.main:<module>:183 - 旅行规划助手 API 已启动
+2026-03-13 16:44:23.228 | INFO     | src.main:chat_stream:138 - 收到请求: 帮我规划一个去广东惠州的一周旅行，两个人明天从舟山出发，预算是6000...
+2026-03-13 16:44:23.682 | INFO     | src.agent.graph:__init__:52 - Agent初始化完成，工具数量: 5
+2026-03-13 16:44:23.687 | INFO     | src.agent.graph:__init__:53 - 可用工具: ['get_weather', 'get_train_tickets', 'search_attractions', 'web_search', 'get_current_date']
+2026-03-13 16:44:31.173 | INFO     | src.agent.graph:_parse_intent:198 - 意图解析: {'city': '惠州', 'origin': '舟山', 'destination': '惠州', 'date': '2025-01-15', 'needed_tools': ['get_current_date', 'get_weather', 'get_train_tickets', 'search_attractions']}
+2026-03-13 16:44:31.484 | ERROR    | src.agent.tools:get_weather:65 - 天气查询失败: 暂不支持查询城市: 惠州，请尝试其他城市
+2026-03-13 16:44:31.485 | WARNING  | src.agent.graph:_execute_with_fallback:128 - get_weather 失败，触发降级
+2026-03-13 16:44:55.875 | WARNING  | src.agent.graph:_execute_with_fallback:128 - get_train_tickets 失败，触发降级
+2026-03-13 16:46:45.035 | INFO     | src.main:chat_stream:138 - 收到请求: 请你帮我查一下明天从沙县到宁波的高铁票...
+2026-03-13 16:46:48.966 | INFO     | src.agent.graph:_parse_intent:198 - 意图解析: {'needed_tools': []}
+2026-03-13 16:48:10.583 | INFO     | src.main:chat_stream:138 - 收到请求: 询从三明北到宁波的车票...
+2026-03-13 16:48:14.433 | INFO     | src.agent.graph:_parse_intent:198 - 意图解析: {'tool': 'get_current_date', 'args': {}}
+2026-03-13 16:48:17.486 | INFO     | src.main:chat_stream:138 - 收到请求: 查询从三明北到宁波的车票...
+2026-03-13 16:48:31.534 | INFO     | src.agent.graph:_parse_intent:198 - 意图解析: {'city': '宁波', 'origin': '三明北', 'destination': '宁波', 'date': '请提供具体日期', 'needed_tools': ['get_train_tickets']}
+2026-03-13 16:48:55.955 | WARNING  | src.agent.graph:_execute_with_fallback:128 - get_train_tickets 失败，触发降级
+2026-03-13 16:51:12.890 | INFO     | src.main:chat_stream:138 - 收到请求: 查询近几天三明北到宁波的车票...
+2026-03-13 16:51:21.626 | INFO     | src.agent.graph:_parse_intent:198 - 意图解析: {'city': '宁波', 'origin': '三明北', 'destination': '宁波', 'date': '近几天', 'needed_tools': ['get_current_date', 'get_train_tickets']}
+2026-03-13 16:51:46.034 | WARNING  | src.agent.graph:_execute_with_fallback:128 - get_train_tickets 失败，触发降级
+2026-03-13 17:04:40.704 | INFO     | src.main:<module>:183 - 旅行规划助手 API 已启动
+2026-03-13 17:07:52.030 | INFO     | src.main:<module>:132 - API已启动
+2026-03-13 17:08:05.017 | INFO     | src.main:chat_stream:98 - 请求: 请你帮我查一下明天从沙县到宁波的高铁票
+2026-03-13 17:08:05.461 | INFO     | src.agent.graph:__init__:40 - Agent初始化，工具: 5
+2026-03-13 17:08:52.199 | WARNING  | src.agent.graph:_call_with_fallback:97 - get_train_tickets失败，使用降级
+2026-03-13 17:09:49.878 | INFO     | src.main:chat_stream:98 - 请求: 请你帮我查一下明天从三明北站到宁波的高铁票
+2026-03-13 17:10:20.884 | WARNING  | src.agent.graph:_call_with_fallback:97 - get_train_tickets失败，使用降级
+2026-03-13 21:04:50.970 | INFO     | src.main:<module>:326 - API已启动
+2026-03-13 21:11:42.558 | INFO     | src.main:<module>:326 - API已启动
+2026-03-13 21:12:01.509 | INFO     | src.main:chat_stream:292 - 请求: 帮我查明天从沙县到宁波的高铁票
+2026-03-13 21:12:02.249 | INFO     | src.agent.graph:__init__:41 - Agent初始化，工具: 7
+2026-03-13 21:12:02.256 | ERROR    | src.agent.planner:_extract_entities:209 - 实体提取失败: 'MiniMaxClient' object has no attribute 'invoke'
+2026-03-13 21:12:02.260 | INFO     | src.agent.planner:generate_plan:156 - 生成执行计划: 4 步骤, 1 降级
+2026-03-13 21:12:02.260 | INFO     | src.agent.graph:create_execution_plan:201 - 创建执行计划: train_tickets, 步骤数: 4
+2026-03-13 21:16:43.038 | INFO     | src.main:<module>:365 - API已启动
+2026-03-13 21:21:20.272 | INFO     | src.main:<module>:365 - API已启动
+2026-03-13 21:21:47.396 | INFO     | src.main:chat_stream:331 - 请求: 帮我查后天从沙县到宁波的高铁票
+2026-03-13 21:21:47.828 | INFO     | src.agent.graph:__init__:41 - Agent初始化，工具: 7
+2026-03-13 21:21:47.839 | ERROR    | src.agent.planner:_extract_entities:209 - 实体提取失败: 'MiniMaxClient' object has no attribute 'invoke'
+2026-03-13 21:21:47.840 | INFO     | src.agent.planner:generate_plan:156 - 生成执行计划: 4 步骤, 1 降级
+2026-03-13 21:21:47.840 | INFO     | src.agent.graph:create_execution_plan:201 - 创建执行计划: train_tickets, 步骤数: 4
+2026-03-13 21:31:20.527 | INFO     | src.main:<module>:365 - API已启动
+2026-03-13 21:40:43.174 | INFO     | src.main:<module>:479 - API已启动
+2026-03-13 21:40:47.564 | INFO     | src.main:<module>:479 - API已启动
+2026-03-13 21:41:14.260 | INFO     | src.main:chat_stream:331 - 请求: 帮我查明天从沙县到宁波的高铁票
+2026-03-13 21:41:14.621 | INFO     | src.agent.graph:__init__:41 - Agent初始化，工具: 7
+2026-03-13 21:41:17.892 | INFO     | src.agent.planner:generate_plan:156 - 生成执行计划: 4 步骤, 1 降级
+2026-03-13 21:41:17.892 | INFO     | src.agent.graph:create_execution_plan:201 - 创建执行计划: train_tickets, 步骤数: 4
+2026-03-13 21:43:06.315 | INFO     | src.main:chat_stream:331 - 请求: 请输入您的旅行需求，如：帮我规划一个去广东惠州的一周旅行，两个人明天从宁波出发，预算是6000
+2026-03-13 21:43:11.613 | INFO     | src.agent.planner:generate_plan:156 - 生成执行计划: 1 步骤, 0 降级
+2026-03-13 21:43:11.613 | INFO     | src.agent.graph:create_execution_plan:201 - 创建执行计划: general, 步骤数: 1
+2026-03-13 21:55:32.871 | INFO     | src.main:<module>:486 - API已启动
+2026-03-13 21:55:36.890 | INFO     | src.main:<module>:486 - API已启动
+2026-03-13 21:55:40.655 | INFO     | src.main:chat_stream:331 - 请求: 帮我查明天从沙县到宁波的高铁票
+2026-03-13 21:55:41.017 | INFO     | src.agent.graph:__init__:41 - Agent初始化，工具: 7
+2026-03-13 21:55:52.485 | INFO     | src.agent.planner:generate_plan:156 - 生成执行计划: 4 步骤, 1 降级
+2026-03-13 21:55:52.485 | INFO     | src.agent.graph:create_execution_plan:201 - 创建执行计划: train_tickets, 步骤数: 4
+2026-03-13 21:55:55.125 | ERROR    | src.main:stream_response:212 - 步骤执行异常: 'StructuredTool' object is not callable
+2026-03-13 22:08:09.981 | INFO     | src.main:<module>:120 - API已启动
+2026-03-13 22:09:47.864 | INFO     | src.main:<module>:120 - API已启动
+2026-03-13 22:09:54.354 | INFO     | src.main:chat_stream:80 - 请求: 帮我查明天从沙县到宁波的高铁票
+2026-03-13 22:14:46.272 | INFO     | src.main:<module>:120 - API已启动
+2026-03-13 22:14:49.063 | INFO     | src.main:<module>:120 - API已启动
+2026-03-13 22:14:56.105 | INFO     | src.main:chat_stream:80 - 请求: 帮我查明天从沙县到宁波的高铁票
+2026-03-13 22:14:58.223 | INFO     | src.agent.tool_calling:__init__:123 - ToolCallingAgent初始化，工具数: 7
+2026-03-13 22:15:11.425 | INFO     | src.agent.tool_calling:run:180 - 调用工具: get_current_date, 参数: {}
+2026-03-13 22:15:11.425 | ERROR    | src.agent.tool_calling:run:186 - 工具执行失败: 'StructuredTool' object is not callable
+2026-03-13 22:15:11.425 | INFO     | src.agent.tool_calling:run:180 - 调用工具: parse_date, 参数: {}
+2026-03-13 22:15:11.425 | ERROR    | src.agent.tool_calling:run:186 - 工具执行失败: parse_date() missing 1 required positional argument: 'date_text'
+2026-03-13 22:15:11.425 | INFO     | src.agent.tool_calling:run:180 - 调用工具: get_station_by_city, 参数: {}
+2026-03-13 22:15:11.425 | ERROR    | src.agent.tool_calling:run:186 - 工具执行失败: get_station_by_city() missing 1 required positional argument: 'city'
+2026-03-13 22:15:11.425 | INFO     | src.agent.tool_calling:run:180 - 调用工具: get_station_by_city, 参数: {}
+2026-03-13 22:15:11.425 | ERROR    | src.agent.tool_calling:run:186 - 工具执行失败: get_station_by_city() missing 1 required positional argument: 'city'
+2026-03-13 22:15:13.451 | INFO     | src.agent.tool_calling:run:180 - 调用工具: get_station_by_city, 参数: {}
+2026-03-13 22:15:13.451 | ERROR    | src.agent.tool_calling:run:186 - 工具执行失败: get_station_by_city() missing 1 required positional argument: 'city'
+2026-03-13 22:15:16.312 | INFO     | src.agent.tool_calling:run:180 - 调用工具: get_station_by_city, 参数: {}
+2026-03-13 22:15:16.312 | ERROR    | src.agent.tool_calling:run:186 - 工具执行失败: get_station_by_city() missing 1 required positional argument: 'city'
+2026-03-13 22:15:20.021 | INFO     | src.agent.tool_calling:run:180 - 调用工具: get_station_by_city, 参数: {}
+2026-03-13 22:15:20.022 | ERROR    | src.agent.tool_calling:run:186 - 工具执行失败: get_station_by_city() missing 1 required positional argument: 'city'
+2026-03-13 22:15:23.522 | INFO     | src.agent.tool_calling:run:180 - 调用工具: get_station_by_city, 参数: {}
+2026-03-13 22:15:23.522 | ERROR    | src.agent.tool_calling:run:186 - 工具执行失败: get_station_by_city() missing 1 required positional argument: 'city'
+2026-03-13 22:15:25.319 | INFO     | src.agent.tool_calling:run:180 - 调用工具: get_station_by_city, 参数: {}
+2026-03-13 22:15:25.319 | ERROR    | src.agent.tool_calling:run:186 - 工具执行失败: get_station_by_city() missing 1 required positional argument: 'city'
+2026-03-13 22:15:28.841 | INFO     | src.agent.tool_calling:run:180 - 调用工具: get_train_tickets, 参数: {}
+2026-03-13 22:15:28.841 | ERROR    | src.agent.tool_calling:run:186 - 工具执行失败: 'StructuredTool' object is not callable
+2026-03-13 22:15:30.590 | INFO     | src.agent.tool_calling:run:180 - 调用工具: get_current_date, 参数: {}
+2026-03-13 22:15:30.590 | ERROR    | src.agent.tool_calling:run:186 - 工具执行失败: 'StructuredTool' object is not callable
+2026-03-13 22:24:49.351 | INFO     | src.main:<module>:120 - API已启动
+2026-03-13 22:26:50.810 | INFO     | src.main:<module>:120 - API已启动
+2026-03-13 22:26:57.313 | INFO     | src.main:chat_stream:80 - 请求: 帮我查明天从沙县到宁波的高铁票
+2026-03-13 22:26:59.095 | INFO     | src.agent.tool_calling:__init__:116 - ToolCallingAgent初始化，工具数: 7
+2026-03-13 22:26:59.407 | ERROR    | src.agent.tool_calling:run:200 - Agent执行失败: '"name"'
+2026-03-13 22:29:16.671 | INFO     | src.main:<module>:120 - API已启动
+2026-03-13 22:29:31.969 | INFO     | src.main:chat_stream:80 - 请求: 帮我查明天从沙县到宁波的高铁票
+2026-03-13 22:29:33.747 | INFO     | src.agent.tool_calling:__init__:116 - ToolCallingAgent初始化，工具数: 7
+2026-03-13 22:29:47.164 | INFO     | src.agent.tool_calling:run:185 - 工具调用: parse_date, 参数: {}
+2026-03-13 22:29:47.164 | ERROR    | src.agent.tools:execute_tool:310 - 工具参数错误: parse_date() missing 1 required positional argument: 'date_text'
+2026-03-13 22:29:47.164 | INFO     | src.agent.tool_calling:run:198 - 工具结果: {"error": "参数错误: parse_date() missing 1 required positional argument: 'date_text'"}...
+2026-03-13 22:29:47.164 | INFO     | src.agent.tool_calling:run:185 - 工具调用: get_station_by_city, 参数: {}
+2026-03-13 22:29:47.164 | ERROR    | src.agent.tools:execute_tool:310 - 工具参数错误: get_station_by_city() missing 1 required positional argument: 'city'
+2026-03-13 22:29:47.164 | INFO     | src.agent.tool_calling:run:198 - 工具结果: {"error": "参数错误: get_station_by_city() missing 1 required positional argument: 'city'"}...
+2026-03-13 22:29:47.164 | INFO     | src.agent.tool_calling:run:185 - 工具调用: get_station_by_city, 参数: {}
+2026-03-13 22:29:47.164 | ERROR    | src.agent.tools:execute_tool:310 - 工具参数错误: get_station_by_city() missing 1 required positional argument: 'city'
+2026-03-13 22:29:47.167 | INFO     | src.agent.tool_calling:run:198 - 工具结果: {"error": "参数错误: get_station_by_city() missing 1 required positional argument: 'city'"}...
+2026-03-13 22:29:51.552 | INFO     | src.agent.tool_calling:run:185 - 工具调用: parse_date, 参数: {}
+2026-03-13 22:29:51.552 | ERROR    | src.agent.tools:execute_tool:310 - 工具参数错误: parse_date() missing 1 required positional argument: 'date_text'
+2026-03-13 22:29:51.552 | INFO     | src.agent.tool_calling:run:198 - 工具结果: {"error": "参数错误: parse_date() missing 1 required positional argument: 'date_text'"}...
+2026-03-13 22:29:53.462 | INFO     | src.agent.tool_calling:run:185 - 工具调用: parse_date, 参数: {}
+2026-03-13 22:29:53.462 | ERROR    | src.agent.tools:execute_tool:310 - 工具参数错误: parse_date() missing 1 required positional argument: 'date_text'
+2026-03-13 22:29:53.462 | INFO     | src.agent.tool_calling:run:198 - 工具结果: {"error": "参数错误: parse_date() missing 1 required positional argument: 'date_text'"}...
+2026-03-13 22:29:58.558 | INFO     | src.agent.tool_calling:run:185 - 工具调用: parse_date, 参数: {}
+2026-03-13 22:29:58.560 | ERROR    | src.agent.tools:execute_tool:310 - 工具参数错误: parse_date() missing 1 required positional argument: 'date_text'
+2026-03-13 22:29:58.560 | INFO     | src.agent.tool_calling:run:198 - 工具结果: {"error": "参数错误: parse_date() missing 1 required positional argument: 'date_text'"}...
+2026-03-13 22:30:01.968 | INFO     | src.agent.tool_calling:run:185 - 工具调用: get_current_date, 参数: {}
+2026-03-13 22:30:13.990 | INFO     | src.agent.tool_calling:run:198 - 工具结果: {"current_date": "2026-03-13"}...
+2026-03-13 22:30:25.913 | INFO     | src.agent.tool_calling:run:185 - 工具调用: get_station_by_city, 参数: {}
+2026-03-13 22:30:25.913 | ERROR    | src.agent.tools:execute_tool:310 - 工具参数错误: get_station_by_city() missing 1 required positional argument: 'city'
+2026-03-13 22:30:25.913 | INFO     | src.agent.tool_calling:run:198 - 工具结果: {"error": "参数错误: get_station_by_city() missing 1 required positional argument: 'city'"}...
+2026-03-13 22:30:30.295 | INFO     | src.agent.tool_calling:run:185 - 工具调用: get_station_by_city, 参数: {}
+2026-03-13 22:30:30.295 | ERROR    | src.agent.tools:execute_tool:310 - 工具参数错误: get_station_by_city() missing 1 required positional argument: 'city'
+2026-03-13 22:30:30.295 | INFO     | src.agent.tool_calling:run:198 - 工具结果: {"error": "参数错误: get_station_by_city() missing 1 required positional argument: 'city'"}...
+2026-03-13 22:30:33.475 | INFO     | src.agent.tool_calling:run:185 - 工具调用: parse_date, 参数: {}
+2026-03-13 22:30:33.475 | ERROR    | src.agent.tools:execute_tool:310 - 工具参数错误: parse_date() missing 1 required positional argument: 'date_text'
+2026-03-13 22:30:33.475 | INFO     | src.agent.tool_calling:run:198 - 工具结果: {"error": "参数错误: parse_date() missing 1 required positional argument: 'date_text'"}...
+2026-03-13 22:40:27.975 | INFO     | src.main:<module>:321 - API已启动
+2026-03-13 22:40:47.741 | INFO     | src.main:chat_stream:288 - 请求: 帮我查明天从沙县到宁波的高铁票
+2026-03-13 22:40:49.133 | INFO     | src.agent.graph:__init__:41 - Agent初始化，工具: 7
+2026-03-13 22:40:52.197 | INFO     | src.agent.planner:generate_plan:156 - 生成执行计划: 4 步骤, 1 降级
+2026-03-13 22:40:52.197 | INFO     | src.agent.graph:create_execution_plan:201 - 创建执行计划: train_tickets, 步骤数: 4
+2026-03-13 22:40:52.802 | ERROR    | src.agent.tools:get_station_by_city:251 - 火车站查询失败: asyncio.run() cannot be called from a running event loop
+2026-03-13 22:40:52.805 | ERROR    | src.agent.tools:web_search:100 - 网页搜索失败: asyncio.run() cannot be called from a running event loop
+2026-03-13 22:40:53.019 | ERROR    | src.agent.tools:get_station_by_city:251 - 火车站查询失败: asyncio.run() cannot be called from a running event loop
+2026-03-13 22:40:53.020 | ERROR    | src.agent.tools:web_search:100 - 网页搜索失败: asyncio.run() cannot be called from a running event loop
+2026-03-13 22:41:17.490 | ERROR    | src.agent.tools:web_search:100 - 网页搜索失败: asyncio.run() cannot be called from a running event loop

@@ -1,0 +1,44 @@
+后端控制台打印内容：
+2026-03-13 21:55:40 | INFO     | src.main:chat_stream:331 - 请求: 帮我查明天从沙县到宁波的高铁票
+2026-03-13 21:55:41 | INFO     | src.agent.graph:__init__:41 - Agent初始化，工具: 7
+INFO:     127.0.0.1:54534 - "POST /chat/stream HTTP/1.1" 200 OK
+2026-03-13 21:55:52 | INFO     | src.agent.planner:generate_plan:156 - 生成执行计划: 4 步骤, 1 降级
+2026-03-13 21:55:52 | INFO     | src.agent.graph:create_execution_plan:201 - 创建执行计划: train_tickets, 步骤数: 4
+2026-03-13 21:55:55 | ERROR    | src.main:stream_response:212 - 步骤执行异常: 'StructuredTool' object is not callable
+
+
+
+
+前端页面对话生成的内容：
+帮我查明天从沙县到宁波的高铁票
+✈️
+🧠 分析需求...
+📋 意图: train_tickets
+📍 出发地: 沙县, 目的地: 宁波, 日期: 明天
+📝 执行计划:
+🔄 执行步骤1: get_station_by_city
+✅ 步骤1完成: get_station_by_city
+🔄 执行步骤2: get_station_by_city
+✅ 步骤2完成: get_station_by_city
+🔄 执行步骤3: parse_date
+✅ 步骤3完成: parse_date
+🔄 执行步骤4: get_train_tickets
+❌ 异常: 'StructuredTool' object is not callable
+📝 生成回复...
+查询结果
+😔 抱歉，目前暂时无法查询到明天（5月21日）从沙县到宁波的高铁票信息。
+
+可能的原因：
+路线问题：沙县到宁波可能没有直达高铁，需要中转
+票务系统：临时查询高峰期可能出现数据延迟
+停运或调整：部分车次可能有变动
+建议：
+✅ 推荐查询方式：
+
+📱 使用 12306 官网或App 实时查询
+📞 拨打 12306 客服热线
+🚄 可能的出行方案：
+
+先从沙县乘坐高铁到 福州 或 厦门，再转车到宁波
+也可以查询 沙县到三明北 的车次，再从三明北出发
+希望您能顺利买到票，祝旅途愉快！🚄✨

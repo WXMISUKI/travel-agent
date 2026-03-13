@@ -5,6 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>旅行规划助手</title>
     <link rel="stylesheet" href="./src/styles/main.css">
+    <!-- Markdown解析库 - 使用CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <style>
+        /* Markdown样式 */
+        .markdown-body {
+            line-height: 1.6;
+        }
+        .markdown-body h1 { font-size: 1.5em; margin: 0.5em 0; }
+        .markdown-body h2 { font-size: 1.3em; margin: 0.5em 0; }
+        .markdown-body h3 { font-size: 1.1em; margin: 0.5em 0; }
+        .markdown-body p { margin: 0.5em 0; }
+        .markdown-body ul, .markdown-body ol { margin: 0.5em 0; padding-left: 1.5em; }
+        .markdown-body li { margin: 0.3em 0; }
+        .markdown-body table { border-collapse: collapse; width: 100%; margin: 0.5em 0; }
+        .markdown-body th, .markdown-body td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        .markdown-body th { background: #f5f5f5; }
+        .markdown-body code { background: #f0f0f0; padding: 2px 6px; border-radius: 3px; font-size: 0.9em; }
+        .markdown-body pre { background: #f5f5f5; padding: 10px; border-radius: 5px; overflow-x: auto; }
+        .markdown-body blockquote { border-left: 3px solid #667eea; margin: 0.5em 0; padding-left: 1em; color: #666; }
+        .markdown-body hr { border: none; border-top: 1px solid #eee; margin: 1em 0; }
+        .markdown-body strong { font-weight: 600; }
+    </style>
 </head>
 <body>
     <div id="app">
@@ -26,7 +48,7 @@
                         <ul>
                             <li>查询目的地天气 🌤️</li>
                             <li>查询火车票/机票 🚄</li>
-                            <li>推荐景点和美食 �景点</li>
+                            <li>推荐景点和美食 🎯</li>
                             <li>制定完整行程规划 📝</li>
                         </ul>
                         <p class="tip">请告诉我您想去哪里旅行？</p>
@@ -38,14 +60,14 @@
                 <input 
                     type="text" 
                     id="userInput" 
-                    placeholder="请输入您的旅行需求，如：帮我规划一个去上海的三天两夜旅行"
-                    @keyup.enter="sendMessage"
+                    placeholder="请输入您的旅行需求，如：帮我规划一个去广东惠州的一周旅行，两个人明天从舟山出发，预算是6000"
                 >
-                <button id="sendBtn" @click="sendMessage">发送</button>
+                <button id="stopBtn" class="stop-btn" style="display: none;" onclick="stopGenerating()">⏹️ 停止</button>
+                <button id="sendBtn" onclick="sendMessage()">发送</button>
             </div>
         </main>
     </div>
     
-    <script src="./src/main.js" type="module"></script>
+    <script src="./src/main.js"></script>
 </body>
 </html>

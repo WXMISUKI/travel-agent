@@ -98,13 +98,13 @@ class MiniMaxClient:
     
     def _parse_json_response(self, content: str) -> Dict:
         """解析JSON响应"""
-        
+
         # 尝试直接解析
         try:
             return json.loads(content)
         except json.JSONDecodeError:
             pass
-        
+
         # 回退：尝试提取JSON块
         import re
         json_match = re.search(r'\{.*\}', content, re.DOTALL)
@@ -113,6 +113,18 @@ class MiniMaxClient:
                 return json.loads(json_match.group())
             except json.JSONDecodeError:
                 pass
-        
+
         # 最终回退
         return {"raw": content, "error": "JSON解析失败"}
+
+
+# 全局LLM客户端实例
+_llm_client = None
+
+
+def get_llm():
+    """获取LLM客户端单例"""
+    global _llm_client
+    if _llm_client is None:
+        _llm_client = MiniMaxClient()
+    return _llm_client

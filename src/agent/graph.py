@@ -1,24 +1,35 @@
 """
-LangChain Agent 流程 - 参考anime-agent设计
+LangChain Agent 流程 - 支持执行计划TODO系统
 """
-import os
 import json
 import re
-from typing import Dict, List, Optional
+import asyncio
+from typing import Dict, List
 from langchain_openai import ChatOpenAI
 from langchain_core.messages import HumanMessage, SystemMessage, AIMessage
 
-from .tools import execute_tool, get_all_tools, get_tool_schemas
-from ..llm.prompts import TRAVEL_AGENT_PROMPT
+from .tools import execute_tool, get_all_tools
+from .planner import get_planner, ExecutionPlan
 from ..config import ORCH_API_BASE, ORCH_MODEL, ORCH_API_KEY
 from ..utils.logger import logger
 
 
+# 工具描述
+TOOL_DESCRIPTIONS = """
+## 工具说明
+
+1. get_weather - 查询天气（仅支持部分大城市）
+2. get_train_tickets - 查询火车票（仅支持火车站）
+3. search_attractions - 搜索景点美食
+4. web_search - 通用搜索（当其他工具失败时使用）
+5. get_current_date - 获取日期
+"""
+
+
 class TravelAgent:
-    """旅行规划Agent - 参考anime-agent"""
+    """旅行规划Agent"""
     
     def __init__(self):
-        # 创建LLM
         self.llm = ChatOpenAI(
             model=ORCH_MODEL,
             temperature=0.7,
@@ -26,278 +37,367 @@ class TravelAgent:
             base_url=ORCH_API_BASE,
             api_key=ORCH_API_KEY
         )
-        
-        # 获取工具
         self.tools = get_all_tools()
-        self.tool_schemas = get_tool_schemas()
-        
-        logger.info(f"Agent初始化完成，工具数量: {len(self.tools)}")
-        logger.info(f"可用工具: {[t.__name__ for t in self.tools]}")
+        logger.info(f"Agent初始化，工具: {len(self.tools)}")
     
     def run(self, user_input: str, history: List[Dict] = None) -> str:
-        """运行Agent - 完整工作流"""
-        
-        logger.info(f"=== 开始处理用户请求: {user_input[:50]}...")
+        logger.info(f"处理: {user_input[:50]}...")
         
         try:
-            # 步骤1: 解析用户请求，提取需要的信息
-            params = self._parse_user_request(user_input)
-            logger.info(f"解析参数: {params}")
+            # 1. 解析意图
+            intent = self._parse_intent(user_input)
+            tools_needed = intent.get("needed_tools", [])
+            logger.info(f"需要工具: {tools_needed}")
             
-            # 步骤2: 根据需求调用相应工具
-            tool_results = {}
+            results = {}
             
-            # 2.1 火车票查询
-            if params.get("need_ticket"):
-                ticket_info = self._execute_ticket_query(params)
-                tool_results["火车票"] = ticket_info
-                logger.info(f"火车票查询完成: {ticket_info[:200] if ticket_info else '无'}...")
+            # 2. 调用工具
+            dest = intent.get("destination") or intent.get("city") or ""
+            origin = intent.get("origin") or ""
+            date = intent.get("date") or "近期"
             
-            # 2.2 天气查询
-            if params.get("need_weather"):
-                weather_info = self._execute_weather_query(params)
-                tool_results["天气"] = weather_info
-                logger.info(f"天气查询完成: {weather_info[:200] if weather_info else '无'}...")
+            # 天气
+            if "get_weather" in tools_needed and dest:
+                results["天气"] = self._call_with_fallback(
+                    "get_weather", {"city": dest},
+                    fallback=lambda: self._baidu_weather(dest)
+                )
             
-            # 2.3 景点查询
-            if params.get("need_attractions"):
-                attractions_info = self._execute_attractions_query(params)
-                tool_results["景点"] = attractions_info
-                logger.info(f"景点查询完成: {attractions_info[:200] if attractions_info else '无'}...")
+            # 火车票
+            if "get_train_tickets" in tools_needed and origin and dest:
+                results["火车票"] = self._call_with_fallback(
+                    "get_train_tickets", 
+                    {"date": date, "from_station": origin, "to_station": dest},
+                    fallback=lambda: self._baidu_transport(origin, dest)
+                )
             
-            # 步骤3: 构建完整Prompt，整合所有信息
-            final_prompt = self._build_final_prompt(user_input, params, tool_results)
+            # 景点
+            if "search_attractions" in tools_needed and dest:
+                results["景点"] = self._call_with_fallback(
+                    "search_attractions", {"city": dest, "keyword": "景点"}
+                )
             
-            # 步骤4: 调用LLM生成最终回复
-            logger.info("调用LLM生成最终回复...")
-            messages = [SystemMessage(content=final_prompt)]
-            messages.append(HumanMessage(content=user_input))
+            # 3. 生成回复
+            return self._make_response(user_input, intent, results)
             
-            response = self.llm.invoke(messages)
-            final_response = response.content if hasattr(response, 'content') else str(response)
-            
-            logger.info(f"最终回复: {final_response[:100]}...")
-            return final_response
-        
         except Exception as e:
-            logger.error(f"Agent运行失败: {e}")
+            logger.error(f"运行失败: {e}")
             import traceback
             traceback.print_exc()
-            return f"抱歉，处理您的请求时出现问题: {str(e)}"
+            return f"抱歉出错: {str(e)}"
     
-    def _parse_user_request(self, query: str) -> Dict:
-        """解析用户请求，提取参数"""
-        params = {
-            "destination": None,      # 目的地
-            "origin": None,           # 出发地
-            "date": None,             # 日期
-            "days": None,             # 天数
-            "budget": None,           # 预算
-            "need_weather": False,    # 需要查天气
-            "need_ticket": False,     # 需要查车票
-            "need_attractions": False # 需要查景点
-        }
-        
-        query_lower = query.lower()
-        
-        # 提取城市
-        cities = self._extract_cities(query)
-        if cities:
-            # 假设第一个是目的地，最后一个是出发地
-            params["destination"] = cities[0]
-            if len(cities) > 1:
-                params["origin"] = cities[-1]
-            elif "从" in query and "出发" in query:
-                # 如果用户说"从宁波出发"，需要明确
+    def _call_with_fallback(self, tool_name: str, params: dict, fallback) -> str:
+        """调用工具，失败时降级"""
+        try:
+            result = execute_tool(tool_name, params)
+            
+            # 检查是否失败
+            try:
+                data = json.loads(result)
+                if "error" in data or data.get("status") == "error":
+                    logger.warning(f"{tool_name}失败，使用降级")
+                    return fallback()
+            except:
                 pass
-        
-        # 特别处理"去X"格式
-        match = re.search(r'去(.+?)((?:三天|两天|四天|五天)|(?:天)|(?:的|$))', query)
-        if match:
-            dest = match.group(1).strip()
-            if dest and params["destination"] is None:
-                params["destination"] = dest
-        
-        # 提取天数
-        days_match = re.search(r'(\d+)\s*天', query)
-        if days_match:
-            params["days"] = int(days_match.group(1))
-        
-        # 提取日期
-        params["date"] = self._extract_date(query)
-        
-        # 判断需要什么服务
-        params["need_weather"] = "天气" in query or "温度" in query
-        params["need_ticket"] = any(kw in query for kw in ["火车", "高铁", "动车", "票", "车次"])
-        params["need_attractions"] = any(kw in query for kw in ["景点", "好玩", "美食", "旅游", "推荐", "规划"])
-        
-        # 如果是规划旅行，默认都需要
-        if params["destination"] and not any([params["need_weather"], params["need_ticket"], params["need_attractions"]]):
-            params["need_weather"] = True
-            params["need_ticket"] = True
-            params["need_attractions"] = True
-        
-        return params
+            return result
+            
+        except Exception as e:
+            logger.error(f"{tool_name}异常: {e}")
+            return fallback()
     
-    def _extract_cities(self, query: str) -> List[str]:
-        """提取城市名"""
-        cities = [
-            "北京", "上海", "广州", "深圳", "成都", "杭州", "西安", "重庆",
-            "南京", "武汉", "天津", "苏州", "郑州", "长沙", "青岛", "沈阳",
-            "大连", "厦门", "昆明", "哈尔滨", "长春", "福州", "南昌", "贵阳",
-            "太原", "济南", "宁波", "温州", "无锡", "常州", "徐州", "扬州", "镇江"
-        ]
-        
-        found = []
-        for city in cities:
-            if city in query:
-                found.append(city)
-        
-        # 尝试匹配"从X到Y"格式
-        match = re.search(r'从(.+?)到(.+?)(?:的|，|,|$)', query)
-        if match:
-            origin = match.group(1).strip()
-            dest = match.group(2).strip()
-            if origin not in found:
-                found.insert(0, origin)
-            if dest not in found:
-                found.append(dest)
-        
-        return found
+    def _baidu_weather(self, city: str) -> str:
+        """百度天气搜索"""
+        try:
+            from ..data_sources.baidu_search import BaiduSearchAPI
+            api = BaiduSearchAPI()
+            # 同步调用
+            try:
+                loop = asyncio.get_event_loop()
+                if loop.is_running():
+                    import concurrent.futures
+                    with concurrent.futures.ThreadPoolExecutor() as pool:
+                        future = pool.submit(asyncio.run, api.search_weather(city))
+                        result = future.result()
+                else:
+                    result = asyncio.run(api.search_weather(city))
+            except:
+                result = asyncio.run(api.search_weather(city))
+            
+            return json.dumps({"降级搜索": f"{city}天气", "结果": result}, ensure_ascii=False, indent=2)
+        except Exception as e:
+            logger.error(f"天气降级失败: {e}")
+            return json.dumps({"error": f"天气查询失败: {e}"}, ensure_ascii=False)
     
-    def _extract_date(self, query: str) -> Optional[str]:
-        """提取日期"""
-        from datetime import datetime, timedelta
+    def _baidu_transport(self, from_city: str, to_city: str) -> str:
+        """百度交通搜索"""
+        try:
+            from ..data_sources.baidu_search import BaiduSearchAPI
+            api = BaiduSearchAPI()
+            try:
+                loop = asyncio.get_event_loop()
+                if loop.is_running():
+                    import concurrent.futures
+                    with concurrent.futures.ThreadPoolExecutor() as pool:
+                        future = pool.submit(asyncio.run, api.search_transport(from_city, to_city))
+                        result = future.result()
+                else:
+                    result = asyncio.run(api.search_transport(from_city, to_city))
+            except:
+                result = asyncio.run(api.search_transport(from_city, to_city))
+            
+            return json.dumps({"降级搜索": f"{from_city}到{to_city}交通", "结果": result}, ensure_ascii=False, indent=2)
+        except Exception as e:
+            logger.error(f"交通降级失败: {e}")
+            return json.dumps({"error": f"交通查询失败: {e}"}, ensure_ascii=False)
+    
+    def _parse_intent(self, query: str) -> Dict:
+        """解析意图"""
+        prompt = f"""你是旅行助手。用户问题：{query}
+
+输出JSON包含：city(目的地), origin(出发地), date(日期), needed_tools([get_weather/get_train_tickets/search_attractions])
+"""
+        try:
+            resp = self.llm.invoke([SystemMessage(content=prompt), HumanMessage(content=query)])
+            content = resp.content if hasattr(resp, 'content') else str(resp)
+            
+            # 尝试提取JSON
+            match = re.search(r'\{[\s\S]*\}', content)
+            if match:
+                return json.loads(match.group())
+        except Exception as e:
+            logger.error(f"解析失败: {e}")
         
-        # 明天/后天/今天
-        if "明天" in query:
-            return (datetime.now() + timedelta(days=1)).strftime("%Y-%m-%d")
-        elif "后天" in query:
-            return (datetime.now() + timedelta(days=2)).strftime("%Y-%m-%d")
-        elif "今天" in query or "今日" in query:
-            return datetime.now().strftime("%Y-%m-%d")
+        return {"needed_tools": []}
+    
+    def _make_response(self, query: str, intent: Dict, results: Dict) -> str:
+        """生成回复"""
+
+        context = f"用户: {query}\n\n查询结果:\n"
+        for k, v in results.items():
+            context += f"\n### {k}\n{v}\n"
+
+        prompt = f"""你是友好的旅行助手。根据以下查询结果回答用户：
+
+{context}
+
+要求：
+1. 查询失败时说明情况并给建议
+2. 使用emoji
+3. 直接回答
+"""
+        try:
+            resp = self.llm.invoke([SystemMessage(content=prompt), HumanMessage(content=query)])
+            return resp.content if hasattr(resp, 'content') else str(resp)
+        except Exception as e:
+            logger.error(f"生成失败: {e}")
+            return f"抱歉出错: {str(e)}"
+
+    # ============ 执行计划TODO系统方法 ============
+
+    def create_execution_plan(self, user_query: str) -> ExecutionPlan:
+        """创建执行计划"""
+        planner = get_planner()
+        plan = planner.generate_plan(user_query)
+        logger.info(f"创建执行计划: {plan.intent}, 步骤数: {len(plan.steps)}")
+        return plan
+
+    def execute_plan(self, plan: ExecutionPlan, context: Dict = None) -> Dict:
+        """执行计划，返回执行结果"""
+        if context is None:
+            context = {}
+
+        results = {
+            "intent": plan.intent,
+            "entities": plan.entities,
+            "steps_executed": [],
+            "step_results": {},
+            "success": True,
+            "final_data": {}
+        }
+
+        for step in plan.steps:
+            step_id = step["id"]
+            tool_name = step["tool"]
+            params = step["params"]
+            purpose = step["purpose"]
+
+            logger.info(f"执行步骤{step_id}: {tool_name} - {purpose}")
+
+            # 替换参数中的占位符
+            params = self._resolve_params(params, context, results)
+
+            # 执行工具
+            try:
+                result = execute_tool(tool_name, params)
+                
+                # 解析结果
+                try:
+                    result_data = json.loads(result)
+                except:
+                    result_data = {"raw": result}
+
+                # 检查是否失败
+                if "error" in result_data:
+                    logger.warning(f"步骤{step_id}失败: {result_data.get('error')}")
+                    step["status"] = "failed"
+                    step["error"] = result_data.get("error")
+                    
+                    # 执行降级
+                    if plan.fallback_plan:
+                        fallback_result = self._execute_fallback(plan.fallback_plan, context, results)
+                        if fallback_result:
+                            results["step_results"][step_id] = fallback_result
+                            step["result"] = fallback_result
+                            step["status"] = "fallback_success"
+                        else:
+                            results["success"] = False
+                    else:
+                        results["success"] = False
+                else:
+                    step["status"] = "completed"
+                    step["result"] = result_data
+                    results["step_results"][step_id] = result_data
+
+                    # 更新上下文
+                    self._update_context(context, tool_name, result_data, plan.entities)
+
+            except Exception as e:
+                logger.error(f"步骤{step_id}异常: {e}")
+                step["status"] = "failed"
+                step["error"] = str(e)
+                results["success"] = False
+
+            results["steps_executed"].append({
+                "id": step_id,
+                "tool": tool_name,
+                "purpose": purpose,
+                "status": step["status"]
+            })
+
+        # 收集最终数据
+        results["final_data"] = context
+        return results
+
+    def _resolve_params(self, params: Dict, context: Dict, results: Dict) -> Dict:
+        """解析参数中的占位符"""
+        resolved = {}
+        for k, v in params.items():
+            if isinstance(v, str) and v.startswith("{{") and v.endswith("}}"):
+                # 替换占位符
+                key = v[2:-2]
+                resolved[k] = context.get(key, v)
+            else:
+                resolved[k] = v
+        return resolved
+
+    def _update_context(self, context: Dict, tool_name: str, result_data: Dict, entities: Dict):
+        """更新执行上下文"""
         
-        # 匹配日期格式如 2026-03-15, 3月15日, 03-15
-        match = re.search(r'(\d{4})-(\d{1,2})-(\d{1,2})', query)
-        if match:
-            return f"{match.group(1)}-{int(match.group(2)):02d}-{int(match.group(3)):02d}"
+        if tool_name == "get_station_by_city":
+            city = result_data.get("city", "")
+            stations = result_data.get("stations", [])
+            
+            # 判断是出发地还是目的地的火车站
+            origin_city = entities.get("origin", "")
+            dest_city = entities.get("destination", "")
+            
+            if city == origin_city and stations:
+                context["origin_station"] = stations[0].get("name", "")
+                context["origin_stations"] = [s.get("name") for s in stations]
+            elif city == dest_city and stations:
+                context["destination_station"] = stations[0].get("name", "")
+                context["destination_stations"] = [s.get("name") for s in stations]
         
-        match = re.search(r'(\d{1,2})月(\d{1,2})日', query)
-        if match:
-            year = datetime.now().year
-            return f"{year}-{int(match.group(1)):02d}-{int(match.group(2)):02d}"
+        elif tool_name == "parse_date":
+            parsed = result_data.get("parsed")
+            if parsed:
+                context["parsed_date"] = parsed
+                context["weekday"] = result_data.get("weekday", "")
+        
+        elif tool_name == "get_train_tickets":
+            context["train_tickets"] = result_data
+        
+        elif tool_name == "get_weather":
+            context["weather"] = result_data
+        
+        elif tool_name == "search_attractions":
+            context["attractions"] = result_data
+
+    def _execute_fallback(self, fallback_plan: List[Dict], context: Dict, results: Dict) -> Dict:
+        """执行降级计划"""
+        for fb in fallback_plan:
+            tool_name = fb["tool"]
+            params = fb.get("params", {})
+            
+            logger.info(f"执行降级: {tool_name}")
+            
+            try:
+                result = execute_tool(tool_name, params)
+                result_data = json.loads(result) if "{" in result else {"raw": result}
+                
+                if "error" not in result_data:
+                    return result_data
+                    
+            except Exception as e:
+                logger.error(f"降级失败: {e}")
         
         return None
-    
-    def _execute_ticket_query(self, params: Dict) -> str:
-        """执行火车票查询"""
-        origin = params.get("origin") or params.get("from_station")
-        destination = params.get("destination") or params.get("to_station")
-        date = params.get("date")
-        
-        if not origin or not destination:
-            return "未提供出发地和目的地，无法查询火车票"
-        
-        if not date:
-            from datetime import datetime
-            date = datetime.now().strftime("%Y-%m-%d")
-        
-        logger.info(f"查询火车票: {origin} -> {destination}, 日期: {date}")
-        
-        try:
-            result = execute_tool("get_train_tickets", {
-                "date": date,
-                "from_station": origin,
-                "to_station": destination,
-                "train_type": "G"
-            })
-            return result
-        except Exception as e:
-            logger.error(f"火车票查询失败: {e}")
-            return f"火车票查询失败: {str(e)}"
-    
-    def _execute_weather_query(self, params: Dict) -> str:
-        """执行天气查询"""
-        city = params.get("destination")
-        if not city:
-            return "未提供目的地，无法查询天气"
-        
-        logger.info(f"查询天气: {city}")
-        
-        try:
-            result = execute_tool("get_weather", {"city": city})
-            return result
-        except Exception as e:
-            logger.error(f"天气查询失败: {e}")
-            return f"天气查询失败: {str(e)}"
-    
-    def _execute_attractions_query(self, params: Dict) -> str:
-        """执行景点查询"""
-        city = params.get("destination")
-        if not city:
-            return "未提供目的地，无法查询景点"
-        
-        logger.info(f"查询景点: {city}")
-        
-        try:
-            # 查询景点
-            result = execute_tool("search_attractions", {
-                "city": city,
-                "keyword": "景点"
-            })
-            return result
-        except Exception as e:
-            logger.error(f"景点查询失败: {e}")
-            return f"景点查询失败: {str(e)}"
-    
-    def _build_final_prompt(self, user_query: str, params: Dict, tool_results: Dict) -> str:
-        """构建最终Prompt，整合所有信息"""
-        
-        prompt = f"""你是一个专业的旅行规划助手。请根据以下信息，为用户规划旅行。
 
-## 用户需求
-{user_query}
+    def run_with_plan(self, user_input: str, history: List[Dict] = None) -> str:
+        """使用执行计划模式运行"""
+        
+        # 1. 创建执行计划
+        plan = self.create_execution_plan(user_input)
+        
+        # 2. 执行计划
+        results = self.execute_plan(plan)
+        
+        # 3. 生成回复
+        return self._make_response_from_plan(user_input, plan, results)
 
-## 解析的信息
-- 目的地: {params.get('destination', '未知')}
-- 出发地: {params.get('origin', '未知')}
-- 出发日期: {params.get('date', '未知')}
-- 旅行天数: {params.get('days', '未知')}天
-- 预算: {params.get('budget', '未知')}
+    def _make_response_from_plan(self, query: str, plan: ExecutionPlan, results: Dict) -> str:
+        """根据执行计划结果生成回复"""
+        
+        context = f"用户: {query}\n\n"
+        
+        # 添加执行摘要
+        context += f"意图: {plan.intent}\n"
+        context += f"实体: {json.dumps(plan.entities, ensure_ascii=False)}\n\n"
+        
+        # 添加各步骤结果
+        context += "执行结果:\n"
+        
+        for step_id, result in results.get("step_results", {}).items():
+            if step_id == "fallback":
+                continue
+            context += f"\n{json.dumps(result, ensure_ascii=False)}\n"
+        
+        # 如果有降级结果
+        if results.get("fallback_result"):
+            context += f"\n降级搜索结果:\n{json.dumps(results['fallback_result'], ensure_ascii=False)}\n"
+        
+        prompt = f"""你是友好的旅行助手。根据以下执行结果回答用户：
 
+{context}
+
+要求：
+1. 清晰说明查询到了什么信息
+2. 如果部分失败，说明哪些失败了
+3. 使用emoji让回答更生动
+4. 直接给出有用信息，不要重复过程
 """
-        
-        # 添加工具查询结果
-        if tool_results:
-            prompt += "## 查询结果\n\n"
-            
-            if "火车票" in tool_results:
-                prompt += f"### 火车票信息\n{tool_results['火车票']}\n\n"
-            
-            if "天气" in tool_results:
-                prompt += f"### 天气信息\n{tool_results['天气']}\n\n"
-            
-            if "景点" in tool_results:
-                prompt += f"### 景点信息\n{tool_results['景点']}\n\n"
-        
-        prompt += """## 输出要求
-1. 根据用户需求，整合以上信息给出合理的行程规划
-2. 如果查询结果为空或查询失败，请友好告知用户
-3. 行程要具体，包含每日安排
-4. 给出实用的建议和注意事项
-5. 语言要友好自然，符合中文表达习惯
-
-请开始规划！"""
-        
-        return prompt
+        try:
+            resp = self.llm.invoke([SystemMessage(content=prompt), HumanMessage(content=query)])
+            return resp.content if hasattr(resp, 'content') else str(resp)
+        except Exception as e:
+            logger.error(f"生成回复失败: {e}")
+            return f"查询完成，但生成回复时出错: {str(e)}"
 
 
-# 全局Agent实例
+# 全局Agent
 _agent = None
 
-
 def get_agent() -> TravelAgent:
-    """获取Agent实例"""
     global _agent
     if _agent is None:
         _agent = TravelAgent()
