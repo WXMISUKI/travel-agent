@@ -621,3 +621,37 @@ def run_agent(user_query: str, session_id: str = None) -> Dict[str, Any]:
             "response": f"处理失败: {str(e)}",
             "error": str(e)
         }
+
+
+# ==================== 可视化测试 ====================
+
+if __name__ == "__main__":
+    print("=" * 60)
+    print("LangGraph Workflow 可视化")
+    print("=" * 60)
+    
+    try:
+        # 获取图
+        graph = get_agent_graph()
+        
+        # 生成 Mermaid 代码
+        print("\n### Mermaid 图代码:")
+        mermaid = graph.get_graph().draw_mermaid()
+        print(mermaid)
+        
+        # 尝试生成 PNG
+        print("\n生成 PNG 图片...")
+        try:
+            png_data = graph.get_graph().draw_mermaid_png()
+            output_path = "langgraph_workflow.png"
+            with open(output_path, "wb") as f:
+                f.write(png_data)
+            print(f"✅ 流程图已保存为: {output_path}")
+        except Exception as e:
+            print(f"⚠️ PNG 生成失败: {e}")
+            print("   (可能需要安装 pillow: pip install pillow)")
+            
+    except Exception as e:
+        print(f"❌ 加载失败: {e}")
+        import traceback
+        traceback.print_exc()

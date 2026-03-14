@@ -1,6 +1,6 @@
 """
 LangChain Agent 流程 - 智能增强版
-整合 SmartPlanner、TimeContext、ToolAdapter
+整合 SmartPlanner、TimeContext
 """
 import json
 import re
