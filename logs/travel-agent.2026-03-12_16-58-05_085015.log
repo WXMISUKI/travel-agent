@@ -1,0 +1,297 @@
+
+2026-03-14 11:35:31.532 | WARNING  | src.agent.tools:execute_tool_with_retry:801 - 工具 get_weather 第 2 次尝试失败: 工具执行失败，已重试 3 次: maximum recursion depth exceeded
+2026-03-14 11:35:32.032 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:35:32.534 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:35:33.035 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:35:33.035 | WARNING  | src.agent.tools:execute_tool_with_retry:801 - 工具 get_weather 第 3 次尝试失败: 工具执行失败，已重试 3 次: maximum recursion depth exceeded
+2026-03-14 11:35:33.035 | WARNING  | src.agent.tools:execute_tool_with_retry:801 - 工具 get_weather 第 1 次尝试失败: 工具执行失败，已重试 3 次: 工具执行失败，已重试 3 次: maximum recursion depth exceeded
+2026-03-14 11:35:33.536 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:35:34.038 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:35:34.539 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:35:34.539 | WARNING  | src.agent.tools:execute_tool_with_retry:801 - 工具 get_weather 第 1 次尝试失败: 工具执行失败，已重试 3 次: maximum recursion depth exceeded
+2026-03-14 11:35:35.041 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:35:35.542 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:35:36.043 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:35:36.043 | WARNING  | src.agent.tools:execute_tool_with_retry:801 - 工具 get_weather 第 2 次尝试失败: 工具执行失败，已重试 3 次: maximum recursion depth exceeded
+2026-03-14 11:35:36.544 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:35:37.045 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:35:37.547 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:35:37.548 | WARNING  | src.agent.tools:execute_tool_with_retry:801 - 工具 get_weather 第 3 次尝试失败: 工具执行失败，已重试 3 次: maximum recursion depth exceeded
+2026-03-14 11:35:37.548 | WARNING  | src.agent.tools:execute_tool_with_retry:801 - 工具 get_weather 第 2 次尝试失败: 工具执行失败，已重试 3 次: 工具执行失败，已重试 3 次: maximum recursion depth exceeded
+2026-03-14 11:35:38.049 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:35:38.550 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:35:39.051 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:35:39.051 | WARNING  | src.agent.tools:execute_tool_with_retry:801 - 工具 get_weather 第 1 次尝试失败: 工具执行失败，已重试 3 次: maximum recursion depth exceeded
+2026-03-14 11:35:39.552 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:35:40.053 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:35:40.555 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:35:40.556 | WARNING  | src.agent.tools:execute_tool_with_retry:801 - 工具 get_weather 第 2 次尝试失败: 工具执行失败，已重试 3 次: maximum recursion depth exceeded
+2026-03-14 11:35:41.056 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:35:41.558 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:35:42.059 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:35:42.059 | WARNING  | src.agent.tools:execute_tool_with_retry:801 - 工具 get_weather 第 3 次尝试失败: 工具执行失败，已重试 3 次: maximum recursion depth exceeded
+2026-03-14 11:35:42.059 | WARNING  | src.agent.tools:execute_tool_with_retry:801 - 工具 get_weather 第 3 次尝试失败: 工具执行失败，已重试 3 次: 工具执行失败，已重试 3 次: maximum recursion depth exceeded
+2026-03-14 11:35:42.059 | WARNING  | src.agent.tools:execute_tool_with_retry:801 - 工具 get_weather 第 1 次尝试失败: 工具执行失败，已重试 3 次: 工具执行失败，已重试 3 次: 工具执行失败，已重试 3 次: maximum recursion depth exceeded
+2026-03-14 11:35:42.561 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:35:43.062 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:35:43.563 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:35:43.563 | WARNING  | src.agent.tools:execute_tool_with_retry:801 - 工具 get_weather 第 1 次尝试失败: 工具执行失败，已重试 3 次: maximum recursion depth exceeded
+2026-03-14 11:35:44.064 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:35:44.565 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:35:45.067 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:35:45.067 | WARNING  | src.agent.tools:execute_tool_with_retry:801 - 工具 get_weather 第 2 次尝试失败: 工具执行失败，已重试 3 次: maximum recursion depth exceeded
+2026-03-14 11:35:45.568 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:35:46.069 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:35:46.572 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:35:46.572 | WARNING  | src.agent.tools:execute_tool_with_retry:801 - 工具 get_weather 第 3 次尝试失败: 工具执行失败，已重试 3 次: maximum recursion depth exceeded
+2026-03-14 11:35:46.572 | WARNING  | src.agent.tools:execute_tool_with_retry:801 - 工具 get_weather 第 1 次尝试失败: 工具执行失败，已重试 3 次: 工具执行失败，已重试 3 次: maximum recursion depth exceeded
+2026-03-14 11:35:47.073 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:35:47.574 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:35:48.075 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:35:48.076 | WARNING  | src.agent.tools:execute_tool_with_retry:801 - 工具 get_weather 第 1 次尝试失败: 工具执行失败，已重试 3 次: maximum recursion depth exceeded
+2026-03-14 11:35:48.577 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:35:49.078 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:35:49.579 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:35:49.579 | WARNING  | src.agent.tools:execute_tool_with_retry:801 - 工具 get_weather 第 2 次尝试失败: 工具执行失败，已重试 3 次: maximum recursion depth exceeded
+2026-03-14 11:35:50.081 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:35:50.582 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:35:51.083 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:35:51.083 | WARNING  | src.agent.tools:execute_tool_with_retry:801 - 工具 get_weather 第 3 次尝试失败: 工具执行失败，已重试 3 次: maximum recursion depth exceeded
+2026-03-14 11:35:51.083 | WARNING  | src.agent.tools:execute_tool_with_retry:801 - 工具 get_weather 第 2 次尝试失败: 工具执行失败，已重试 3 次: 工具执行失败，已重试 3 次: maximum recursion depth exceeded
+2026-03-14 11:35:51.585 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:35:52.086 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:35:52.587 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:35:52.587 | WARNING  | src.agent.tools:execute_tool_with_retry:801 - 工具 get_weather 第 1 次尝试失败: 工具执行失败，已重试 3 次: maximum recursion depth exceeded
+2026-03-14 11:35:53.089 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:35:53.589 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:35:54.091 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:35:54.091 | WARNING  | src.agent.tools:execute_tool_with_retry:801 - 工具 get_weather 第 2 次尝试失败: 工具执行失败，已重试 3 次: maximum recursion depth exceeded
+2026-03-14 11:35:54.592 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:35:55.093 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:35:55.595 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:35:55.595 | WARNING  | src.agent.tools:execute_tool_with_retry:801 - 工具 get_weather 第 3 次尝试失败: 工具执行失败，已重试 3 次: maximum recursion depth exceeded
+2026-03-14 11:35:55.595 | WARNING  | src.agent.tools:execute_tool_with_retry:801 - 工具 get_weather 第 3 次尝试失败: 工具执行失败，已重试 3 次: 工具执行失败，已重试 3 次: maximum recursion depth exceeded
+2026-03-14 11:35:55.595 | WARNING  | src.agent.tools:execute_tool_with_retry:801 - 工具 get_weather 第 2 次尝试失败: 工具执行失败，已重试 3 次: 工具执行失败，已重试 3 次: 工具执行失败，已重试 3 次: maximum recursion depth exceeded
+2026-03-14 11:35:56.097 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:35:56.598 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:35:57.099 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:35:57.099 | WARNING  | src.agent.tools:execute_tool_with_retry:801 - 工具 get_weather 第 1 次尝试失败: 工具执行失败，已重试 3 次: maximum recursion depth exceeded
+2026-03-14 11:35:57.601 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:35:58.102 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:35:58.603 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:35:58.604 | WARNING  | src.agent.tools:execute_tool_with_retry:801 - 工具 get_weather 第 2 次尝试失败: 工具执行失败，已重试 3 次: maximum recursion depth exceeded
+2026-03-14 11:35:59.105 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:35:59.606 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:00.107 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:00.107 | WARNING  | src.agent.tools:execute_tool_with_retry:801 - 工具 get_weather 第 3 次尝试失败: 工具执行失败，已重试 3 次: maximum recursion depth exceeded
+2026-03-14 11:36:00.107 | WARNING  | src.agent.tools:execute_tool_with_retry:801 - 工具 get_weather 第 1 次尝试失败: 工具执行失败，已重试 3 次: 工具执行失败，已重试 3 次: maximum recursion depth exceeded
+2026-03-14 11:36:00.609 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:01.111 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:01.612 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:01.612 | WARNING  | src.agent.tools:execute_tool_with_retry:801 - 工具 get_weather 第 1 次尝试失败: 工具执行失败，已重试 3 次: maximum recursion depth exceeded
+2026-03-14 11:36:02.113 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:02.615 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:03.116 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:03.116 | WARNING  | src.agent.tools:execute_tool_with_retry:801 - 工具 get_weather 第 2 次尝试失败: 工具执行失败，已重试 3 次: maximum recursion depth exceeded
+2026-03-14 11:36:03.618 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:04.119 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:04.620 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:04.620 | WARNING  | src.agent.tools:execute_tool_with_retry:801 - 工具 get_weather 第 3 次尝试失败: 工具执行失败，已重试 3 次: maximum recursion depth exceeded
+2026-03-14 11:36:04.620 | WARNING  | src.agent.tools:execute_tool_with_retry:801 - 工具 get_weather 第 2 次尝试失败: 工具执行失败，已重试 3 次: 工具执行失败，已重试 3 次: maximum recursion depth exceeded
+2026-03-14 11:36:05.122 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:05.623 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:06.124 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:06.124 | WARNING  | src.agent.tools:execute_tool_with_retry:801 - 工具 get_weather 第 1 次尝试失败: 工具执行失败，已重试 3 次: maximum recursion depth exceeded
+2026-03-14 11:36:06.626 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:07.127 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:07.628 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:07.628 | WARNING  | src.agent.tools:execute_tool_with_retry:801 - 工具 get_weather 第 2 次尝试失败: 工具执行失败，已重试 3 次: maximum recursion depth exceeded
+2026-03-14 11:36:08.130 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:08.630 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:09.132 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:09.133 | WARNING  | src.agent.tools:execute_tool_with_retry:801 - 工具 get_weather 第 3 次尝试失败: 工具执行失败，已重试 3 次: maximum recursion depth exceeded
+2026-03-14 11:36:09.133 | WARNING  | src.agent.tools:execute_tool_with_retry:801 - 工具 get_weather 第 3 次尝试失败: 工具执行失败，已重试 3 次: 工具执行失败，已重试 3 次: maximum recursion depth exceeded
+2026-03-14 11:36:09.133 | WARNING  | src.agent.tools:execute_tool_with_retry:801 - 工具 get_weather 第 3 次尝试失败: 工具执行失败，已重试 3 次: 工具执行失败，已重试 3 次: 工具执行失败，已重试 3 次: maximum recursion depth exceeded
+2026-03-14 11:36:09.133 | WARNING  | src.agent.tools:execute_tool_with_retry:801 - 工具 get_weather 第 2 次尝试失败: 工具执行失败，已重试 3 次: 工具执行失败，已重试 3 次: 工具执行失败，已重试 3 次: 工具执行失败，已重试 3 次: maximum recursion depth exceeded
+2026-03-14 11:36:09.634 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:10.136 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:10.637 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:10.637 | WARNING  | src.agent.tools:execute_tool_with_retry:801 - 工具 get_weather 第 1 次尝试失败: 工具执行失败，已重试 3 次: maximum recursion depth exceeded
+2026-03-14 11:36:11.139 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:11.641 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:12.141 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:12.141 | WARNING  | src.agent.tools:execute_tool_with_retry:801 - 工具 get_weather 第 2 次尝试失败: 工具执行失败，已重试 3 次: maximum recursion depth exceeded
+2026-03-14 11:36:12.643 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:13.144 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:13.646 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:13.646 | WARNING  | src.agent.tools:execute_tool_with_retry:801 - 工具 get_weather 第 3 次尝试失败: 工具执行失败，已重试 3 次: maximum recursion depth exceeded
+2026-03-14 11:36:13.647 | WARNING  | src.agent.tools:execute_tool_with_retry:801 - 工具 get_weather 第 1 次尝试失败: 工具执行失败，已重试 3 次: 工具执行失败，已重试 3 次: maximum recursion depth exceeded
+2026-03-14 11:36:14.148 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:14.649 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:15.150 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:15.150 | WARNING  | src.agent.tools:execute_tool_with_retry:801 - 工具 get_weather 第 1 次尝试失败: 工具执行失败，已重试 3 次: maximum recursion depth exceeded
+2026-03-14 11:36:15.652 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:16.153 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:16.654 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:16.654 | WARNING  | src.agent.tools:execute_tool_with_retry:801 - 工具 get_weather 第 2 次尝试失败: 工具执行失败，已重试 3 次: maximum recursion depth exceeded
+2026-03-14 11:36:17.155 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:17.657 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:18.159 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:18.160 | WARNING  | src.agent.tools:execute_tool_with_retry:801 - 工具 get_weather 第 3 次尝试失败: 工具执行失败，已重试 3 次: maximum recursion depth exceeded
+2026-03-14 11:36:18.160 | WARNING  | src.agent.tools:execute_tool_with_retry:801 - 工具 get_weather 第 2 次尝试失败: 工具执行失败，已重试 3 次: 工具执行失败，已重试 3 次: maximum recursion depth exceeded
+2026-03-14 11:36:18.661 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:19.162 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:19.663 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:19.663 | WARNING  | src.agent.tools:execute_tool_with_retry:801 - 工具 get_weather 第 1 次尝试失败: 工具执行失败，已重试 3 次: maximum recursion depth exceeded
+2026-03-14 11:36:20.164 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:20.666 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:21.167 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:21.167 | WARNING  | src.agent.tools:execute_tool_with_retry:801 - 工具 get_weather 第 2 次尝试失败: 工具执行失败，已重试 3 次: maximum recursion depth exceeded
+2026-03-14 11:36:21.668 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:22.170 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:22.671 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:22.671 | WARNING  | src.agent.tools:execute_tool_with_retry:801 - 工具 get_weather 第 3 次尝试失败: 工具执行失败，已重试 3 次: maximum recursion depth exceeded
+2026-03-14 11:36:22.671 | WARNING  | src.agent.tools:execute_tool_with_retry:801 - 工具 get_weather 第 3 次尝试失败: 工具执行失败，已重试 3 次: 工具执行失败，已重试 3 次: maximum recursion depth exceeded
+2026-03-14 11:36:22.673 | WARNING  | src.agent.tools:execute_tool_with_retry:801 - 工具 get_weather 第 1 次尝试失败: 工具执行失败，已重试 3 次: 工具执行失败，已重试 3 次: 工具执行失败，已重试 3 次: maximum recursion depth exceeded
+2026-03-14 11:36:23.174 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:23.675 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:24.176 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:24.176 | WARNING  | src.agent.tools:execute_tool_with_retry:801 - 工具 get_weather 第 1 次尝试失败: 工具执行失败，已重试 3 次: maximum recursion depth exceeded
+2026-03-14 11:36:24.677 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:25.179 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:25.680 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:25.680 | WARNING  | src.agent.tools:execute_tool_with_retry:801 - 工具 get_weather 第 2 次尝试失败: 工具执行失败，已重试 3 次: maximum recursion depth exceeded
+2026-03-14 11:36:26.181 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:26.682 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:27.183 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:27.183 | WARNING  | src.agent.tools:execute_tool_with_retry:801 - 工具 get_weather 第 3 次尝试失败: 工具执行失败，已重试 3 次: maximum recursion depth exceeded
+2026-03-14 11:36:27.184 | WARNING  | src.agent.tools:execute_tool_with_retry:801 - 工具 get_weather 第 1 次尝试失败: 工具执行失败，已重试 3 次: 工具执行失败，已重试 3 次: maximum recursion depth exceeded
+2026-03-14 11:36:27.685 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:28.187 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:28.687 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:28.687 | WARNING  | src.agent.tools:execute_tool_with_retry:801 - 工具 get_weather 第 1 次尝试失败: 工具执行失败，已重试 3 次: maximum recursion depth exceeded
+2026-03-14 11:36:29.189 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:29.691 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:30.192 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:30.192 | WARNING  | src.agent.tools:execute_tool_with_retry:801 - 工具 get_weather 第 2 次尝试失败: 工具执行失败，已重试 3 次: maximum recursion depth exceeded
+2026-03-14 11:36:30.694 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:31.195 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:31.696 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:31.696 | WARNING  | src.agent.tools:execute_tool_with_retry:801 - 工具 get_weather 第 3 次尝试失败: 工具执行失败，已重试 3 次: maximum recursion depth exceeded
+2026-03-14 11:36:31.698 | WARNING  | src.agent.tools:execute_tool_with_retry:801 - 工具 get_weather 第 2 次尝试失败: 工具执行失败，已重试 3 次: 工具执行失败，已重试 3 次: maximum recursion depth exceeded
+2026-03-14 11:36:32.198 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:32.699 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:33.201 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:33.201 | WARNING  | src.agent.tools:execute_tool_with_retry:801 - 工具 get_weather 第 1 次尝试失败: 工具执行失败，已重试 3 次: maximum recursion depth exceeded
+2026-03-14 11:36:33.702 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:34.204 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:34.705 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:34.705 | WARNING  | src.agent.tools:execute_tool_with_retry:801 - 工具 get_weather 第 2 次尝试失败: 工具执行失败，已重试 3 次: maximum recursion depth exceeded
+2026-03-14 11:36:35.206 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:35.708 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:36.209 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:36.209 | WARNING  | src.agent.tools:execute_tool_with_retry:801 - 工具 get_weather 第 3 次尝试失败: 工具执行失败，已重试 3 次: maximum recursion depth exceeded
+2026-03-14 11:36:36.209 | WARNING  | src.agent.tools:execute_tool_with_retry:801 - 工具 get_weather 第 3 次尝试失败: 工具执行失败，已重试 3 次: 工具执行失败，已重试 3 次: maximum recursion depth exceeded
+2026-03-14 11:36:36.209 | WARNING  | src.agent.tools:execute_tool_with_retry:801 - 工具 get_weather 第 2 次尝试失败: 工具执行失败，已重试 3 次: 工具执行失败，已重试 3 次: 工具执行失败，已重试 3 次: maximum recursion depth exceeded
+2026-03-14 11:36:36.710 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:37.212 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:37.713 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:37.713 | WARNING  | src.agent.tools:execute_tool_with_retry:801 - 工具 get_weather 第 1 次尝试失败: 工具执行失败，已重试 3 次: maximum recursion depth exceeded
+2026-03-14 11:36:38.215 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:38.716 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:39.217 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:39.217 | WARNING  | src.agent.tools:execute_tool_with_retry:801 - 工具 get_weather 第 2 次尝试失败: 工具执行失败，已重试 3 次: maximum recursion depth exceeded
+2026-03-14 11:36:39.718 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:40.220 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:40.721 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:40.722 | WARNING  | src.agent.tools:execute_tool_with_retry:801 - 工具 get_weather 第 3 次尝试失败: 工具执行失败，已重试 3 次: maximum recursion depth exceeded
+2026-03-14 11:36:40.722 | WARNING  | src.agent.tools:execute_tool_with_retry:801 - 工具 get_weather 第 1 次尝试失败: 工具执行失败，已重试 3 次: 工具执行失败，已重试 3 次: maximum recursion depth exceeded
+2026-03-14 11:36:41.223 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:41.724 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:42.225 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:42.225 | WARNING  | src.agent.tools:execute_tool_with_retry:801 - 工具 get_weather 第 1 次尝试失败: 工具执行失败，已重试 3 次: maximum recursion depth exceeded
+2026-03-14 11:36:42.727 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:43.228 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:43.729 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:43.729 | WARNING  | src.agent.tools:execute_tool_with_retry:801 - 工具 get_weather 第 2 次尝试失败: 工具执行失败，已重试 3 次: maximum recursion depth exceeded
+2026-03-14 11:36:44.230 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:44.731 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:45.232 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:45.232 | WARNING  | src.agent.tools:execute_tool_with_retry:801 - 工具 get_weather 第 3 次尝试失败: 工具执行失败，已重试 3 次: maximum recursion depth exceeded
+2026-03-14 11:36:45.232 | WARNING  | src.agent.tools:execute_tool_with_retry:801 - 工具 get_weather 第 2 次尝试失败: 工具执行失败，已重试 3 次: 工具执行失败，已重试 3 次: maximum recursion depth exceeded
+2026-03-14 11:36:45.733 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:46.234 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:46.735 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:46.735 | WARNING  | src.agent.tools:execute_tool_with_retry:801 - 工具 get_weather 第 1 次尝试失败: 工具执行失败，已重试 3 次: maximum recursion depth exceeded
+2026-03-14 11:36:47.237 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:47.739 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:48.240 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:48.240 | WARNING  | src.agent.tools:execute_tool_with_retry:801 - 工具 get_weather 第 2 次尝试失败: 工具执行失败，已重试 3 次: maximum recursion depth exceeded
+2026-03-14 11:36:48.741 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:49.242 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:49.743 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:49.743 | WARNING  | src.agent.tools:execute_tool_with_retry:801 - 工具 get_weather 第 3 次尝试失败: 工具执行失败，已重试 3 次: maximum recursion depth exceeded
+2026-03-14 11:36:49.744 | WARNING  | src.agent.tools:execute_tool_with_retry:801 - 工具 get_weather 第 3 次尝试失败: 工具执行失败，已重试 3 次: 工具执行失败，已重试 3 次: maximum recursion depth exceeded
+2026-03-14 11:36:49.744 | WARNING  | src.agent.tools:execute_tool_with_retry:801 - 工具 get_weather 第 3 次尝试失败: 工具执行失败，已重试 3 次: 工具执行失败，已重试 3 次: 工具执行失败，已重试 3 次: maximum recursion depth exceeded
+2026-03-14 11:36:49.744 | WARNING  | src.agent.tools:execute_tool_with_retry:801 - 工具 get_weather 第 3 次尝试失败: 工具执行失败，已重试 3 次: 工具执行失败，已重试 3 次: 工具执行失败，已重试 3 次: 工具执行失败，已重试 3 次: maximum recursion depth exceeded
+2026-03-14 11:36:49.744 | WARNING  | src.agent.tools:execute_tool_with_retry:801 - 工具 get_weather 第 1 次尝试失败: 工具执行失败，已重试 3 次: 工具执行失败，已重试 3 次: 工具执行失败，已重试 3 次: 工具执行失败，已重试 3 次: 工具执行失败，已重试 3 次: maximum recursion de
+2026-03-14 11:36:50.245 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:50.747 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:51.248 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:51.248 | WARNING  | src.agent.tools:execute_tool_with_retry:801 - 工具 get_weather 第 1 次尝试失败: 工具执行失败，已重试 3 次: maximum recursion depth exceeded
+2026-03-14 11:36:51.750 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:52.251 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:52.753 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:52.753 | WARNING  | src.agent.tools:execute_tool_with_retry:801 - 工具 get_weather 第 2 次尝试失败: 工具执行失败，已重试 3 次: maximum recursion depth exceeded
+2026-03-14 11:36:53.254 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:53.755 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:54.256 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:54.256 | WARNING  | src.agent.tools:execute_tool_with_retry:801 - 工具 get_weather 第 3 次尝试失败: 工具执行失败，已重试 3 次: maximum recursion depth exceeded
+2026-03-14 11:36:54.257 | WARNING  | src.agent.tools:execute_tool_with_retry:801 - 工具 get_weather 第 1 次尝试失败: 工具执行失败，已重试 3 次: 工具执行失败，已重试 3 次: maximum recursion depth exceeded
+2026-03-14 11:36:54.758 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:55.259 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:55.760 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:55.760 | WARNING  | src.agent.tools:execute_tool_with_retry:801 - 工具 get_weather 第 1 次尝试失败: 工具执行失败，已重试 3 次: maximum recursion depth exceeded
+2026-03-14 11:36:56.261 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:56.762 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:57.263 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:57.263 | WARNING  | src.agent.tools:execute_tool_with_retry:801 - 工具 get_weather 第 2 次尝试失败: 工具执行失败，已重试 3 次: maximum recursion depth exceeded
+2026-03-14 11:36:57.765 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:58.266 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:58.767 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:58.768 | WARNING  | src.agent.tools:execute_tool_with_retry:801 - 工具 get_weather 第 3 次尝试失败: 工具执行失败，已重试 3 次: maximum recursion depth exceeded
+2026-03-14 11:36:58.768 | WARNING  | src.agent.tools:execute_tool_with_retry:801 - 工具 get_weather 第 2 次尝试失败: 工具执行失败，已重试 3 次: 工具执行失败，已重试 3 次: maximum recursion depth exceeded
+2026-03-14 11:36:59.269 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:36:59.770 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:37:00.272 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:37:00.272 | WARNING  | src.agent.tools:execute_tool_with_retry:801 - 工具 get_weather 第 1 次尝试失败: 工具执行失败，已重试 3 次: maximum recursion depth exceeded
+2026-03-14 11:37:00.773 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:37:01.274 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:37:01.775 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:37:01.775 | WARNING  | src.agent.tools:execute_tool_with_retry:801 - 工具 get_weather 第 2 次尝试失败: 工具执行失败，已重试 3 次: maximum recursion depth exceeded
+2026-03-14 11:37:02.276 | ERROR    | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 执行异常: maximum recursion depth exceeded
+2026-03-14 11:46:17.957 | INFO     | src.utils.audit_logger:__init__:151 - 审计日志系统初始化完成
+2026-03-14 11:46:17.965 | INFO     | src.main:<module>:565 - API已启动
+2026-03-14 11:46:17.965 | INFO     | src.agent.time_context:get_time_context:155 - 时间上下文初始化: 3月14日 星期六
+2026-03-14 11:46:17.965 | INFO     | src.main:startup_event:30 - 服务启动，当前时间: 3月14日 星期六
+2026-03-14 11:46:17.965 | INFO     | src.main:startup_event:31 - 审计日志系统已启用
+2026-03-14 11:46:22.802 | INFO     | src.main:chat_stream:493 - 请求: 请你帮我看看舟山定海区明天的天气
+2026-03-14 11:46:22.810 | INFO     | src.agent.time_context:refresh:143 - 时间上下文已刷新: 3月14日 星期六
+2026-03-14 11:46:23.236 | INFO     | src.agent.graph:__init__:44 - Agent初始化，工具: 9
+2026-03-14 11:46:23.236 | INFO     | src.utils.audit_logger:_log_to_standard:187 - [session_start] 请你帮我看看舟山定海区明天的天气
+2026-03-14 11:46:23.236 | INFO     | src.utils.audit_logger:start_trace:295 - 开始执行轨迹: dc4e3f14, 会话: b7a8fe25
+2026-03-14 11:46:23.236 | INFO     | src.utils.audit_logger:_log_to_standard:187 - [user_query] 请你帮我看看舟山定海区明天的天气
+2026-03-14 11:46:23.236 | INFO     | src.agent.smart_planner:generate_plan:124 - 生成执行计划: 请你帮我看看舟山定海区明天的天气...
+2026-03-14 11:46:30.952 | INFO     | src.agent.smart_planner:_extract_entities:291 - 提取实体: [('date', '明天'), ('keyword', '天气')]
+2026-03-14 11:46:30.952 | INFO     | src.utils.audit_logger:_log_to_standard:187 - [intent] 
+2026-03-14 11:46:35.436 | INFO     | src.data_sources.weather_api:_get_best_api:101 - 获取到天气接口: https://cn.apihz.cn/api/tianqi/tqybmoji15.php
+2026-03-14 11:46:35.437 | INFO     | src.data_sources.weather_api:query_weather:149 - 请求天气API: https://cn.apihz.cn/api/tianqi/tqybmoji15.php?id=10013949&key=9c8a62dfe79ed9bb426a16926f019509&sheng...
+2026-03-14 11:46:35.855 | WARNING  | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 第 1 次尝试失败: 查询地址失败，请确认地址是否正确！
+2026-03-14 11:46:36.356 | INFO     | src.data_sources.weather_api:query_weather:149 - 请求天气API: https://cn.apihz.cn/api/tianqi/tqybmoji15.php?id=10013949&key=9c8a62dfe79ed9bb426a16926f019509&sheng...
+2026-03-14 11:46:36.645 | WARNING  | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 第 2 次尝试失败: 查询地址失败，请确认地址是否正确！
+2026-03-14 11:46:37.146 | INFO     | src.data_sources.weather_api:query_weather:149 - 请求天气API: https://cn.apihz.cn/api/tianqi/tqybmoji15.php?id=10013949&key=9c8a62dfe79ed9bb426a16926f019509&sheng...
+2026-03-14 11:46:37.473 | WARNING  | src.agent.tools:execute_tool_with_retry:816 - 工具 get_weather 第 3 次尝试失败: 查询地址失败，请确认地址是否正确！
+2026-03-14 11:46:37.473 | WARNING  | src.agent.graph:_call_with_fallback:101 - get_weather失败，使用降级
+2026-03-14 11:46:54.337 | INFO     | src.utils.audit_logger:_log_to_standard:187 - [response] 
+2026-03-14 11:46:54.340 | INFO     | src.utils.audit_logger:_log_to_standard:187 - [session_end] 
+2026-03-14 11:46:54.340 | INFO     | src.utils.audit_logger:end_trace:336 - 结束执行轨迹: dc4e3f14, 耗时: 31101.67ms, 成功: True

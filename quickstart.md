@@ -10,6 +10,7 @@ pip install -r d:\AI\AIcode\travel-agent\requirements.txt
 
 步骤3：启动后端
 bash
+conda activate langgraph-env
 cd d:\AI\AIcode\travel-agent
 uvicorn src.main:app --reload --port 8000
 步骤4：启动前端
