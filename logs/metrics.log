@@ -13,3 +13,5 @@
 {"timestamp": "2026-03-14T16:03:42.138678", "trace_id": "3b171d1e", "session_id": "fc6658dd", "intent": "attractions", "duration_ms": 20684.802, "step_count": 0, "success": true, "error_message": ""}
 {"timestamp": "2026-03-14T16:05:15.120644", "trace_id": "d28b9073", "session_id": "e2e6c849", "intent": "general", "duration_ms": 26040.128, "step_count": 0, "success": true, "error_message": ""}
 {"timestamp": "2026-03-14T16:28:28.968680", "trace_id": "852d47f2", "session_id": "c4f65e85", "intent": "attractions", "duration_ms": 21071.885000000002, "step_count": 0, "success": true, "error_message": ""}
+{"timestamp": "2026-04-14T09:20:17.891752", "trace_id": "b1ab05ba", "session_id": "2ff7bfd1", "intent": "general", "duration_ms": 53251.333000000006, "step_count": 0, "success": true, "error_message": ""}
+{"timestamp": "2026-04-14T09:21:33.036759", "trace_id": "14e793e6", "session_id": "13442601", "intent": "weather", "duration_ms": 51698.889, "step_count": 0, "success": true, "error_message": ""}

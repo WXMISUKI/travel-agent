@@ -2775,3 +2775,244 @@
     "step_count": 0
   }
 }
+{
+  "event_id": "cd184a8d",
+  "timestamp": "2026-04-14T09:19:24.638418",
+  "event_type": "session_start",
+  "level": "INFO",
+  "session_id": "2ff7bfd1",
+  "user_query": "你好，你有什么能力",
+  "intent": "",
+  "entities": {},
+  "tool_name": "",
+  "tool_params": {},
+  "tool_result": null,
+  "tool_error": "",
+  "duration_ms": 0,
+  "step_id": 0,
+  "extra": {
+    "trace_id": "b1ab05ba"
+  }
+}
+{
+  "event_id": "43da9f8c",
+  "timestamp": "2026-04-14T09:19:24.639961",
+  "event_type": "user_query",
+  "level": "INFO",
+  "session_id": "2ff7bfd1",
+  "user_query": "你好，你有什么能力",
+  "intent": "",
+  "entities": {},
+  "tool_name": "",
+  "tool_params": {},
+  "tool_result": null,
+  "tool_error": "",
+  "duration_ms": 0,
+  "step_id": 0,
+  "extra": {
+    "query_length": 9
+  }
+}
+{
+  "event_id": "346b98e9",
+  "timestamp": "2026-04-14T09:19:53.662657",
+  "event_type": "intent",
+  "level": "INFO",
+  "session_id": "2ff7bfd1",
+  "user_query": "",
+  "intent": "general",
+  "entities": {},
+  "tool_name": "",
+  "tool_params": {},
+  "tool_result": null,
+  "tool_error": "",
+  "duration_ms": 0,
+  "step_id": 0,
+  "extra": {
+    "confidence": 1.0
+  }
+}
+{
+  "event_id": "6e8ff985",
+  "timestamp": "2026-04-14T09:19:54.281355",
+  "event_type": "tool_call",
+  "level": "INFO",
+  "session_id": "2ff7bfd1",
+  "user_query": "",
+  "intent": "",
+  "entities": {},
+  "tool_name": "web_search",
+  "tool_params": {
+    "query": "你好，你有什么能力"
+  },
+  "tool_result": null,
+  "tool_error": "",
+  "duration_ms": 0,
+  "step_id": 1,
+  "extra": {}
+}
+{
+  "event_id": "6237ad1f",
+  "timestamp": "2026-04-14T09:20:09.290849",
+  "event_type": "tool_result",
+  "level": "INFO",
+  "session_id": "2ff7bfd1",
+  "user_query": "",
+  "intent": "",
+  "entities": {},
+  "tool_name": "web_search",
+  "tool_params": {},
+  "tool_result": {
+    "_truncated": true,
+    "_length": 3667
+  },
+  "tool_error": "",
+  "duration_ms": 15008.49175453186,
+  "step_id": 0,
+  "extra": {}
+}
+{
+  "event_id": "6eb7a467",
+  "timestamp": "2026-04-14T09:20:17.888742",
+  "event_type": "response",
+  "level": "INFO",
+  "session_id": "2ff7bfd1",
+  "user_query": "",
+  "intent": "",
+  "entities": {},
+  "tool_name": "",
+  "tool_params": {},
+  "tool_result": null,
+  "tool_error": "",
+  "duration_ms": 0,
+  "step_id": 0,
+  "extra": {
+    "response": "你好！我是你的旅行助手小帮手 🧳✈️\n\n我可以为你提供以下服务：\n\n🌦️ **天气查询** - 查询任意城市的天气预报，帮你规划出行\n\n🗺️ **目的地推荐** - 根据季节和偏好推荐好玩的地方\n\n🎫 **出行建议** - 推荐最佳出行方案和购票时机\n\n🏨 **住宿提示** - 给出酒店预订的一般建议\n\n📅 **行程规划** - 帮你合理安排每天的行程\n\n---\n\n现在你可以问我，比如：\n\n- \"北京明天天气怎么样？\"\n- \"五一假期去哪玩比较好？\"\n- \"去上海要注意什么？\"\n\n有什么我可以帮你的吗？ 😊",
+    "response_length": 256,
+    "success": true
+  }
+}
+{
+  "event_id": "84d468e9",
+  "timestamp": "2026-04-14T09:20:17.890752",
+  "event_type": "session_end",
+  "level": "INFO",
+  "session_id": "2ff7bfd1",
+  "user_query": "",
+  "intent": "",
+  "entities": {},
+  "tool_name": "",
+  "tool_params": {},
+  "tool_result": null,
+  "tool_error": "",
+  "duration_ms": 0,
+  "step_id": 0,
+  "extra": {
+    "trace_id": "b1ab05ba",
+    "duration_ms": 53251.333000000006,
+    "success": true,
+    "step_count": 0
+  }
+}
+{
+  "event_id": "0708fc7b",
+  "timestamp": "2026-04-14T09:20:41.336365",
+  "event_type": "session_start",
+  "level": "INFO",
+  "session_id": "13442601",
+  "user_query": "今天舟山天气怎么样",
+  "intent": "",
+  "entities": {},
+  "tool_name": "",
+  "tool_params": {},
+  "tool_result": null,
+  "tool_error": "",
+  "duration_ms": 0,
+  "step_id": 0,
+  "extra": {
+    "trace_id": "14e793e6"
+  }
+}
+{
+  "event_id": "4745f462",
+  "timestamp": "2026-04-14T09:20:41.337744",
+  "event_type": "user_query",
+  "level": "INFO",
+  "session_id": "13442601",
+  "user_query": "今天舟山天气怎么样",
+  "intent": "",
+  "entities": {},
+  "tool_name": "",
+  "tool_params": {},
+  "tool_result": null,
+  "tool_error": "",
+  "duration_ms": 0,
+  "step_id": 0,
+  "extra": {
+    "query_length": 9
+  }
+}
+{
+  "event_id": "3157734c",
+  "timestamp": "2026-04-14T09:21:14.585404",
+  "event_type": "intent",
+  "level": "INFO",
+  "session_id": "13442601",
+  "user_query": "",
+  "intent": "weather",
+  "entities": {
+    "date": "今天"
+  },
+  "tool_name": "",
+  "tool_params": {},
+  "tool_result": null,
+  "tool_error": "",
+  "duration_ms": 0,
+  "step_id": 0,
+  "extra": {
+    "confidence": 1.0
+  }
+}
+{
+  "event_id": "3ebb3236",
+  "timestamp": "2026-04-14T09:21:33.019427",
+  "event_type": "response",
+  "level": "INFO",
+  "session_id": "13442601",
+  "user_query": "",
+  "intent": "",
+  "entities": {},
+  "tool_name": "",
+  "tool_params": {},
+  "tool_result": null,
+  "tool_error": "",
+  "duration_ms": 0,
+  "step_id": 0,
+  "extra": {
+    "response": "🌧️ 舟山今日天气（4月13日 周一）：\n\n**天气**：小雨 🌧️\n**气温**：14° ~ 21°\n**湿度**：较大，出门记得带伞哦 ☔\n\n明天（周二）也是小雨，气温相近。中间**周三**会转为多云天气，可以期待一下！😊",
+    "response_length": 113,
+    "success": true
+  }
+}
+{
+  "event_id": "6ca05294",
+  "timestamp": "2026-04-14T09:21:33.035254",
+  "event_type": "session_end",
+  "level": "INFO",
+  "session_id": "13442601",
+  "user_query": "",
+  "intent": "",
+  "entities": {},
+  "tool_name": "",
+  "tool_params": {},
+  "tool_result": null,
+  "tool_error": "",
+  "duration_ms": 0,
+  "step_id": 0,
+  "extra": {
+    "trace_id": "14e793e6",
+    "duration_ms": 51698.889,
+    "success": true,
+    "step_count": 0
+  }
+}
