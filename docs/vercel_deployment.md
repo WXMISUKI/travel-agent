@@ -8,6 +8,7 @@
 
 - `vercel.json`：路由与函数配置
 - `api/index.py`：Vercel Python 入口，暴露 `src.main:app`
+- `.python-version`：固定 Python 运行时版本为 `3.11`
 
 ## 2. Vercel 项目设置
 
@@ -15,6 +16,10 @@
 2. Framework Preset 选择 `Other`。
 3. Build Command 留空（使用 Vercel Python Runtime）。
 4. Output Directory 留空。
+
+说明：
+- 不要在 `vercel.json` 中给 Python 函数写 `"runtime": "python3.11"`，这会触发 `Function Runtimes must have a valid version`。
+- 当前方案通过 `.python-version` 指定 Python 版本，通过 `functions` 中的 `maxDuration` 配置函数执行时长。
 
 ## 3. 环境变量（必须）
 
