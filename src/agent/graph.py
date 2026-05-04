@@ -5,15 +5,14 @@ LangChain Agent 流程 - 智能增强版
 import json
 import re
 import asyncio
-from typing import Dict, List, Optional
-from langchain_openai import ChatOpenAI
+from typing import AsyncIterator, Dict, List, Optional, Iterator
 from langchain_core.messages import HumanMessage, SystemMessage, AIMessage
 
 from .tools import execute_tool, get_all_tools
 from .smart_planner import get_smart_planner, IntentType
 from .time_context import get_time_context
 from .planner import ExecutionPlan  # 兼容旧版本
-from ..config import ORCH_API_BASE, ORCH_MODEL, ORCH_API_KEY
+from ..llm.client import get_llm
 from ..utils.logger import logger
 
 
@@ -33,13 +32,8 @@ class TravelAgent:
     """旅行规划Agent"""
     
     def __init__(self):
-        self.llm = ChatOpenAI(
-            model=ORCH_MODEL,
-            temperature=0.7,
-            max_tokens=3000,
-            base_url=ORCH_API_BASE,
-            api_key=ORCH_API_KEY
-        )
+        self.llm_client = get_llm()
+        self.llm = self.llm_client.get_chat_model(temperature=0.7, max_tokens=3000)
         self.tools = get_all_tools()
         logger.info(f"Agent初始化，工具: {len(self.tools)}")
     
@@ -216,6 +210,30 @@ class TravelAgent:
         except Exception as e:
             logger.error(f"生成失败: {e}")
             return f"抱歉出错: {str(e)}"
+
+    def stream_response(self, query: str, intent: Dict, results: Dict) -> Iterator[str]:
+        """流式生成普通回复"""
+        context = f"用户: {query}\n\n查询结果:\n"
+        for k, v in results.items():
+            context += f"\n### {k}\n{v}\n"
+
+        prompt = f"""你是友好的旅行助手。根据以下查询结果回答用户：
+
+{context}
+
+要求：
+1. 查询失败时说明情况并给建议
+2. 使用emoji
+3. 直接回答
+"""
+        try:
+            for chunk in self.llm.stream([SystemMessage(content=prompt), HumanMessage(content=query)]):
+                text = getattr(chunk, "content", "")
+                if text:
+                    yield text
+        except Exception as e:
+            logger.error(f"流式生成失败: {e}")
+            yield self._make_response(query, intent, results)
 
     # ============ 智能计划执行系统 (基于 SmartPlanner) ============
     
@@ -542,6 +560,57 @@ class TravelAgent:
             logger.error(f"生成回复失败: {e}")
             return f"查询完成，但生成回复时出错: {str(e)}"
 
+    def stream_response_from_smart_plan(self, query: str, plan: Dict, results: Dict) -> Iterator[str]:
+        """流式生成智能计划回复"""
+        # 能力查询分支保持即时返回
+        if "capability_info" in results.get("context", {}):
+            cap = results["context"]["capability_info"]
+            if isinstance(cap, dict) and cap.get("type") == "capability_info":
+                yield self._make_response_from_smart_plan(query, plan, results)
+                return
+
+        from .time_context import get_time_context
+        time_ctx = get_time_context()
+        current_date = time_ctx.get_today()
+        current_formatted = time_ctx.get_today_formatted()
+
+        context = f"用户查询: {query}\n\n"
+        context += f"当前日期: {current_formatted} ({current_date})\n"
+        context += f"意图: {plan.get('intent', 'unknown')}\n\n"
+        context += "查询结果:\n"
+
+        if "train_tickets" in results.get("context", {}):
+            context += f"\n### 火车票\n{json.dumps(results['context']['train_tickets'], ensure_ascii=False, indent=2)}\n"
+        if "weather" in results.get("context", {}):
+            context += f"\n### 天气\n{json.dumps(results['context']['weather'], ensure_ascii=False, indent=2)}\n"
+        if "attractions" in results.get("context", {}):
+            context += f"\n### 景点\n{json.dumps(results['context']['attractions'], ensure_ascii=False, indent=2)}\n"
+
+        prompt = f"""你是友好的旅行助手。根据以下查询结果回答用户：
+
+{context}
+
+重要提醒：
+- 当前日期是 {current_date} ({current_formatted})
+- 用户问的是"明天"的天气，明天就是 {current_date} 的后一天
+- 请根据用户的问题正确回答对应日期的天气
+
+要求：
+1. 清晰说明查询到了什么信息
+2. 如果部分失败，说明哪些失败了并给出建议
+3. 使用emoji让回答更生动
+4. 直接给出有用信息，不要重复过程
+5. 如果查询成功，给出具体建议
+"""
+        try:
+            for chunk in self.llm.stream([SystemMessage(content=prompt), HumanMessage(content=query)]):
+                text = getattr(chunk, "content", "")
+                if text:
+                    yield text
+        except Exception as e:
+            logger.error(f"智能计划流式生成失败: {e}")
+            yield self._make_response_from_smart_plan(query, plan, results)
+
     def execute_plan(self, plan: ExecutionPlan, context: Dict = None) -> Dict:
         """执行计划，返回执行结果"""
         if context is None:
@@ -683,6 +752,56 @@ class TravelAgent:
                 logger.error(f"降级失败: {e}")
         
         return None
+
+    async def astream_response_from_smart_plan(self, query: str, plan: Dict, results: Dict) -> AsyncIterator[str]:
+        """异步流式生成智能计划回复，避免阻塞事件循环"""
+        if "capability_info" in results.get("context", {}):
+            cap = results["context"]["capability_info"]
+            if isinstance(cap, dict) and cap.get("type") == "capability_info":
+                yield self._make_response_from_smart_plan(query, plan, results)
+                return
+
+        from .time_context import get_time_context
+        time_ctx = get_time_context()
+        current_date = time_ctx.get_today()
+        current_formatted = time_ctx.get_today_formatted()
+
+        context = f"用户查询: {query}\n\n"
+        context += f"当前日期: {current_formatted} ({current_date})\n"
+        context += f"意图: {plan.get('intent', 'unknown')}\n\n"
+        context += "查询结果:\n"
+
+        if "train_tickets" in results.get("context", {}):
+            context += f"\n### 火车票\n{json.dumps(results['context']['train_tickets'], ensure_ascii=False, indent=2)}\n"
+        if "weather" in results.get("context", {}):
+            context += f"\n### 天气\n{json.dumps(results['context']['weather'], ensure_ascii=False, indent=2)}\n"
+        if "attractions" in results.get("context", {}):
+            context += f"\n### 景点\n{json.dumps(results['context']['attractions'], ensure_ascii=False, indent=2)}\n"
+
+        prompt = f"""你是友好的旅行助手。根据以下查询结果回答用户：
+
+{context}
+
+重要提醒：
+- 当前日期是 {current_date} ({current_formatted})
+- 用户问的是"明天"的天气，明天就是 {current_date} 的后一天
+- 请根据用户的问题正确回答对应日期的天气
+
+要求：
+1. 清晰说明查询到了什么信息
+2. 如果部分失败，说明哪些失败了并给出建议
+3. 使用emoji让回答更生动
+4. 直接给出有用信息，不要重复过程
+5. 如果查询成功，给出具体建议
+"""
+        try:
+            async for chunk in self.llm.astream([SystemMessage(content=prompt), HumanMessage(content=query)]):
+                text = getattr(chunk, "content", "")
+                if text:
+                    yield text
+        except Exception as e:
+            logger.error(f"异步流式生成失败: {e}")
+            yield self._make_response_from_smart_plan(query, plan, results)
 
     def run_with_plan(self, user_input: str, history: List[Dict] = None) -> str:
         """使用执行计划模式运行"""

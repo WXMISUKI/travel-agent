@@ -194,7 +194,7 @@ class PlanGenerator:
 }}
 """
         try:
-            # 使用LLM提取实体 - MiniMaxClient使用chat方法
+            # 使用LLM提取实体 - ArkClient使用chat方法
             prompt = f"""分析用户查询，提取关键信息。
 
 用户查询: {query}

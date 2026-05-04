@@ -1,35 +1,39 @@
 """
-MiniMax 客户端
+豆包（火山引擎 Ark）客户端
 """
-import os
 import json
 from typing import List, Dict, Any
 from langchain_openai import ChatOpenAI
 from langchain_core.messages import HumanMessage, SystemMessage, AIMessage
 from langchain_core.outputs import ChatGeneration
-from ..config import ORCH_API_BASE, ORCH_MODEL, ORCH_API_KEY
+from ..config import LLM_PROVIDER, ARK_BASE_URL, ARK_MODEL, ARK_API_KEY
 from ..utils.logger import logger
 
 
-class MiniMaxClient:
-    """MiniMax 模型客户端"""
+class ArkClient:
+    """豆包（火山引擎 Ark）模型客户端"""
     
     def __init__(self):
+        if not ARK_API_KEY:
+            raise ValueError("缺少ARK_API_KEY，请在 .env 中配置火山引擎API Key")
+        if not ARK_MODEL:
+            raise ValueError("缺少ARK_MODEL，请在 .env 中配置豆包模型ID或推理接入点ID")
+
         self.client = ChatOpenAI(
-            model=ORCH_MODEL,
+            model=ARK_MODEL,
             temperature=0.7,
             max_tokens=2000,
-            base_url=ORCH_API_BASE,
-            api_key=ORCH_API_KEY
+            base_url=ARK_BASE_URL,
+            api_key=ARK_API_KEY
         )
         
         # 低温度客户端（用于结构化输出）
         self.structured_client = ChatOpenAI(
-            model=ORCH_MODEL,
+            model=ARK_MODEL,
             temperature=0.1,
             max_tokens=1000,
-            base_url=ORCH_API_BASE,
-            api_key=ORCH_API_KEY
+            base_url=ARK_BASE_URL,
+            api_key=ARK_API_KEY
         )
     
     def chat(self, system_prompt: str, user_input: str, 
@@ -53,7 +57,7 @@ class MiniMaxClient:
             response = self.client.invoke(messages)
             return response.content
         except Exception as e:
-            logger.error(f"MiniMax调用失败: {e}")
+            logger.error(f"Ark调用失败: {e}")
             return f"抱歉，服务暂时不可用: {str(e)}"
     
     def parse_intent(self, user_input: str, history: List[Dict] = None) -> Dict:
@@ -117,6 +121,16 @@ class MiniMaxClient:
         # 最终回退
         return {"raw": content, "error": "JSON解析失败"}
 
+    def get_chat_model(self, temperature: float = 0.7, max_tokens: int = 2000) -> ChatOpenAI:
+        """返回底层ChatModel，供需要直接invoke的模块使用"""
+        return ChatOpenAI(
+            model=ARK_MODEL,
+            temperature=temperature,
+            max_tokens=max_tokens,
+            base_url=ARK_BASE_URL,
+            api_key=ARK_API_KEY
+        )
+
 
 # 全局LLM客户端实例
 _llm_client = None
@@ -126,5 +140,9 @@ def get_llm():
     """获取LLM客户端单例"""
     global _llm_client
     if _llm_client is None:
-        _llm_client = MiniMaxClient()
+        if LLM_PROVIDER == "ark":
+            _llm_client = ArkClient()
+            logger.info("LLM Provider: ark")
+        else:
+            raise ValueError(f"不支持的LLM_PROVIDER: {LLM_PROVIDER}，当前仅支持: ark")
     return _llm_client

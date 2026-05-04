@@ -139,8 +139,11 @@ class AuditLogger:
         self._session_count = 0
         self._max_events = 10000  # 内存中最大事件数
         
-        # 日志目录
-        self._log_dir = Path("logs")
+        # 日志目录（Vercel 仅允许 /tmp 可写）
+        is_vercel = os.environ.get("VERCEL") == "1" or os.environ.get(
+            "AWS_LAMBDA_FUNCTION_NAME", ""
+        ).startswith("vercel-")
+        self._log_dir = Path("/tmp/logs") if is_vercel else Path("logs")
         self._log_dir.mkdir(exist_ok=True)
         
         # 审计日志文件

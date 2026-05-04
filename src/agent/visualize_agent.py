@@ -221,7 +221,7 @@ sequenceDiagram
     participant Agent as TravelAgent
     participant Planner as SmartPlanner
     participant Tools as Tools Layer
-    participant LLM as MiniMax LLM
+    participant LLM as Doubao LLM
     participant Data as 数据源
     
     User->>API: 用户请求

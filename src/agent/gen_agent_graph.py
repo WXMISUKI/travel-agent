@@ -51,7 +51,7 @@ def create_full_agent_graph():
         query = state["user_query"]
         
         # 这里调用 LLM 进行推理
-        # 实际实现中会调用 MiniMax LLM
+        # 实际实现中会调用豆包 LLM
         intent = "REASONING"  # 占位符
         
         return {
@@ -151,7 +151,7 @@ flowchart TB
     
     subgraph AGENT["🤖 Agent 核心层"]
         subgraph REASON["Agent 推理"]
-            LLM1[MiniMax LLM<br/>意图识别<br/>实体提取<br/>决策]
+            LLM1[Doubao LLM<br/>意图识别<br/>实体提取<br/>决策]
         end
         
         subgraph PLAN["📋 执行计划"]
@@ -178,7 +178,7 @@ flowchart TB
     end
     
     subgraph OUTPUT["📤 输出层"]
-        LLM2[MiniMax LLM<br/>生成回复]
+        LLM2[Doubao LLM<br/>生成回复]
         RESP[返回用户]
     end
     

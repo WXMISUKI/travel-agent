@@ -6,6 +6,8 @@ import json
 import asyncio
 from typing import Optional, List, Dict
 from datetime import datetime
+import re
+import concurrent.futures
 from ..data_sources.weather import OpenMeteoAPI
 from ..data_sources.weather_api import get_weather_api as get_weather_api_new
 from ..data_sources.mcp_client import MCPClient
@@ -27,6 +29,19 @@ except ImportError:
 _weather_api = None
 _mcp_client = None
 _baidu_search = None
+
+
+def _run_async(async_fn, *args, **kwargs):
+    """在同步上下文安全执行异步函数，兼容已运行事件循环场景"""
+    try:
+        loop = asyncio.get_running_loop()
+        if loop.is_running():
+            with concurrent.futures.ThreadPoolExecutor(max_workers=1) as pool:
+                future = pool.submit(lambda: asyncio.run(async_fn(*args, **kwargs)))
+                return future.result()
+    except RuntimeError:
+        pass
+    return asyncio.run(async_fn(*args, **kwargs))
 
 
 def get_weather_api() -> OpenMeteoAPI:
@@ -232,12 +247,8 @@ def search_attractions(city: str, keyword: str = "景点") -> str:
     """搜索城市内的景点、美食 - 使用百度搜索"""
     try:
         api = get_baidu_search()
-        try:
-            result = asyncio.run(api.search(city, keyword))
-            return json.dumps(result, ensure_ascii=False, indent=2)
-        except RuntimeError:
-            result = asyncio.run(api.search(city, keyword))
-            return json.dumps(result, ensure_ascii=False, indent=2)
+        result = _run_async(api.search, city, keyword)
+        return json.dumps(result, ensure_ascii=False, indent=2)
     except Exception as e:
         logger.error(f"景点搜索失败: {e}")
         return json.dumps({"error": str(e), "city": city}, ensure_ascii=False)
@@ -410,7 +421,7 @@ def search_nearby_attractions(city: str, keyword: str = "景点", radius: int = 
         try:
             api = get_baidu_search()
             # 使用第一个关键词搜索
-            result = asyncio.run(api.search(city, expanded_keywords[0]))
+            result = _run_async(api.search, city, expanded_keywords[0])
             
             attractions = []
             for item in result.get("results", [])[:10]:
@@ -440,7 +451,7 @@ def web_search(query: str) -> str:
     """通用网页搜索"""
     try:
         api = get_baidu_search()
-        result = asyncio.run(api.search_generic(query))
+        result = _run_async(api.search_generic, query)
         return json.dumps(result, ensure_ascii=False, indent=2)
     except Exception as e:
         logger.error(f"网页搜索失败: {e}")
@@ -506,8 +517,44 @@ def parse_date(date_text: str) -> str:
     支持：明天、后天、下周一、3月15日、周末等
     """
     try:
+        text = (date_text or "").strip()
+
+        # 先处理“时长表达”如：三天两夜、2天1夜、三日游
+        duration_match = re.search(r"([一二两三四五六七八九十\d]+)\s*(天|日)\s*([一二两三四五六七八九十\d]+)?\s*夜?", text)
+        if duration_match:
+            def cn_to_int(token: str) -> int:
+                token = token.strip()
+                if token.isdigit():
+                    return int(token)
+                mapping = {"一": 1, "二": 2, "两": 2, "三": 3, "四": 4, "五": 5, "六": 6, "七": 7, "八": 8, "九": 9, "十": 10}
+                if token == "十":
+                    return 10
+                if token.startswith("十") and len(token) == 2:
+                    return 10 + mapping.get(token[1], 0)
+                if token.endswith("十") and len(token) == 2:
+                    return mapping.get(token[0], 1) * 10
+                if len(token) == 2 and token[0] in mapping and token[1] in mapping and token[1] != "十":
+                    return mapping[token[0]] * 10 + mapping[token[1]]
+                return mapping.get(token, 0)
+
+            days = cn_to_int(duration_match.group(1))
+            nights = cn_to_int(duration_match.group(3)) if duration_match.group(3) else max(days - 1, 0)
+
+            context = get_time_context()
+            start_date = context.get_today()
+            return json.dumps({
+                "original": text,
+                "parsed": start_date,
+                "weekday": context.get_today_formatted().split()[-1],
+                "days_from_today": 0,
+                "is_past": False,
+                "duration_days": days,
+                "duration_nights": nights,
+                "date_type": "duration"
+            }, ensure_ascii=False, indent=2)
+
         # 使用时间上下文解析
-        result = parse_date_with_context(date_text)
+        result = parse_date_with_context(text)
         
         if result is None:
             return json.dumps({

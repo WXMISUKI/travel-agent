@@ -139,6 +139,17 @@ class SmartPlanner:
         
         # 1. 意图识别
         intent = self._recognize_intent(user_query)
+
+        # 能力查询：走快速路径，避免不必要的LLM实体抽取
+        if intent == IntentType.CAPABILITY:
+            steps = self._generate_steps(user_query, intent, {}, {})
+            return {
+                "intent": intent.value,
+                "entities": {},
+                "steps": steps,
+                "fallback_plan": [],
+                "context_needed": {}
+            }
         
         # 2. 实体提取（增强版）
         entities = self._extract_entities(user_query)

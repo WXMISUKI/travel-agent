@@ -15,3 +15,9 @@
 {"timestamp": "2026-03-14T16:28:28.968680", "trace_id": "852d47f2", "session_id": "c4f65e85", "intent": "attractions", "duration_ms": 21071.885000000002, "step_count": 0, "success": true, "error_message": ""}
 {"timestamp": "2026-04-14T09:20:17.891752", "trace_id": "b1ab05ba", "session_id": "2ff7bfd1", "intent": "general", "duration_ms": 53251.333000000006, "step_count": 0, "success": true, "error_message": ""}
 {"timestamp": "2026-04-14T09:21:33.036759", "trace_id": "14e793e6", "session_id": "13442601", "intent": "weather", "duration_ms": 51698.889, "step_count": 0, "success": true, "error_message": ""}
+{"timestamp": "2026-04-29T16:29:48.560509", "trace_id": "e1952ac2", "session_id": "570d260f", "intent": "general", "duration_ms": 37613.118, "step_count": 0, "success": true, "error_message": "工具执行失败，已重试 3 次: asyncio.run() cannot be called from a running event loop"}
+{"timestamp": "2026-04-29T16:46:26.351157", "trace_id": "5aa70cfc", "session_id": "73703804", "intent": "capability", "duration_ms": 26557.988999999998, "step_count": 0, "success": true, "error_message": ""}
+{"timestamp": "2026-04-29T17:03:14.259732", "trace_id": "5687ee42", "session_id": "c2d48f49", "intent": "capability", "duration_ms": 12.588999999999999, "step_count": 0, "success": true, "error_message": ""}
+{"timestamp": "2026-04-29T17:08:25.342899", "trace_id": "60191596", "session_id": "78d9b1d9", "intent": "capability", "duration_ms": 10.636, "step_count": 0, "success": true, "error_message": ""}
+{"timestamp": "2026-04-29T17:09:37.633907", "trace_id": "e9db90d6", "session_id": "58a1c63e", "intent": "trip_plan", "duration_ms": 47497.414, "step_count": 0, "success": true, "error_message": "工具执行失败，已重试 3 次: asyncio.run() cannot be called from a running event loop"}
+{"timestamp": "2026-04-29T17:20:11.405906", "trace_id": "173f93c0", "session_id": "e769af43", "intent": "general", "duration_ms": 18353.727, "step_count": 0, "success": true, "error_message": ""}

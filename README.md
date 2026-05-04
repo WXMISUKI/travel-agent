@@ -1,6 +1,6 @@
 # 旅行规划智能体 (Travel Agent)
-
-基于 **MiniMax 大模型** 的智能旅行规划助手，支持天气查询、火车票查询、景点推荐、智能行程规划等功能。项目采用 LangChain/LangGraph 实现 Agent 编排，支持流式响应输出。
+git push origin master && git push github master
+基于 **豆包大模型（火山引擎 Ark）** 的智能旅行规划助手，支持天气查询、火车票查询、景点推荐、智能行程规划等功能。项目采用 LangChain/LangGraph 实现 Agent 编排，支持流式响应输出。
 
 ## 功能特性
 
@@ -16,7 +16,7 @@
 
 | 层级 | 技术 |
 |------|------|
-| **LLM** | MiniMax M2.5 (通过阿里云 DashScope 调用) |
+| **LLM** | Doubao (通过火山引擎 Ark 调用) |
 | **Agent** | LangChain + LangGraph (ReAct + Plan 混合模式) |
 | **Web** | FastAPI + SSE (服务端推送流式响应) |
 | **前端** | HTML + CSS + JavaScript (原生) |
@@ -41,7 +41,7 @@ travel-agent/
 │   │   ├── ticket.py             # 车票查询技能
 │   │   └── attraction.py         # 景点查询技能
 │   ├── llm/                      # LLM 客户端
-│   │   ├── client.py             # MiniMax 客户端封装
+│   │   ├── client.py             # 豆包客户端封装
 │   │   └── prompts.py            # 提示词模板
 │   ├── data_sources/             # 数据源适配器
 │   │   ├── weather.py            # Open-Meteo API 封装
@@ -88,12 +88,11 @@ pip install -r requirements.txt
 
 ```env
 # ============================================
-# MiniMax 配置 (必需)
-# 通过阿里云 DashScope 获取: https://dashscope.console.aliyun.com/
+# 豆包模型配置（火山引擎，必需）
 # ============================================
-ORCH_API_BASE=https://dashscope.aliyuncs.com/compatible-mode/v1
-ORCH_MODEL=MiniMax/MiniMax-M2.5
-ORCH_API_KEY=your-api-key-here
+ARK_API_KEY=your-ark-api-key-here
+ARK_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+ARK_MODEL=your-endpoint-or-model-id
 
 # ============================================
 # 百度搜索 API (降级方案，可选)
@@ -241,15 +240,15 @@ npx http-server frontend -p 5173
 
 ## 注意事项
 
-1. **API Key 必需** - 首次使用需要配置 MiniMax API Key (通过阿里云 DashScope)
+1. **API Key 必需** - 首次使用需要配置豆包 API Key（火山引擎 Ark）
 2. **MCP 服务** - 火车票查询需要先启动 12306 MCP 服务 (可选)
 3. **天气查询** - 仅支持国内部分大城市
 4. **降级策略** - 主工具失败时自动使用百度搜索兜底
 
 ## 常见问题
 
-### Q: 如何获取 MiniMax API Key?
-A: 访问 [阿里云 DashScope](https://dashscope.console.aliyun.com/)，注册账号后创建 API Key。
+### Q: 如何获取豆包 API Key?
+A: 访问火山引擎 Ark 控制台，创建 API Key 与模型接入点后填入 `.env`。
 
 ### Q: 火车票查询失败怎么办?
 A: 确保 12306 MCP 服务已启动。如果无法启动，工具会自动降级使用百度搜索。

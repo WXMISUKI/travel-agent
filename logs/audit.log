@@ -3016,3 +3016,1034 @@
     "step_count": 0
   }
 }
+{
+  "event_id": "bd2da58a",
+  "timestamp": "2026-04-29T16:29:10.944868",
+  "event_type": "session_start",
+  "level": "INFO",
+  "session_id": "570d260f",
+  "user_query": "你好，你有什么能力",
+  "intent": "",
+  "entities": {},
+  "tool_name": "",
+  "tool_params": {},
+  "tool_result": null,
+  "tool_error": "",
+  "duration_ms": 0,
+  "step_id": 0,
+  "extra": {
+    "trace_id": "e1952ac2"
+  }
+}
+{
+  "event_id": "c66e9511",
+  "timestamp": "2026-04-29T16:29:10.947356",
+  "event_type": "user_query",
+  "level": "INFO",
+  "session_id": "570d260f",
+  "user_query": "你好，你有什么能力",
+  "intent": "",
+  "entities": {},
+  "tool_name": "",
+  "tool_params": {},
+  "tool_result": null,
+  "tool_error": "",
+  "duration_ms": 0,
+  "step_id": 0,
+  "extra": {
+    "query_length": 9
+  }
+}
+{
+  "event_id": "7669881d",
+  "timestamp": "2026-04-29T16:29:24.269655",
+  "event_type": "intent",
+  "level": "INFO",
+  "session_id": "570d260f",
+  "user_query": "",
+  "intent": "general",
+  "entities": {},
+  "tool_name": "",
+  "tool_params": {},
+  "tool_result": null,
+  "tool_error": "",
+  "duration_ms": 0,
+  "step_id": 0,
+  "extra": {
+    "confidence": 1.0
+  }
+}
+{
+  "event_id": "4bfded9e",
+  "timestamp": "2026-04-29T16:29:24.891894",
+  "event_type": "tool_call",
+  "level": "INFO",
+  "session_id": "570d260f",
+  "user_query": "",
+  "intent": "",
+  "entities": {},
+  "tool_name": "web_search",
+  "tool_params": {
+    "query": "你好，你有什么能力"
+  },
+  "tool_result": null,
+  "tool_error": "",
+  "duration_ms": 0,
+  "step_id": 1,
+  "extra": {}
+}
+{
+  "event_id": "aaf6d36f",
+  "timestamp": "2026-04-29T16:29:25.899895",
+  "event_type": "tool_error",
+  "level": "ERROR",
+  "session_id": "570d260f",
+  "user_query": "",
+  "intent": "",
+  "entities": {},
+  "tool_name": "web_search",
+  "tool_params": {},
+  "tool_result": {
+    "error": "工具执行失败，已重试 3 次: asyncio.run() cannot be called from a running event loop",
+    "tool": "web_search",
+    "params": {
+      "query": "你好，你有什么能力"
+    }
+  },
+  "tool_error": "工具执行失败，已重试 3 次: asyncio.run() cannot be called from a running event loop",
+  "duration_ms": 1008.0010890960693,
+  "step_id": 0,
+  "extra": {}
+}
+{
+  "event_id": "417f9e47",
+  "timestamp": "2026-04-29T16:29:48.556475",
+  "event_type": "response",
+  "level": "INFO",
+  "session_id": "570d260f",
+  "user_query": "",
+  "intent": "",
+  "entities": {},
+  "tool_name": "",
+  "tool_params": {},
+  "tool_result": null,
+  "tool_error": "",
+  "duration_ms": 0,
+  "step_id": 0,
+  "extra": {
+    "response": "你好呀！作为你的旅行助手，我有这些能力可以帮到你哦👇  \n✨ 定制个性化旅行行程：根据你的时间、兴趣和预算，规划适合你的路线~  \n☁️ 查询天气：随时获取全球各地的天气情况，让你提前准备衣物和出行计划~  \n✈️🚄 交通信息查询：帮你查机票、火车票的班次、价格，还能给购票小贴士~  \n🏨 住宿推荐：根据你的需求推荐性价比高的酒店或民宿~  \n🍜 当地美食指南：告诉你目的地必吃的特色美食和人气餐厅~  \n📸 景点攻略：提供景点开放时间、门票信息和游玩小技巧~  \n\n如果需要哪方面的帮助，随时跟我说哦~ 😊",
+    "response_length": 255,
+    "success": true
+  }
+}
+{
+  "event_id": "3f9c425e",
+  "timestamp": "2026-04-29T16:29:48.559497",
+  "event_type": "session_end",
+  "level": "INFO",
+  "session_id": "570d260f",
+  "user_query": "",
+  "intent": "",
+  "entities": {},
+  "tool_name": "",
+  "tool_params": {},
+  "tool_result": null,
+  "tool_error": "",
+  "duration_ms": 0,
+  "step_id": 0,
+  "extra": {
+    "trace_id": "e1952ac2",
+    "duration_ms": 37613.118,
+    "success": true,
+    "step_count": 0
+  }
+}
+{
+  "event_id": "6a3bee88",
+  "timestamp": "2026-04-29T16:45:59.792172",
+  "event_type": "session_start",
+  "level": "INFO",
+  "session_id": "73703804",
+  "user_query": "你好，你是什么模型，有什么能力",
+  "intent": "",
+  "entities": {},
+  "tool_name": "",
+  "tool_params": {},
+  "tool_result": null,
+  "tool_error": "",
+  "duration_ms": 0,
+  "step_id": 0,
+  "extra": {
+    "trace_id": "5aa70cfc"
+  }
+}
+{
+  "event_id": "2e6f81f6",
+  "timestamp": "2026-04-29T16:45:59.794173",
+  "event_type": "user_query",
+  "level": "INFO",
+  "session_id": "73703804",
+  "user_query": "你好，你是什么模型，有什么能力",
+  "intent": "",
+  "entities": {},
+  "tool_name": "",
+  "tool_params": {},
+  "tool_result": null,
+  "tool_error": "",
+  "duration_ms": 0,
+  "step_id": 0,
+  "extra": {
+    "query_length": 15
+  }
+}
+{
+  "event_id": "e1c126de",
+  "timestamp": "2026-04-29T16:46:09.677224",
+  "event_type": "intent",
+  "level": "INFO",
+  "session_id": "73703804",
+  "user_query": "",
+  "intent": "capability",
+  "entities": {},
+  "tool_name": "",
+  "tool_params": {},
+  "tool_result": null,
+  "tool_error": "",
+  "duration_ms": 0,
+  "step_id": 0,
+  "extra": {
+    "confidence": 1.0
+  }
+}
+{
+  "event_id": "c5396c96",
+  "timestamp": "2026-04-29T16:46:09.679528",
+  "event_type": "tool_call",
+  "level": "INFO",
+  "session_id": "73703804",
+  "user_query": "",
+  "intent": "",
+  "entities": {},
+  "tool_name": "capability_info",
+  "tool_params": {
+    "query": "你好，你是什么模型，有什么能力"
+  },
+  "tool_result": null,
+  "tool_error": "",
+  "duration_ms": 0,
+  "step_id": 1,
+  "extra": {}
+}
+{
+  "event_id": "4442a04e",
+  "timestamp": "2026-04-29T16:46:09.680535",
+  "event_type": "tool_result",
+  "level": "INFO",
+  "session_id": "73703804",
+  "user_query": "",
+  "intent": "",
+  "entities": {},
+  "tool_name": "capability_info",
+  "tool_params": {},
+  "tool_result": {
+    "type": "capability_info",
+    "capabilities": {
+      "功能": [
+        "�️ 火车票查询 - 查询12306火车票余票信息",
+        "🌤️ 天气查询 - 查询指定城市15天天气预报",
+        "🎯 景点推荐 - 推荐热门景点和美食",
+        "🔍 智能搜索 - 回答各类旅行相关问题",
+        "📅 日期解析 - 理解明天、后天等相对日期"
+      ],
+      "使用示例": [
+        "帮我查一下明天北京到上海的高铁票",
+        "后天杭州天气怎么样",
+        "上海有什么好玩的地方",
+        "帮我规划一个去厦门的三天两夜旅行"
+      ],
+      "特点": [
+        "支持相对日期：明天、后天、下周等",
+        "支持高铁、动车、普通车查询",
+        "支持15天天气预报",
+        "智能推荐周边景点和美食"
+      ]
+    },
+    "message": "您好！我是旅行规划助手，可以为您提供以下服务："
+  },
+  "tool_error": "",
+  "duration_ms": 1.0066032409667969,
+  "step_id": 0,
+  "extra": {}
+}
+{
+  "event_id": "d8c2945b",
+  "timestamp": "2026-04-29T16:46:26.349159",
+  "event_type": "response",
+  "level": "INFO",
+  "session_id": "73703804",
+  "user_query": "",
+  "intent": "",
+  "entities": {},
+  "tool_name": "",
+  "tool_params": {},
+  "tool_result": null,
+  "tool_error": "",
+  "duration_ms": 0,
+  "step_id": 0,
+  "extra": {
+    "response": "你好呀😊！我是你的友好旅行助手模型～我的能力包括：  \n✅ 旅行信息查询：景点推荐、实时天气🌤️、交通指南等；  \n✅ 行程规划：根据你的需求定制旅行路线🗺️；  \n✅ 旅行问题解答：当地美食🍜、住宿🏨、文化习俗等；  \n✅ 日常陪伴：聊旅行趣事，分享实用小tips～  \n\n有任何旅行相关的需求都可以随时找我哦～✨",
+    "response_length": 158,
+    "success": true
+  }
+}
+{
+  "event_id": "bbfd58b3",
+  "timestamp": "2026-04-29T16:46:26.351157",
+  "event_type": "session_end",
+  "level": "INFO",
+  "session_id": "73703804",
+  "user_query": "",
+  "intent": "",
+  "entities": {},
+  "tool_name": "",
+  "tool_params": {},
+  "tool_result": null,
+  "tool_error": "",
+  "duration_ms": 0,
+  "step_id": 0,
+  "extra": {
+    "trace_id": "5aa70cfc",
+    "duration_ms": 26557.988999999998,
+    "success": true,
+    "step_count": 0
+  }
+}
+{
+  "event_id": "1f180f94",
+  "timestamp": "2026-04-29T17:03:14.246079",
+  "event_type": "session_start",
+  "level": "INFO",
+  "session_id": "c2d48f49",
+  "user_query": "你好，你是什么模型，有什么能力",
+  "intent": "",
+  "entities": {},
+  "tool_name": "",
+  "tool_params": {},
+  "tool_result": null,
+  "tool_error": "",
+  "duration_ms": 0,
+  "step_id": 0,
+  "extra": {
+    "trace_id": "5687ee42"
+  }
+}
+{
+  "event_id": "758ce978",
+  "timestamp": "2026-04-29T17:03:14.248076",
+  "event_type": "user_query",
+  "level": "INFO",
+  "session_id": "c2d48f49",
+  "user_query": "你好，你是什么模型，有什么能力",
+  "intent": "",
+  "entities": {},
+  "tool_name": "",
+  "tool_params": {},
+  "tool_result": null,
+  "tool_error": "",
+  "duration_ms": 0,
+  "step_id": 0,
+  "extra": {
+    "query_length": 15
+  }
+}
+{
+  "event_id": "6082d2ed",
+  "timestamp": "2026-04-29T17:03:14.251487",
+  "event_type": "intent",
+  "level": "INFO",
+  "session_id": "c2d48f49",
+  "user_query": "",
+  "intent": "capability",
+  "entities": {},
+  "tool_name": "",
+  "tool_params": {},
+  "tool_result": null,
+  "tool_error": "",
+  "duration_ms": 0,
+  "step_id": 0,
+  "extra": {
+    "confidence": 1.0
+  }
+}
+{
+  "event_id": "d8474f17",
+  "timestamp": "2026-04-29T17:03:14.252144",
+  "event_type": "tool_call",
+  "level": "INFO",
+  "session_id": "c2d48f49",
+  "user_query": "",
+  "intent": "",
+  "entities": {},
+  "tool_name": "capability_info",
+  "tool_params": {
+    "query": "你好，你是什么模型，有什么能力"
+  },
+  "tool_result": null,
+  "tool_error": "",
+  "duration_ms": 0,
+  "step_id": 1,
+  "extra": {}
+}
+{
+  "event_id": "720a3385",
+  "timestamp": "2026-04-29T17:03:14.254236",
+  "event_type": "tool_result",
+  "level": "INFO",
+  "session_id": "c2d48f49",
+  "user_query": "",
+  "intent": "",
+  "entities": {},
+  "tool_name": "capability_info",
+  "tool_params": {},
+  "tool_result": {
+    "type": "capability_info",
+    "capabilities": {
+      "功能": [
+        "�️ 火车票查询 - 查询12306火车票余票信息",
+        "🌤️ 天气查询 - 查询指定城市15天天气预报",
+        "🎯 景点推荐 - 推荐热门景点和美食",
+        "🔍 智能搜索 - 回答各类旅行相关问题",
+        "📅 日期解析 - 理解明天、后天等相对日期"
+      ],
+      "使用示例": [
+        "帮我查一下明天北京到上海的高铁票",
+        "后天杭州天气怎么样",
+        "上海有什么好玩的地方",
+        "帮我规划一个去厦门的三天两夜旅行"
+      ],
+      "特点": [
+        "支持相对日期：明天、后天、下周等",
+        "支持高铁、动车、普通车查询",
+        "支持15天天气预报",
+        "智能推荐周边景点和美食"
+      ]
+    },
+    "message": "您好！我是旅行规划助手，可以为您提供以下服务："
+  },
+  "tool_error": "",
+  "duration_ms": 2.0911693572998047,
+  "step_id": 0,
+  "extra": {}
+}
+{
+  "event_id": "a36a0ade",
+  "timestamp": "2026-04-29T17:03:14.256344",
+  "event_type": "response",
+  "level": "INFO",
+  "session_id": "c2d48f49",
+  "user_query": "",
+  "intent": "",
+  "entities": {},
+  "tool_name": "",
+  "tool_params": {},
+  "tool_result": null,
+  "tool_error": "",
+  "duration_ms": 0,
+  "step_id": 0,
+  "extra": {
+    "response": "🎯 **旅行规划助手 - 我的能力**\n\n您好！我是您的智能旅行规划助手，可以为您提供以下服务：\n\n🚄 **火车票查询**\n- 查询12306火车票余票信息\n- 支持高铁(G)、动车(D)、普快(K)\n- 示例：帮我查一下明天北京到上海的高铁票\n\n🌤️ **天气查询**\n- 查询指定城市15天天气预报\n- 支持相对日期：明天、后天、下周等\n- 示例：后天杭州天气怎么样\n\n🎯 **景点推荐**\n- 推荐热门景点和网红打卡地\n- 周边美食推荐\n- 示例：上海有什么好玩的地方\n\n🔍 **智能问答**\n- 回答各类旅行相关问题\n- 行程规划建议\n- 注意事项提醒\n\n📅 **日期理解**\n- 明天、后天、大后天\n- 下周一、周末\n- 具体日期：3月15日\n\n---\n\n💡 **使用示例**：\n- 帮我查一下明天北京到上海的高铁票\n- 后天杭州天气怎么样\n- 上海有什么好玩的地方\n- 帮我规划一个去厦门的三天两夜旅行\n\n有什么我可以帮您的吗？",
+    "response_length": 420,
+    "success": true
+  }
+}
+{
+  "event_id": "2374aaf1",
+  "timestamp": "2026-04-29T17:03:14.258668",
+  "event_type": "session_end",
+  "level": "INFO",
+  "session_id": "c2d48f49",
+  "user_query": "",
+  "intent": "",
+  "entities": {},
+  "tool_name": "",
+  "tool_params": {},
+  "tool_result": null,
+  "tool_error": "",
+  "duration_ms": 0,
+  "step_id": 0,
+  "extra": {
+    "trace_id": "5687ee42",
+    "duration_ms": 12.588999999999999,
+    "success": true,
+    "step_count": 0
+  }
+}
+{
+  "event_id": "e03582f0",
+  "timestamp": "2026-04-29T17:08:25.329893",
+  "event_type": "session_start",
+  "level": "INFO",
+  "session_id": "78d9b1d9",
+  "user_query": "你好，你是什么模型，有什么能力",
+  "intent": "",
+  "entities": {},
+  "tool_name": "",
+  "tool_params": {},
+  "tool_result": null,
+  "tool_error": "",
+  "duration_ms": 0,
+  "step_id": 0,
+  "extra": {
+    "trace_id": "60191596"
+  }
+}
+{
+  "event_id": "fd48b94d",
+  "timestamp": "2026-04-29T17:08:25.332466",
+  "event_type": "user_query",
+  "level": "INFO",
+  "session_id": "78d9b1d9",
+  "user_query": "你好，你是什么模型，有什么能力",
+  "intent": "",
+  "entities": {},
+  "tool_name": "",
+  "tool_params": {},
+  "tool_result": null,
+  "tool_error": "",
+  "duration_ms": 0,
+  "step_id": 0,
+  "extra": {
+    "query_length": 15
+  }
+}
+{
+  "event_id": "81ba3190",
+  "timestamp": "2026-04-29T17:08:25.333518",
+  "event_type": "intent",
+  "level": "INFO",
+  "session_id": "78d9b1d9",
+  "user_query": "",
+  "intent": "capability",
+  "entities": {},
+  "tool_name": "",
+  "tool_params": {},
+  "tool_result": null,
+  "tool_error": "",
+  "duration_ms": 0,
+  "step_id": 0,
+  "extra": {
+    "confidence": 1.0
+  }
+}
+{
+  "event_id": "07295739",
+  "timestamp": "2026-04-29T17:08:25.335529",
+  "event_type": "tool_call",
+  "level": "INFO",
+  "session_id": "78d9b1d9",
+  "user_query": "",
+  "intent": "",
+  "entities": {},
+  "tool_name": "capability_info",
+  "tool_params": {
+    "query": "你好，你是什么模型，有什么能力"
+  },
+  "tool_result": null,
+  "tool_error": "",
+  "duration_ms": 0,
+  "step_id": 1,
+  "extra": {}
+}
+{
+  "event_id": "ddcece50",
+  "timestamp": "2026-04-29T17:08:25.337531",
+  "event_type": "tool_result",
+  "level": "INFO",
+  "session_id": "78d9b1d9",
+  "user_query": "",
+  "intent": "",
+  "entities": {},
+  "tool_name": "capability_info",
+  "tool_params": {},
+  "tool_result": {
+    "type": "capability_info",
+    "capabilities": {
+      "功能": [
+        "�️ 火车票查询 - 查询12306火车票余票信息",
+        "🌤️ 天气查询 - 查询指定城市15天天气预报",
+        "🎯 景点推荐 - 推荐热门景点和美食",
+        "🔍 智能搜索 - 回答各类旅行相关问题",
+        "📅 日期解析 - 理解明天、后天等相对日期"
+      ],
+      "使用示例": [
+        "帮我查一下明天北京到上海的高铁票",
+        "后天杭州天气怎么样",
+        "上海有什么好玩的地方",
+        "帮我规划一个去厦门的三天两夜旅行"
+      ],
+      "特点": [
+        "支持相对日期：明天、后天、下周等",
+        "支持高铁、动车、普通车查询",
+        "支持15天天气预报",
+        "智能推荐周边景点和美食"
+      ]
+    },
+    "message": "您好！我是旅行规划助手，可以为您提供以下服务："
+  },
+  "tool_error": "",
+  "duration_ms": 2.0024776458740234,
+  "step_id": 0,
+  "extra": {}
+}
+{
+  "event_id": "043ccdc3",
+  "timestamp": "2026-04-29T17:08:25.339529",
+  "event_type": "response",
+  "level": "INFO",
+  "session_id": "78d9b1d9",
+  "user_query": "",
+  "intent": "",
+  "entities": {},
+  "tool_name": "",
+  "tool_params": {},
+  "tool_result": null,
+  "tool_error": "",
+  "duration_ms": 0,
+  "step_id": 0,
+  "extra": {
+    "response": "🎯 **旅行规划助手 - 我的能力**\n\n您好！我是您的智能旅行规划助手，可以为您提供以下服务：\n\n🚄 **火车票查询**\n- 查询12306火车票余票信息\n- 支持高铁(G)、动车(D)、普快(K)\n- 示例：帮我查一下明天北京到上海的高铁票\n\n🌤️ **天气查询**\n- 查询指定城市15天天气预报\n- 支持相对日期：明天、后天、下周等\n- 示例：后天杭州天气怎么样\n\n🎯 **景点推荐**\n- 推荐热门景点和网红打卡地\n- 周边美食推荐\n- 示例：上海有什么好玩的地方\n\n🔍 **智能问答**\n- 回答各类旅行相关问题\n- 行程规划建议\n- 注意事项提醒\n\n📅 **日期理解**\n- 明天、后天、大后天\n- 下周一、周末\n- 具体日期：3月15日\n\n---\n\n💡 **使用示例**：\n- 帮我查一下明天北京到上海的高铁票\n- 后天杭州天气怎么样\n- 上海有什么好玩的地方\n- 帮我规划一个去厦门的三天两夜旅行\n\n有什么我可以帮您的吗？",
+    "response_length": 420,
+    "success": true
+  }
+}
+{
+  "event_id": "b32db154",
+  "timestamp": "2026-04-29T17:08:25.341527",
+  "event_type": "session_end",
+  "level": "INFO",
+  "session_id": "78d9b1d9",
+  "user_query": "",
+  "intent": "",
+  "entities": {},
+  "tool_name": "",
+  "tool_params": {},
+  "tool_result": null,
+  "tool_error": "",
+  "duration_ms": 0,
+  "step_id": 0,
+  "extra": {
+    "trace_id": "60191596",
+    "duration_ms": 10.636,
+    "success": true,
+    "step_count": 0
+  }
+}
+{
+  "event_id": "353b0a3d",
+  "timestamp": "2026-04-29T17:08:50.134833",
+  "event_type": "session_start",
+  "level": "INFO",
+  "session_id": "58a1c63e",
+  "user_query": "帮我规划一个去厦门的三天两夜旅行",
+  "intent": "",
+  "entities": {},
+  "tool_name": "",
+  "tool_params": {},
+  "tool_result": null,
+  "tool_error": "",
+  "duration_ms": 0,
+  "step_id": 0,
+  "extra": {
+    "trace_id": "e9db90d6"
+  }
+}
+{
+  "event_id": "e2276488",
+  "timestamp": "2026-04-29T17:08:50.136852",
+  "event_type": "user_query",
+  "level": "INFO",
+  "session_id": "58a1c63e",
+  "user_query": "帮我规划一个去厦门的三天两夜旅行",
+  "intent": "",
+  "entities": {},
+  "tool_name": "",
+  "tool_params": {},
+  "tool_result": null,
+  "tool_error": "",
+  "duration_ms": 0,
+  "step_id": 0,
+  "extra": {
+    "query_length": 16
+  }
+}
+{
+  "event_id": "22757f13",
+  "timestamp": "2026-04-29T17:08:57.628811",
+  "event_type": "intent",
+  "level": "INFO",
+  "session_id": "58a1c63e",
+  "user_query": "",
+  "intent": "trip_plan",
+  "entities": {
+    "destination": "厦门",
+    "date": "三天两夜"
+  },
+  "tool_name": "",
+  "tool_params": {},
+  "tool_result": null,
+  "tool_error": "",
+  "duration_ms": 0,
+  "step_id": 0,
+  "extra": {
+    "confidence": 1.0
+  }
+}
+{
+  "event_id": "5a641457",
+  "timestamp": "2026-04-29T17:08:57.631331",
+  "event_type": "tool_call",
+  "level": "INFO",
+  "session_id": "58a1c63e",
+  "user_query": "",
+  "intent": "",
+  "entities": {},
+  "tool_name": "parse_date",
+  "tool_params": {
+    "date_text": "三天两夜"
+  },
+  "tool_result": null,
+  "tool_error": "",
+  "duration_ms": 0,
+  "step_id": 1,
+  "extra": {}
+}
+{
+  "event_id": "6a7ca628",
+  "timestamp": "2026-04-29T17:08:58.634384",
+  "event_type": "tool_error",
+  "level": "ERROR",
+  "session_id": "58a1c63e",
+  "user_query": "",
+  "intent": "",
+  "entities": {},
+  "tool_name": "parse_date",
+  "tool_params": {},
+  "tool_result": {
+    "error": "工具执行失败，已重试 3 次: 无法解析日期: 三天两夜",
+    "tool": "parse_date",
+    "params": {
+      "date_text": "三天两夜"
+    }
+  },
+  "tool_error": "工具执行失败，已重试 3 次: 无法解析日期: 三天两夜",
+  "duration_ms": 1003.0534267425537,
+  "step_id": 0,
+  "extra": {}
+}
+{
+  "event_id": "8a156e12",
+  "timestamp": "2026-04-29T17:08:58.635914",
+  "event_type": "tool_call",
+  "level": "INFO",
+  "session_id": "58a1c63e",
+  "user_query": "",
+  "intent": "",
+  "entities": {},
+  "tool_name": "get_weather",
+  "tool_params": {
+    "city": "厦门"
+  },
+  "tool_result": null,
+  "tool_error": "",
+  "duration_ms": 0,
+  "step_id": 2,
+  "extra": {}
+}
+{
+  "event_id": "ec410004",
+  "timestamp": "2026-04-29T17:08:59.104559",
+  "event_type": "tool_result",
+  "level": "INFO",
+  "session_id": "58a1c63e",
+  "user_query": "",
+  "intent": "",
+  "entities": {},
+  "tool_name": "get_weather",
+  "tool_params": {},
+  "tool_result": {
+    "_truncated": true,
+    "_length": 2209
+  },
+  "tool_error": "",
+  "duration_ms": 468.6448574066162,
+  "step_id": 0,
+  "extra": {}
+}
+{
+  "event_id": "f4b44212",
+  "timestamp": "2026-04-29T17:08:59.106069",
+  "event_type": "tool_call",
+  "level": "INFO",
+  "session_id": "58a1c63e",
+  "user_query": "",
+  "intent": "",
+  "entities": {},
+  "tool_name": "search_attractions",
+  "tool_params": {
+    "city": "厦门",
+    "keyword": "景点"
+  },
+  "tool_result": null,
+  "tool_error": "",
+  "duration_ms": 0,
+  "step_id": 3,
+  "extra": {}
+}
+{
+  "event_id": "1ec04131",
+  "timestamp": "2026-04-29T17:09:00.113493",
+  "event_type": "tool_error",
+  "level": "ERROR",
+  "session_id": "58a1c63e",
+  "user_query": "",
+  "intent": "",
+  "entities": {},
+  "tool_name": "search_attractions",
+  "tool_params": {},
+  "tool_result": {
+    "error": "工具执行失败，已重试 3 次: asyncio.run() cannot be called from a running event loop",
+    "tool": "search_attractions",
+    "params": {
+      "city": "厦门",
+      "keyword": "景点"
+    }
+  },
+  "tool_error": "工具执行失败，已重试 3 次: asyncio.run() cannot be called from a running event loop",
+  "duration_ms": 1007.4238777160645,
+  "step_id": 0,
+  "extra": {}
+}
+{
+  "event_id": "83548a0d",
+  "timestamp": "2026-04-29T17:09:00.115533",
+  "event_type": "tool_call",
+  "level": "INFO",
+  "session_id": "58a1c63e",
+  "user_query": "",
+  "intent": "",
+  "entities": {},
+  "tool_name": "web_search",
+  "tool_params": {
+    "query": "厦门旅游攻略 出行建议"
+  },
+  "tool_result": null,
+  "tool_error": "",
+  "duration_ms": 0,
+  "step_id": 4,
+  "extra": {}
+}
+{
+  "event_id": "0f41bc6f",
+  "timestamp": "2026-04-29T17:09:01.119307",
+  "event_type": "tool_error",
+  "level": "ERROR",
+  "session_id": "58a1c63e",
+  "user_query": "",
+  "intent": "",
+  "entities": {},
+  "tool_name": "web_search",
+  "tool_params": {},
+  "tool_result": {
+    "error": "工具执行失败，已重试 3 次: asyncio.run() cannot be called from a running event loop",
+    "tool": "web_search",
+    "params": {
+      "query": "厦门旅游攻略 出行建议"
+    }
+  },
+  "tool_error": "工具执行失败，已重试 3 次: asyncio.run() cannot be called from a running event loop",
+  "duration_ms": 1003.7734508514404,
+  "step_id": 0,
+  "extra": {}
+}
+{
+  "event_id": "de511d0c",
+  "timestamp": "2026-04-29T17:09:37.630598",
+  "event_type": "response",
+  "level": "INFO",
+  "session_id": "58a1c63e",
+  "user_query": "",
+  "intent": "",
+  "entities": {},
+  "tool_name": "",
+  "tool_params": {},
+  "tool_result": null,
+  "tool_error": "",
+  "duration_ms": 0,
+  "step_id": 0,
+  "extra": {
+    "response": "很抱歉，景点查询工具暂时出现了问题（显示asyncio.run错误），不过我可以结合厦门经典景点和天气情况，为你规划三天两夜的行程哦～🌤️\n\n\n### 推荐行程（4月30日-5月2日，天气较适宜）\n#### Day1（4月30日 周四：阴转多云 18-22℃）  \n- **上午**：鼓浪屿（提前买船票，逛日光岩、菽庄花园、钢琴博物馆）  \n- **中午**：龙头路小吃街（鱼丸、沙茶面、叶氏麻糍）  \n- **下午**：环岛路骑行（白城沙滩→黄厝海滩，吹海风看海景）  \n- **晚上**：曾厝垵（海鲜大排档+文艺小店）  \n- **住宿**：曾厝垵民宿  \n\n#### Day2（5月1日 周五：多云转阴 18-24℃）  \n- **上午**：厦门大学（提前3天预约，逛芙蓉湖、芙蓉隧道、上弦场）  \n- **中午**：沙坡尾创意美食（闽南小吃或网红餐厅）  \n- **下午**：沙坡尾艺术西区（打卡文艺店铺）+ 猫街（撸猫+文创）  \n- **晚上**：中山路步行街（骑楼夜景+黄则和花生汤）  \n- **住宿**：中山路附近酒店  \n\n#### Day3（5月2日 周六：多云转阴 20-27",
+    "response_length": 746,
+    "success": true
+  }
+}
+{
+  "event_id": "ccdde394",
+  "timestamp": "2026-04-29T17:09:37.632781",
+  "event_type": "session_end",
+  "level": "INFO",
+  "session_id": "58a1c63e",
+  "user_query": "",
+  "intent": "",
+  "entities": {},
+  "tool_name": "",
+  "tool_params": {},
+  "tool_result": null,
+  "tool_error": "",
+  "duration_ms": 0,
+  "step_id": 0,
+  "extra": {
+    "trace_id": "e9db90d6",
+    "duration_ms": 47497.414,
+    "success": true,
+    "step_count": 0
+  }
+}
+{
+  "event_id": "169439ca",
+  "timestamp": "2026-04-29T17:19:53.049961",
+  "event_type": "session_start",
+  "level": "INFO",
+  "session_id": "e769af43",
+  "user_query": "你好，你是谁",
+  "intent": "",
+  "entities": {},
+  "tool_name": "",
+  "tool_params": {},
+  "tool_result": null,
+  "tool_error": "",
+  "duration_ms": 0,
+  "step_id": 0,
+  "extra": {
+    "trace_id": "173f93c0"
+  }
+}
+{
+  "event_id": "2a5ef91c",
+  "timestamp": "2026-04-29T17:19:53.051585",
+  "event_type": "user_query",
+  "level": "INFO",
+  "session_id": "e769af43",
+  "user_query": "你好，你是谁",
+  "intent": "",
+  "entities": {},
+  "tool_name": "",
+  "tool_params": {},
+  "tool_result": null,
+  "tool_error": "",
+  "duration_ms": 0,
+  "step_id": 0,
+  "extra": {
+    "query_length": 6
+  }
+}
+{
+  "event_id": "c655c6eb",
+  "timestamp": "2026-04-29T17:20:03.575089",
+  "event_type": "intent",
+  "level": "INFO",
+  "session_id": "e769af43",
+  "user_query": "",
+  "intent": "general",
+  "entities": {},
+  "tool_name": "",
+  "tool_params": {},
+  "tool_result": null,
+  "tool_error": "",
+  "duration_ms": 0,
+  "step_id": 0,
+  "extra": {
+    "confidence": 1.0
+  }
+}
+{
+  "event_id": "dc056f8f",
+  "timestamp": "2026-04-29T17:20:03.577815",
+  "event_type": "tool_call",
+  "level": "INFO",
+  "session_id": "e769af43",
+  "user_query": "",
+  "intent": "",
+  "entities": {},
+  "tool_name": "web_search",
+  "tool_params": {
+    "query": "你好，你是谁"
+  },
+  "tool_result": null,
+  "tool_error": "",
+  "duration_ms": 0,
+  "step_id": 1,
+  "extra": {}
+}
+{
+  "event_id": "64415020",
+  "timestamp": "2026-04-29T17:20:04.108224",
+  "event_type": "tool_result",
+  "level": "INFO",
+  "session_id": "e769af43",
+  "user_query": "",
+  "intent": "",
+  "entities": {},
+  "tool_name": "web_search",
+  "tool_params": {},
+  "tool_result": {
+    "_truncated": true,
+    "_length": 3801
+  },
+  "tool_error": "",
+  "duration_ms": 531.928300857544,
+  "step_id": 0,
+  "extra": {}
+}
+{
+  "event_id": "4b9b41b4",
+  "timestamp": "2026-04-29T17:20:11.402097",
+  "event_type": "response",
+  "level": "INFO",
+  "session_id": "e769af43",
+  "user_query": "",
+  "intent": "",
+  "entities": {},
+  "tool_name": "",
+  "tool_params": {},
+  "tool_result": null,
+  "tool_error": "",
+  "duration_ms": 0,
+  "step_id": 0,
+  "extra": {
+    "response": "你好呀👋！我是你的友好旅行助手~ 可以帮你查询天气信息、提供旅行建议等服务哦，有什么需要随时告诉我呀！",
+    "response_length": 51,
+    "success": true
+  }
+}
+{
+  "event_id": "5198b7d5",
+  "timestamp": "2026-04-29T17:20:11.404871",
+  "event_type": "session_end",
+  "level": "INFO",
+  "session_id": "e769af43",
+  "user_query": "",
+  "intent": "",
+  "entities": {},
+  "tool_name": "",
+  "tool_params": {},
+  "tool_result": null,
+  "tool_error": "",
+  "duration_ms": 0,
+  "step_id": 0,
+  "extra": {
+    "trace_id": "173f93c0",
+    "duration_ms": 18353.727,
+    "success": true,
+    "step_count": 0
+  }
+}

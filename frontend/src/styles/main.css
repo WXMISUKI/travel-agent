@@ -170,12 +170,16 @@ body {
 
 .thinking-content {
     padding: 10px 15px;
-    display: none;  /* 默认收起 */
+    display: none;
     font-size: 13px;
     color: #666;
     max-height: 200px;
     overflow-y: auto;
     background: #fff;
+}
+
+.thinking-content.active {
+    display: block;
 }
 
 .thinking-step {
@@ -186,6 +190,97 @@ body {
 
 .thinking-step:last-child {
     border-bottom: none;
+}
+
+.metrics-panel {
+    margin: 8px 0 10px;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #dbeafe;
+    background: #f8fbff;
+}
+
+.metrics-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: #1e3a8a;
+    margin-bottom: 6px;
+}
+
+.metrics-summary {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    font-size: 12px;
+    color: #1f2937;
+}
+
+.metrics-summary span {
+    background: #e5edff;
+    padding: 3px 8px;
+    border-radius: 999px;
+}
+
+.metrics-tools {
+    margin-top: 8px;
+    display: grid;
+    gap: 6px;
+}
+
+.metric-tool-item {
+    font-size: 12px;
+    color: #334155;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    padding: 6px 8px;
+}
+
+.thinking-indicator {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 10px;
+    margin-bottom: 8px;
+    border-radius: 8px;
+    background: #f0f4ff;
+    color: #334155;
+}
+
+.thinking-spinner {
+    width: 12px;
+    height: 12px;
+    border: 2px solid #c7d2fe;
+    border-top-color: #4f46e5;
+    border-radius: 50%;
+    animation: spin 0.9s linear infinite;
+}
+
+.thinking-dots {
+    display: inline-flex;
+    gap: 4px;
+}
+
+.thinking-dots i {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #4f46e5;
+    display: inline-block;
+    animation: pulse 1.2s infinite ease-in-out;
+}
+
+.thinking-dots i:nth-child(2) { animation-delay: 0.15s; }
+.thinking-dots i:nth-child(3) { animation-delay: 0.3s; }
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+    0%, 80%, 100% { opacity: 0.35; transform: scale(0.8); }
+    40% { opacity: 1; transform: scale(1); }
 }
 
 /* 输入区域 */
@@ -381,4 +476,24 @@ body {
     border-radius: 4px;
     font-size: 13px;
     color: #0d47a1;
+}
+
+/* 耗时摘要条 */
+.timing-bar {
+    display: none;
+    padding: 6px 14px;
+    margin-bottom: 8px;
+    background: linear-gradient(90deg, #f0f4ff 0%, #e8f0fe 100%);
+    border-radius: 8px;
+    border: 1px solid #c7d2fe;
+    font-size: 12px;
+    color: #4338ca;
+    animation: fadeIn 0.3s ease;
+}
+
+.timing-bar-text {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    flex-wrap: wrap;
 }

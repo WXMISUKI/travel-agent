@@ -1,33 +1,158 @@
-2026-04-14 09:18:53 | INFO     | src.utils.audit_logger:__init__:151 - 审计日志系统初始化完成
-2026-04-14 09:18:53 | INFO     | src.main:<module>:565 - API已启动
-2026-04-14 09:18:53 | INFO     | src.agent.time_context:get_time_context:163 - 时间上下文初始化: 4月14日 星期二
-2026-04-14 09:18:53 | INFO     | src.main:startup_event:30 - 服务启动，当前时间: 4月14日 星期二
-2026-04-14 09:18:53 | INFO     | src.main:startup_event:31 - 审计日志系统已启用
-2026-04-14 09:19:23 | INFO     | src.main:chat_stream:493 - 请求: 你好，你有什么能力
-2026-04-14 09:19:23 | INFO     | src.agent.time_context:refresh:151 - 时间上下文已刷新: 4月14日 星期二
-2026-04-14 09:19:24 | INFO     | src.agent.graph:__init__:44 - Agent初始化，工具: 10
-2026-04-14 09:19:24 | INFO     | src.utils.audit_logger:_log_to_standard:187 - [session_start] 你好，你有什么能力
-2026-04-14 09:19:24 | INFO     | src.utils.audit_logger:start_trace:295 - 开始执行轨迹: b1ab05ba, 会话: 2ff7bfd1
-2026-04-14 09:19:24 | INFO     | src.utils.audit_logger:_log_to_standard:187 - [user_query] 你好，你有什么能力
-2026-04-14 09:19:24 | INFO     | src.agent.smart_planner:generate_plan:138 - 生成执行计划: 你好，你有什么能力...
-2026-04-14 09:19:53 | INFO     | src.agent.smart_planner:_extract_entities:336 - 提取实体: []
-2026-04-14 09:19:53 | INFO     | src.utils.audit_logger:_log_to_standard:187 - [intent] 
-2026-04-14 09:19:54 | INFO     | src.utils.audit_logger:_log_to_standard:187 - [tool_call] web_search
-2026-04-14 09:20:09 | INFO     | src.utils.audit_logger:_log_to_standard:187 - [tool_result] web_search
-2026-04-14 09:20:17 | INFO     | src.utils.audit_logger:_log_to_standard:187 - [response] 
-2026-04-14 09:20:17 | INFO     | src.utils.audit_logger:_log_to_standard:187 - [session_end] 
-2026-04-14 09:20:17 | INFO     | src.utils.audit_logger:end_trace:336 - 结束执行轨迹: b1ab05ba, 耗时: 53251.33ms, 成功: True
-2026-04-14 09:20:41 | INFO     | src.main:chat_stream:493 - 请求: 今天舟山天气怎么样
-2026-04-14 09:20:41 | INFO     | src.agent.time_context:refresh:151 - 时间上下文已刷新: 4月14日 星期二
-2026-04-14 09:20:41 | INFO     | src.utils.audit_logger:_log_to_standard:187 - [session_start] 今天舟山天气怎么样
-2026-04-14 09:20:41 | INFO     | src.utils.audit_logger:start_trace:295 - 开始执行轨迹: 14e793e6, 会话: 13442601
-2026-04-14 09:20:41 | INFO     | src.utils.audit_logger:_log_to_standard:187 - [user_query] 今天舟山天气怎么样
-2026-04-14 09:20:41 | INFO     | src.agent.smart_planner:generate_plan:138 - 生成执行计划: 今天舟山天气怎么样...
-2026-04-14 09:21:14 | INFO     | src.agent.smart_planner:_extract_entities:336 - 提取实体: [('date', '今天')]
-2026-04-14 09:21:14 | INFO     | src.utils.audit_logger:_log_to_standard:187 - [intent] 
-2026-04-14 09:21:29 | WARNING  | src.data_sources.weather_api:_get_best_api:119 - 获取最优天气接口失败: ，使用备用接口
-2026-04-14 09:21:29 | INFO     | src.data_sources.weather_api:_get_best_api:132 - 使用备用天气接口: http://101.35.2.25/api/tianqi/tqybmoji15.php
-2026-04-14 09:21:29 | INFO     | src.data_sources.weather_api:query_weather:164 - 请求天气API: http://101.35.2.25/api/tianqi/tqybmoji15.php?id=10013949&key=9c8a62dfe79ed9bb426a16926f019509&sheng=...
-2026-04-14 09:21:33 | INFO     | src.utils.audit_logger:_log_to_standard:187 - [response] 
-2026-04-14 09:21:33 | INFO     | src.utils.audit_logger:_log_to_standard:187 - [session_end] 
-2026-04-14 09:21:33 | INFO     | src.utils.audit_logger:end_trace:336 - 结束执行轨迹: 14e793e6, 耗时: 51698.89ms, 成功: True
+2026-04-29 16:28:00 | INFO     | src.utils.audit_logger:__init__:151 - 审计日志系统初始化完成
+2026-04-29 16:28:00 | INFO     | src.main:<module>:732 - API已启动
+2026-04-29 16:28:00 | INFO     | src.agent.time_context:get_time_context:163 - 时间上下文初始化: 4月29日 星期三
+2026-04-29 16:28:00 | INFO     | src.main:startup_event:45 - 服务启动，当前时间: 4月29日 星期三
+2026-04-29 16:28:00 | INFO     | src.main:startup_event:46 - 审计日志系统已启用
+2026-04-29 16:29:10 | INFO     | src.main:chat_stream:649 - 请求: 你好，你有什么能力
+2026-04-29 16:29:10 | INFO     | src.agent.time_context:refresh:151 - 时间上下文已刷新: 4月29日 星期三
+2026-04-29 16:29:10 | INFO     | src.llm.client:get_llm:145 - LLM Provider: ark
+2026-04-29 16:29:10 | INFO     | src.agent.graph:__init__:38 - Agent初始化，工具: 10
+2026-04-29 16:29:10 | INFO     | src.utils.audit_logger:_log_to_standard:187 - [session_start] 你好，你有什么能力
+2026-04-29 16:29:10 | INFO     | src.utils.audit_logger:start_trace:295 - 开始执行轨迹: e1952ac2, 会话: 570d260f
+2026-04-29 16:29:10 | INFO     | src.utils.audit_logger:_log_to_standard:187 - [user_query] 你好，你有什么能力
+2026-04-29 16:29:10 | INFO     | src.agent.smart_planner:generate_plan:138 - 生成执行计划: 你好，你有什么能力...
+2026-04-29 16:29:24 | INFO     | src.agent.smart_planner:_extract_entities:336 - 提取实体: []
+2026-04-29 16:29:24 | INFO     | src.utils.audit_logger:_log_to_standard:187 - [intent] 
+2026-04-29 16:29:24 | INFO     | src.utils.audit_logger:_log_to_standard:187 - [tool_call] web_search
+2026-04-29 16:29:24 | ERROR    | src.agent.tools:web_search:446 - 网页搜索失败: asyncio.run() cannot be called from a running event loop
+2026-04-29 16:29:24 | WARNING  | src.agent.tools:execute_tool_with_retry:893 - 工具 web_search 第 1 次尝试失败: asyncio.run() cannot be called from a running event loop
+2026-04-29 16:29:25 | ERROR    | src.agent.tools:web_search:446 - 网页搜索失败: asyncio.run() cannot be called from a running event loop
+2026-04-29 16:29:25 | WARNING  | src.agent.tools:execute_tool_with_retry:893 - 工具 web_search 第 2 次尝试失败: asyncio.run() cannot be called from a running event loop
+2026-04-29 16:29:25 | ERROR    | src.agent.tools:web_search:446 - 网页搜索失败: asyncio.run() cannot be called from a running event loop
+2026-04-29 16:29:25 | WARNING  | src.agent.tools:execute_tool_with_retry:893 - 工具 web_search 第 3 次尝试失败: asyncio.run() cannot be called from a running event loop
+2026-04-29 16:29:25 | ERROR    | src.utils.audit_logger:_log_to_standard:183 - [tool_error] web_search
+2026-04-29 16:29:48 | INFO     | src.utils.audit_logger:_log_to_standard:187 - [response] 
+2026-04-29 16:29:48 | INFO     | src.utils.audit_logger:_log_to_standard:187 - [session_end] 
+2026-04-29 16:29:48 | INFO     | src.utils.audit_logger:end_trace:336 - 结束执行轨迹: e1952ac2, 耗时: 37613.12ms, 成功: True
+2026-04-29 16:37:59 | INFO     | src.utils.audit_logger:__init__:151 - 审计日志系统初始化完成
+2026-04-29 16:37:59 | INFO     | src.main:<module>:712 - API已启动
+2026-04-29 16:37:59 | INFO     | src.agent.time_context:get_time_context:163 - 时间上下文初始化: 4月29日 星期三
+2026-04-29 16:37:59 | INFO     | src.main:startup_event:46 - 服务启动，当前时间: 4月29日 星期三
+2026-04-29 16:37:59 | INFO     | src.main:startup_event:47 - 审计日志系统已启用
+2026-04-29 16:42:59 | INFO     | src.utils.audit_logger:__init__:151 - 审计日志系统初始化完成
+2026-04-29 16:42:59 | INFO     | src.main:<module>:719 - API已启动
+2026-04-29 16:42:59 | INFO     | src.agent.time_context:get_time_context:163 - 时间上下文初始化: 4月29日 星期三
+2026-04-29 16:42:59 | INFO     | src.main:startup_event:46 - 服务启动，当前时间: 4月29日 星期三
+2026-04-29 16:42:59 | INFO     | src.main:startup_event:47 - 审计日志系统已启用
+2026-04-29 16:45:41 | INFO     | src.utils.audit_logger:__init__:151 - 审计日志系统初始化完成
+2026-04-29 16:45:41 | INFO     | src.main:<module>:719 - API已启动
+2026-04-29 16:45:41 | INFO     | src.agent.time_context:get_time_context:163 - 时间上下文初始化: 4月29日 星期三
+2026-04-29 16:45:41 | INFO     | src.main:startup_event:46 - 服务启动，当前时间: 4月29日 星期三
+2026-04-29 16:45:41 | INFO     | src.main:startup_event:47 - 审计日志系统已启用
+2026-04-29 16:45:59 | INFO     | src.main:chat_stream:636 - 请求: 你好，你是什么模型，有什么能力
+2026-04-29 16:45:59 | INFO     | src.agent.time_context:refresh:151 - 时间上下文已刷新: 4月29日 星期三
+2026-04-29 16:45:59 | INFO     | src.llm.client:get_llm:145 - LLM Provider: ark
+2026-04-29 16:45:59 | INFO     | src.agent.graph:__init__:38 - Agent初始化，工具: 10
+2026-04-29 16:45:59 | INFO     | src.utils.audit_logger:_log_to_standard:187 - [session_start] 你好，你是什么模型，有什么能力
+2026-04-29 16:45:59 | INFO     | src.utils.audit_logger:start_trace:295 - 开始执行轨迹: 5aa70cfc, 会话: 73703804
+2026-04-29 16:45:59 | INFO     | src.utils.audit_logger:_log_to_standard:187 - [user_query] 你好，你是什么模型，有什么能力
+2026-04-29 16:45:59 | INFO     | src.agent.smart_planner:generate_plan:138 - 生成执行计划: 你好，你是什么模型，有什么能力...
+2026-04-29 16:46:09 | INFO     | src.agent.smart_planner:_extract_entities:336 - 提取实体: []
+2026-04-29 16:46:09 | INFO     | src.utils.audit_logger:_log_to_standard:187 - [intent] 
+2026-04-29 16:46:09 | INFO     | src.utils.audit_logger:_log_to_standard:187 - [tool_call] capability_info
+2026-04-29 16:46:09 | INFO     | src.utils.audit_logger:_log_to_standard:187 - [tool_result] capability_info
+2026-04-29 16:46:26 | INFO     | src.utils.audit_logger:_log_to_standard:187 - [response] 
+2026-04-29 16:46:26 | INFO     | src.utils.audit_logger:_log_to_standard:187 - [session_end] 
+2026-04-29 16:46:26 | INFO     | src.utils.audit_logger:end_trace:336 - 结束执行轨迹: 5aa70cfc, 耗时: 26557.99ms, 成功: True
+2026-04-29 16:50:41 | INFO     | src.utils.audit_logger:__init__:151 - 审计日志系统初始化完成
+2026-04-29 16:50:41 | INFO     | src.main:<module>:722 - API已启动
+2026-04-29 16:50:41 | INFO     | src.agent.time_context:get_time_context:163 - 时间上下文初始化: 4月29日 星期三
+2026-04-29 16:50:41 | INFO     | src.main:startup_event:46 - 服务启动，当前时间: 4月29日 星期三
+2026-04-29 16:50:41 | INFO     | src.main:startup_event:47 - 审计日志系统已启用
+2026-04-29 17:03:07 | INFO     | src.utils.audit_logger:__init__:151 - 审计日志系统初始化完成
+2026-04-29 17:03:07 | INFO     | src.main:<module>:722 - API已启动
+2026-04-29 17:03:07 | INFO     | src.agent.time_context:get_time_context:163 - 时间上下文初始化: 4月29日 星期三
+2026-04-29 17:03:07 | INFO     | src.main:startup_event:46 - 服务启动，当前时间: 4月29日 星期三
+2026-04-29 17:03:07 | INFO     | src.main:startup_event:47 - 审计日志系统已启用
+2026-04-29 17:03:14 | INFO     | src.main:chat_stream:639 - 请求: 你好，你是什么模型，有什么能力
+2026-04-29 17:03:14 | INFO     | src.agent.time_context:refresh:151 - 时间上下文已刷新: 4月29日 星期三
+2026-04-29 17:03:14 | INFO     | src.llm.client:get_llm:145 - LLM Provider: ark
+2026-04-29 17:03:14 | INFO     | src.agent.graph:__init__:38 - Agent初始化，工具: 10
+2026-04-29 17:03:14 | INFO     | src.utils.audit_logger:_log_to_standard:187 - [session_start] 你好，你是什么模型，有什么能力
+2026-04-29 17:03:14 | INFO     | src.utils.audit_logger:start_trace:295 - 开始执行轨迹: 5687ee42, 会话: c2d48f49
+2026-04-29 17:03:14 | INFO     | src.utils.audit_logger:_log_to_standard:187 - [user_query] 你好，你是什么模型，有什么能力
+2026-04-29 17:03:14 | INFO     | src.agent.smart_planner:generate_plan:138 - 生成执行计划: 你好，你是什么模型，有什么能力...
+2026-04-29 17:03:14 | INFO     | src.utils.audit_logger:_log_to_standard:187 - [intent] 
+2026-04-29 17:03:14 | INFO     | src.utils.audit_logger:_log_to_standard:187 - [tool_call] capability_info
+2026-04-29 17:03:14 | INFO     | src.utils.audit_logger:_log_to_standard:187 - [tool_result] capability_info
+2026-04-29 17:03:14 | INFO     | src.utils.audit_logger:_log_to_standard:187 - [response] 
+2026-04-29 17:03:14 | INFO     | src.utils.audit_logger:_log_to_standard:187 - [session_end] 
+2026-04-29 17:03:14 | INFO     | src.utils.audit_logger:end_trace:336 - 结束执行轨迹: 5687ee42, 耗时: 12.59ms, 成功: True
+2026-04-29 17:08:25 | INFO     | src.main:chat_stream:639 - 请求: 你好，你是什么模型，有什么能力
+2026-04-29 17:08:25 | INFO     | src.agent.time_context:refresh:151 - 时间上下文已刷新: 4月29日 星期三
+2026-04-29 17:08:25 | INFO     | src.utils.audit_logger:_log_to_standard:187 - [session_start] 你好，你是什么模型，有什么能力
+2026-04-29 17:08:25 | INFO     | src.utils.audit_logger:start_trace:295 - 开始执行轨迹: 60191596, 会话: 78d9b1d9
+2026-04-29 17:08:25 | INFO     | src.utils.audit_logger:_log_to_standard:187 - [user_query] 你好，你是什么模型，有什么能力
+2026-04-29 17:08:25 | INFO     | src.agent.smart_planner:generate_plan:138 - 生成执行计划: 你好，你是什么模型，有什么能力...
+2026-04-29 17:08:25 | INFO     | src.utils.audit_logger:_log_to_standard:187 - [intent] 
+2026-04-29 17:08:25 | INFO     | src.utils.audit_logger:_log_to_standard:187 - [tool_call] capability_info
+2026-04-29 17:08:25 | INFO     | src.utils.audit_logger:_log_to_standard:187 - [tool_result] capability_info
+2026-04-29 17:08:25 | INFO     | src.utils.audit_logger:_log_to_standard:187 - [response] 
+2026-04-29 17:08:25 | INFO     | src.utils.audit_logger:_log_to_standard:187 - [session_end] 
+2026-04-29 17:08:25 | INFO     | src.utils.audit_logger:end_trace:336 - 结束执行轨迹: 60191596, 耗时: 10.64ms, 成功: True
+2026-04-29 17:08:50 | INFO     | src.main:chat_stream:639 - 请求: 帮我规划一个去厦门的三天两夜旅行
+2026-04-29 17:08:50 | INFO     | src.agent.time_context:refresh:151 - 时间上下文已刷新: 4月29日 星期三
+2026-04-29 17:08:50 | INFO     | src.utils.audit_logger:_log_to_standard:187 - [session_start] 帮我规划一个去厦门的三天两夜旅行
+2026-04-29 17:08:50 | INFO     | src.utils.audit_logger:start_trace:295 - 开始执行轨迹: e9db90d6, 会话: 58a1c63e
+2026-04-29 17:08:50 | INFO     | src.utils.audit_logger:_log_to_standard:187 - [user_query] 帮我规划一个去厦门的三天两夜旅行
+2026-04-29 17:08:50 | INFO     | src.agent.smart_planner:generate_plan:138 - 生成执行计划: 帮我规划一个去厦门的三天两夜旅行...
+2026-04-29 17:08:57 | INFO     | src.agent.smart_planner:_extract_entities:347 - 提取实体: [('destination', '厦门'), ('date', '三天两夜')]
+2026-04-29 17:08:57 | INFO     | src.utils.audit_logger:_log_to_standard:187 - [intent] 
+2026-04-29 17:08:57 | INFO     | src.utils.audit_logger:_log_to_standard:187 - [tool_call] parse_date
+2026-04-29 17:08:57 | WARNING  | src.agent.tools:execute_tool_with_retry:893 - 工具 parse_date 第 1 次尝试失败: 无法解析日期: 三天两夜
+2026-04-29 17:08:58 | WARNING  | src.agent.tools:execute_tool_with_retry:893 - 工具 parse_date 第 2 次尝试失败: 无法解析日期: 三天两夜
+2026-04-29 17:08:58 | WARNING  | src.agent.tools:execute_tool_with_retry:893 - 工具 parse_date 第 3 次尝试失败: 无法解析日期: 三天两夜
+2026-04-29 17:08:58 | ERROR    | src.utils.audit_logger:_log_to_standard:183 - [tool_error] parse_date
+2026-04-29 17:08:58 | INFO     | src.utils.audit_logger:_log_to_standard:187 - [tool_call] get_weather
+2026-04-29 17:08:59 | INFO     | src.data_sources.weather_api:_get_best_api:116 - 获取到天气接口: https://cn.apihz.cn/api/tianqi/tqybmoji15.php
+2026-04-29 17:08:59 | INFO     | src.data_sources.weather_api:query_weather:164 - 请求天气API: https://cn.apihz.cn/api/tianqi/tqybmoji15.php?id=10013949&key=9c8a62dfe79ed9bb426a16926f019509&sheng...
+2026-04-29 17:08:59 | INFO     | src.utils.audit_logger:_log_to_standard:187 - [tool_result] get_weather
+2026-04-29 17:08:59 | INFO     | src.utils.audit_logger:_log_to_standard:187 - [tool_call] search_attractions
+2026-04-29 17:08:59 | ERROR    | src.agent.tools:search_attractions:242 - 景点搜索失败: asyncio.run() cannot be called from a running event loop
+2026-04-29 17:08:59 | WARNING  | src.agent.tools:execute_tool_with_retry:893 - 工具 search_attractions 第 1 次尝试失败: asyncio.run() cannot be called from a running event loop
+2026-04-29 17:08:59 | ERROR    | src.agent.tools:search_attractions:242 - 景点搜索失败: asyncio.run() cannot be called from a running event loop
+2026-04-29 17:08:59 | WARNING  | src.agent.tools:execute_tool_with_retry:893 - 工具 search_attractions 第 2 次尝试失败: asyncio.run() cannot be called from a running event loop
+2026-04-29 17:09:00 | ERROR    | src.agent.tools:search_attractions:242 - 景点搜索失败: asyncio.run() cannot be called from a running event loop
+2026-04-29 17:09:00 | WARNING  | src.agent.tools:execute_tool_with_retry:893 - 工具 search_attractions 第 3 次尝试失败: asyncio.run() cannot be called from a running event loop
+2026-04-29 17:09:00 | ERROR    | src.utils.audit_logger:_log_to_standard:183 - [tool_error] search_attractions
+2026-04-29 17:09:00 | INFO     | src.utils.audit_logger:_log_to_standard:187 - [tool_call] web_search
+2026-04-29 17:09:00 | ERROR    | src.agent.tools:web_search:446 - 网页搜索失败: asyncio.run() cannot be called from a running event loop
+2026-04-29 17:09:00 | WARNING  | src.agent.tools:execute_tool_with_retry:893 - 工具 web_search 第 1 次尝试失败: asyncio.run() cannot be called from a running event loop
+2026-04-29 17:09:00 | ERROR    | src.agent.tools:web_search:446 - 网页搜索失败: asyncio.run() cannot be called from a running event loop
+2026-04-29 17:09:00 | WARNING  | src.agent.tools:execute_tool_with_retry:893 - 工具 web_search 第 2 次尝试失败: asyncio.run() cannot be called from a running event loop
+2026-04-29 17:09:01 | ERROR    | src.agent.tools:web_search:446 - 网页搜索失败: asyncio.run() cannot be called from a running event loop
+2026-04-29 17:09:01 | WARNING  | src.agent.tools:execute_tool_with_retry:893 - 工具 web_search 第 3 次尝试失败: asyncio.run() cannot be called from a running event loop
+2026-04-29 17:09:01 | ERROR    | src.utils.audit_logger:_log_to_standard:183 - [tool_error] web_search
+2026-04-29 17:09:37 | INFO     | src.utils.audit_logger:_log_to_standard:187 - [response] 
+2026-04-29 17:09:37 | INFO     | src.utils.audit_logger:_log_to_standard:187 - [session_end] 
+2026-04-29 17:09:37 | INFO     | src.utils.audit_logger:end_trace:336 - 结束执行轨迹: e9db90d6, 耗时: 47497.41ms, 成功: True
+2026-04-29 17:13:07 | INFO     | src.utils.audit_logger:__init__:151 - 审计日志系统初始化完成
+2026-04-29 17:13:07 | INFO     | src.main:<module>:722 - API已启动
+2026-04-29 17:13:07 | INFO     | src.agent.time_context:get_time_context:163 - 时间上下文初始化: 4月29日 星期三
+2026-04-29 17:13:07 | INFO     | src.main:startup_event:46 - 服务启动，当前时间: 4月29日 星期三
+2026-04-29 17:13:07 | INFO     | src.main:startup_event:47 - 审计日志系统已启用
+2026-04-29 17:15:44 | INFO     | src.utils.audit_logger:__init__:151 - 审计日志系统初始化完成
+2026-04-29 17:15:44 | INFO     | src.main:<module>:722 - API已启动
+2026-04-29 17:15:44 | INFO     | src.agent.time_context:get_time_context:163 - 时间上下文初始化: 4月29日 星期三
+2026-04-29 17:15:44 | INFO     | src.main:startup_event:46 - 服务启动，当前时间: 4月29日 星期三
+2026-04-29 17:15:44 | INFO     | src.main:startup_event:47 - 审计日志系统已启用
+2026-04-29 17:19:07 | INFO     | src.utils.audit_logger:__init__:151 - 审计日志系统初始化完成
+2026-04-29 17:19:07 | INFO     | src.main:<module>:722 - API已启动
+2026-04-29 17:19:07 | INFO     | src.agent.time_context:get_time_context:163 - 时间上下文初始化: 4月29日 星期三
+2026-04-29 17:19:07 | INFO     | src.main:startup_event:46 - 服务启动，当前时间: 4月29日 星期三
+2026-04-29 17:19:07 | INFO     | src.main:startup_event:47 - 审计日志系统已启用
+2026-04-29 17:19:52 | INFO     | src.main:chat_stream:639 - 请求: 你好，你是谁
+2026-04-29 17:19:52 | INFO     | src.agent.time_context:refresh:151 - 时间上下文已刷新: 4月29日 星期三
+2026-04-29 17:19:53 | INFO     | src.llm.client:get_llm:145 - LLM Provider: ark
+2026-04-29 17:19:53 | INFO     | src.agent.graph:__init__:38 - Agent初始化，工具: 10
+2026-04-29 17:19:53 | INFO     | src.utils.audit_logger:_log_to_standard:187 - [session_start] 你好，你是谁
+2026-04-29 17:19:53 | INFO     | src.utils.audit_logger:start_trace:295 - 开始执行轨迹: 173f93c0, 会话: e769af43
+2026-04-29 17:19:53 | INFO     | src.utils.audit_logger:_log_to_standard:187 - [user_query] 你好，你是谁
+2026-04-29 17:19:53 | INFO     | src.agent.smart_planner:generate_plan:138 - 生成执行计划: 你好，你是谁...
+2026-04-29 17:20:03 | INFO     | src.agent.smart_planner:_extract_entities:347 - 提取实体: []
+2026-04-29 17:20:03 | INFO     | src.utils.audit_logger:_log_to_standard:187 - [intent] 
+2026-04-29 17:20:03 | INFO     | src.utils.audit_logger:_log_to_standard:187 - [tool_call] web_search
+2026-04-29 17:20:04 | INFO     | src.utils.audit_logger:_log_to_standard:187 - [tool_result] web_search
+2026-04-29 17:20:11 | INFO     | src.utils.audit_logger:_log_to_standard:187 - [response] 
+2026-04-29 17:20:11 | INFO     | src.utils.audit_logger:_log_to_standard:187 - [session_end] 
+2026-04-29 17:20:11 | INFO     | src.utils.audit_logger:end_trace:336 - 结束执行轨迹: 173f93c0, 耗时: 18353.73ms, 成功: True

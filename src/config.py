@@ -7,10 +7,11 @@ from dotenv import load_dotenv
 # 加载环境变量
 load_dotenv()
 
-# MiniMax配置
-ORCH_API_BASE = os.getenv("ORCH_API_BASE", "https://dashscope.aliyuncs.com/compatible-mode/v1")
-ORCH_MODEL = os.getenv("ORCH_MODEL", "MiniMax/MiniMax-M2.5")
-ORCH_API_KEY = os.getenv("ORCH_API_KEY", "")
+# 豆包（火山引擎 Ark）配置
+LLM_PROVIDER = os.getenv("LLM_PROVIDER", "ark").strip().lower()
+ARK_BASE_URL = os.getenv("ARK_BASE_URL", "https://ark.cn-beijing.volces.com/api/v3")
+ARK_MODEL = os.getenv("ARK_MODEL", "")
+ARK_API_KEY = os.getenv("ARK_API_KEY", "")
 
 # 百度搜索API
 BAIDU_SEARCH_API_KEY = os.getenv("BAIDU_SEARCH_API_KEY", "")

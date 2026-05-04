@@ -1,7 +1,8 @@
+git push origin master && git push github master
 🚀 启动指南
 步骤1：激活conda环境并安装依赖
 bash
-conda activate langgraph-env
+conda activate myenv
 
 # 安装依赖
 pip install -r d:\AI\AIcode\travel-agent\requirements.txt
@@ -10,7 +11,7 @@ pip install -r d:\AI\AIcode\travel-agent\requirements.txt
 
 步骤3：启动后端
 bash
-conda activate langgraph-env
+conda activate myenv
 cd d:\AI\AIcode\travel-agent
 uvicorn src.main:app --reload --port 8000
 步骤4：启动前端

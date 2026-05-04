@@ -11,6 +11,7 @@ import json
 import asyncio
 import uuid
 import os
+import secrets
 from typing import Dict, List, Optional
 
 from .agent.graph import get_agent
@@ -23,12 +24,23 @@ app = FastAPI(title="旅行规划助手 API", version="2.0.0")
 
 # Vercel 环境检测
 is_vercel = os.environ.get("VERCEL") == "1"
+CORS_ALLOW_ORIGINS = os.getenv("CORS_ALLOW_ORIGINS", "*").strip()
+API_AUTH_ENABLED = os.getenv("API_AUTH_ENABLED", "false").strip().lower() == "true"
+API_AUTH_KEY = os.getenv("API_AUTH_KEY", "").strip()
+API_AUTH_HEADER = os.getenv("API_AUTH_HEADER", "x-api-key").strip().lower()
+
+if CORS_ALLOW_ORIGINS == "*":
+    _allow_origins = ["*"]
+else:
+    _allow_origins = [o.strip() for o in CORS_ALLOW_ORIGINS.split(",") if o.strip()]
+    if not _allow_origins:
+        _allow_origins = ["*"]
 
 # 前端目录路径
 FRONTEND_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "frontend")
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=_allow_origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -36,6 +48,30 @@ app.add_middleware(
 
 # 初始化审计日志
 audit = get_audit_logger()
+STREAM_DEBUG_DELAY_MS = int(os.getenv("STREAM_DEBUG_DELAY_MS", "0"))
+
+
+@app.middleware("http")
+async def api_key_auth_middleware(request: Request, call_next):
+    """对关键接口启用 API Key 鉴权（可通过环境变量开关）"""
+    protected_prefixes = ("/chat", "/audit")
+    path = request.url.path
+
+    if path.startswith(protected_prefixes):
+        if not API_AUTH_ENABLED:
+            return await call_next(request)
+
+        if not API_AUTH_KEY:
+            return JSONResponse(
+                status_code=500,
+                content={"error": "服务端未配置 API_AUTH_KEY"},
+            )
+
+        incoming_key = request.headers.get(API_AUTH_HEADER)
+        if not incoming_key or not secrets.compare_digest(incoming_key, API_AUTH_KEY):
+            return JSONResponse(status_code=401, content={"error": "未授权访问"})
+
+    return await call_next(request)
 
 
 @app.on_event("startup")
@@ -120,20 +156,31 @@ async def stream_response(message: str, history: list, session_id: str = None):
     error_msg = ""
 
     try:
-        yield (
-            "data: " + json.dumps({"type": "start", "session_id": session_id}) + "\n\n"
-        )
+        def sse(data: dict) -> str:
+            return "data: " + json.dumps(data, ensure_ascii=False) + "\n\n"
+
+        def sse_thinking(text: str) -> str:
+            return sse({"type": "thinking_delta", "content": text})
+
+        async def maybe_delay():
+            if STREAM_DEBUG_DELAY_MS > 0:
+                await asyncio.sleep(STREAM_DEBUG_DELAY_MS / 1000.0)
+
+        yield sse({"type": "start", "session_id": session_id})
 
         # 思考过程
-        thinking = ["🧠 分析需求...", f"📅 当前日期: {time_ctx.get_today_formatted()}"]
-        yield "data: " + json.dumps({"type": "thinking", "content": thinking}) + "\n"
+        yield sse_thinking("🧠 分析需求...")
+        yield sse_thinking(f"📅 当前日期: {time_ctx.get_today_formatted()}")
 
         # 记录用户查询
         audit.log_user_query(session_id, message)
 
         # ============ 使用智能计划生成器 ============
         try:
+            plan_start = time_module.time()
             plan = planner.generate_plan(message)
+            plan_ms = (time_module.time() - plan_start) * 1000
+            yield sse({"type": "metric", "name": "plan_ms", "value": round(plan_ms, 2)})
             trace.intent = plan.get("intent", "unknown")
 
             # 记录意图识别
@@ -152,7 +199,7 @@ async def stream_response(message: str, history: list, session_id: str = None):
         if plan and plan.get("steps"):
             # 显示意图
             intent = plan.get("intent", "unknown")
-            thinking.append(f"📋 意图: {intent}")
+            yield sse_thinking(f"📋 意图: {intent}")
 
             # 显示提取的实体
             entities = plan.get("entities", {})
@@ -168,24 +215,16 @@ async def stream_response(message: str, history: list, session_id: str = None):
                 entities_info.append(f"{key}: {value}")
 
             if entities_info:
-                thinking.append("📍 " + ", ".join(entities_info))
-
-            yield (
-                "data: " + json.dumps({"type": "thinking", "content": thinking}) + "\n"
-            )
-            await asyncio.sleep(0.3)
+                yield sse_thinking("📍 " + ", ".join(entities_info))
 
             # 显示执行计划
             todo_list = []
             for s in plan["steps"]:
                 todo_list.append(f"⬜ [{s['id']}] {s['tool']}: {s['purpose']}")
 
-            thinking.append("📝 执行计划:")
-            yield (
-                "data: " + json.dumps({"type": "thinking", "content": thinking}) + "\n"
-            )
-            yield "data: " + json.dumps({"type": "todo", "items": todo_list}) + "\n"
-            await asyncio.sleep(0.3)
+            yield sse_thinking("📝 执行计划:")
+            yield sse({"type": "todo", "items": todo_list})
+            await maybe_delay()
 
             # ============ 执行计划 ============
             context = {}
@@ -197,25 +236,14 @@ async def stream_response(message: str, history: list, session_id: str = None):
                 purpose = step["purpose"]
 
                 # 显示当前步骤
-                thinking.append(f"🔄 执行步骤{step_id}: {tool_name}")
-                yield (
-                    "data: "
-                    + json.dumps({"type": "thinking", "content": thinking})
-                    + "\n"
-                )
-                yield (
-                    "data: "
-                    + json.dumps(
-                        {
-                            "type": "step_status",
-                            "step_id": step_id,
-                            "status": "running",
-                            "tool": tool_name,
-                            "purpose": purpose,
-                        }
-                    )
-                    + "\n"
-                )
+                yield sse_thinking(f"🔄 执行步骤{step_id}: {tool_name}")
+                yield sse({
+                    "type": "step_status",
+                    "step_id": step_id,
+                    "status": "running",
+                    "tool": tool_name,
+                    "purpose": purpose,
+                })
 
                 # 记录工具调用开始
                 call_start = time_module.time()
@@ -250,28 +278,19 @@ async def stream_response(message: str, history: list, session_id: str = None):
                         audit.log_tool_result(
                             session_id, tool_name, result_data, duration_ms, event_id
                         )
+                    yield sse({"type": "metric", "name": "tool_ms", "tool": tool_name, "step_id": step_id, "value": round(duration_ms, 2)})
 
                     # 检查结果
                     if "error" in result_data:
                         # 失败 - 尝试修复
-                        thinking.append(f"⚠️ {tool_name} 提示: {error_msg[:30]}...")
-                        yield (
-                            "data: "
-                            + json.dumps({"type": "thinking", "content": thinking})
-                            + "\n"
-                        )
+                        yield sse_thinking(f"⚠️ {tool_name} 提示: {error_msg[:30]}...")
 
                         # 尝试自动修复参数
                         fixed_params = _try_fix_tool_params(
                             tool_name, params, result_data
                         )
                         if fixed_params:
-                            thinking.append(f"🔧 尝试修复参数...")
-                            yield (
-                                "data: "
-                                + json.dumps({"type": "thinking", "content": thinking})
-                                + "\n"
-                            )
+                            yield sse_thinking("🔧 尝试修复参数...")
 
                             # 记录降级
                             audit.log_fallback(
@@ -291,12 +310,7 @@ async def stream_response(message: str, history: list, session_id: str = None):
                     # 检查最终结果
                     if "error" in result_data:
                         # 仍然失败，执行降级
-                        thinking.append(f"❌ {tool_name} 失败，执行降级...")
-                        yield (
-                            "data: "
-                            + json.dumps({"type": "thinking", "content": thinking})
-                            + "\n"
-                        )
+                        yield sse_thinking(f"❌ {tool_name} 失败，执行降级...")
 
                         fallback_result = None
                         for fb in plan.get("fallback_plan", []):
@@ -320,119 +334,82 @@ async def stream_response(message: str, history: list, session_id: str = None):
                                 )
                                 if "error" not in fb_data:
                                     fallback_result = fb_data
-                                    thinking.append(f"✅ 降级搜索完成")
+                                    yield sse_thinking("✅ 降级搜索完成")
                                     break
                             except Exception as fb_e:
                                 logger.error(f"降级工具执行失败: {fb_e}")
 
                         if fallback_result:
-                            yield (
-                                "data: "
-                                + json.dumps(
-                                    {
-                                        "type": "step_status",
-                                        "step_id": step_id,
-                                        "status": "fallback_success",
-                                        "result": fallback_result,
-                                    }
-                                )
-                                + "\n"
-                            )
+                            yield sse({
+                                "type": "step_status",
+                                "step_id": step_id,
+                                "status": "fallback_success",
+                                "result": fallback_result,
+                            })
                             _update_context_smart(
                                 context, tool_name, fallback_result, entities
                             )
                         else:
-                            yield (
-                                "data: "
-                                + json.dumps(
-                                    {
-                                        "type": "step_status",
-                                        "step_id": step_id,
-                                        "status": "failed",
-                                        "error": result_data.get("error"),
-                                    }
-                                )
-                                + "\n"
-                            )
+                            yield sse({
+                                "type": "step_status",
+                                "step_id": step_id,
+                                "status": "failed",
+                                "error": result_data.get("error"),
+                            })
                     else:
                         # 成功
-                        thinking.append(f"✅ 步骤{step_id}完成: {tool_name}")
-                        yield (
-                            "data: "
-                            + json.dumps({"type": "thinking", "content": thinking})
-                            + "\n"
-                        )
-                        yield (
-                            "data: "
-                            + json.dumps(
-                                {
-                                    "type": "step_status",
-                                    "step_id": step_id,
-                                    "status": "completed",
-                                    "result": result_data,
-                                }
-                            )
-                            + "\n"
-                        )
+                        yield sse_thinking(f"✅ 步骤{step_id}完成: {tool_name}")
+                        yield sse({
+                            "type": "step_status",
+                            "step_id": step_id,
+                            "status": "completed",
+                            "result": result_data,
+                        })
 
                 except Exception as e:
                     logger.error(f"步骤执行异常: {e}")
-                    thinking.append(f"❌ 异常: {str(e)}")
-                    yield (
-                        "data: "
-                        + json.dumps({"type": "thinking", "content": thinking})
-                        + "\n"
-                    )
-                    yield (
-                        "data: "
-                        + json.dumps(
-                            {
-                                "type": "step_status",
-                                "step_id": step_id,
-                                "status": "error",
-                                "error": str(e),
-                            }
-                        )
-                        + "\n"
-                    )
+                    yield sse_thinking(f"❌ 异常: {str(e)}")
+                    yield sse({
+                        "type": "step_status",
+                        "step_id": step_id,
+                        "status": "error",
+                        "error": str(e),
+                    })
 
-                await asyncio.sleep(0.2)
+                await maybe_delay()
 
             # ============ 生成最终回复 ============
-            thinking.append("📝 生成回复...")
-            yield (
-                "data: " + json.dumps({"type": "thinking", "content": thinking}) + "\n"
-            )
+            yield sse_thinking("📝 生成回复...")
 
-            # 使用 Agent 生成回复
-            response = agent._make_response_from_smart_plan(
+            # 使用 Agent 异步流式生成回复
+            llm_start = time_module.time()
+            response_payload = {
+                "step_results": {},
+                "context": context,
+                "intent": plan.get("intent"),
+                "entities": entities,
+            }
+            response_chunks = []
+            async for chunk in agent.astream_response_from_smart_plan(
                 message,
                 plan,
-                {
-                    "step_results": {},
-                    "context": context,
-                    "intent": plan.get("intent"),
-                    "entities": entities,
-                },
-            )
+                response_payload,
+            ):
+                response_chunks.append(chunk)
+                yield sse({"type": "content", "content": chunk})
+                await asyncio.sleep(0)
+            response = "".join(response_chunks)
+            llm_ms = (time_module.time() - llm_start) * 1000
+            yield sse({"type": "metric", "name": "llm_ms", "value": round(llm_ms, 2)})
 
             # 记录响应
             final_response = response
             audit.log_response(session_id, response, success=True)
 
-            yield "data: " + json.dumps({"type": "content", "content": response}) + "\n"
-            yield (
-                "data: "
-                + json.dumps({"type": "done", "session_id": session_id})
-                + "\n\n"
-            )
+            yield sse({"type": "done", "session_id": session_id})
         else:
             # 执行计划创建失败，使用传统流程
-            yield (
-                "data: "
-                + json.dumps({"type": "thinking", "content": ["🧠 使用传统模式..."]})
-                + "\n"
-            )
+            yield sse_thinking("🧠 使用传统模式...")
 
             intent = agent._parse_intent(message)
             tools = intent.get("needed_tools", [])
@@ -444,23 +421,13 @@ async def stream_response(message: str, history: list, session_id: str = None):
             results = {}
 
             if "get_weather" in tools and dest:
-                thinking.append(f"🌤️ 查询天气: {dest}")
-                yield (
-                    "data: "
-                    + json.dumps({"type": "thinking", "content": thinking})
-                    + "\n"
-                )
+                yield sse_thinking(f"🌤️ 查询天气: {dest}")
                 results["天气"] = agent._call_with_fallback(
                     "get_weather", {"city": dest}, lambda: agent._baidu_weather(dest)
                 )
 
             if "get_train_tickets" in tools and origin and dest:
-                thinking.append("🚄 查询火车票...")
-                yield (
-                    "data: "
-                    + json.dumps({"type": "thinking", "content": thinking})
-                    + "\n"
-                )
+                yield sse_thinking("🚄 查询火车票...")
                 results["火车票"] = agent._call_with_fallback(
                     "get_train_tickets",
                     {"date": date, "from_station": origin, "to_station": dest},
@@ -468,35 +435,26 @@ async def stream_response(message: str, history: list, session_id: str = None):
                 )
 
             if "search_attractions" in tools and dest:
-                thinking.append(f"🎯 查询景点: {dest}")
-                yield (
-                    "data: "
-                    + json.dumps({"type": "thinking", "content": thinking})
-                    + "\n"
-                )
+                yield sse_thinking(f"🎯 查询景点: {dest}")
                 results["景点"] = agent._call_with_fallback(
                     "search_attractions",
                     {"city": dest, "keyword": "景点"},
                     lambda: agent._baidu_attractions(dest),
                 )
 
-            thinking.append("📝 生成回复...")
-            yield (
-                "data: " + json.dumps({"type": "thinking", "content": thinking}) + "\n"
-            )
+            yield sse_thinking("📝 生成回复...")
 
-            response = agent._make_response(message, intent, results)
+            response_chunks = []
+            for chunk in agent.stream_response(message, intent, results):
+                response_chunks.append(chunk)
+                yield sse({"type": "content", "content": chunk})
+            response = "".join(response_chunks)
 
             # 记录响应
             final_response = response
             audit.log_response(session_id, response, success=True)
 
-            yield "data: " + json.dumps({"type": "content", "content": response}) + "\n"
-            yield (
-                "data: "
-                + json.dumps({"type": "done", "session_id": session_id})
-                + "\n\n"
-            )
+            yield sse({"type": "done", "session_id": session_id})
 
     except Exception as e:
         logger.error(f"流式错误: {e}")
@@ -504,7 +462,7 @@ async def stream_response(message: str, history: list, session_id: str = None):
         import traceback
 
         traceback.print_exc()
-        yield "data: " + json.dumps({"type": "error", "content": str(e)}) + "\n"
+        yield sse({"type": "error", "content": str(e)})
 
         # 记录错误
         success = False
@@ -513,6 +471,10 @@ async def stream_response(message: str, history: list, session_id: str = None):
     finally:
         # 结束审计轨迹
         total_duration = (time_module.time() - start_time) * 1000
+        try:
+            yield sse({"type": "metric", "name": "total_ms", "value": round(total_duration, 2)})
+        except Exception:
+            pass
         audit.end_trace(
             trace.trace_id,
             success=success,
@@ -630,6 +592,9 @@ def _update_context_smart(
 
     elif tool_name == "search_attractions":
         context["attractions"] = result_data
+
+    elif tool_name == "capability_info":
+        context["capability_info"] = result_data
 
 
 # 保留旧版本的函数用于兼容（如有需要）
