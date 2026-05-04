@@ -51,8 +51,9 @@
 
 前端静态资源：
 
-- `/src/*` -> `frontend/src/*`
-- 其他路径回退到 `frontend/index.html`
+- 使用文件系统直接提供 `frontend/assets/*`
+- `/` 返回 `frontend/index.html`
+- 不再通过 rewrite 暴露 `frontend/src/*`
 
 ## 5. 生产注意事项（企业级）
 

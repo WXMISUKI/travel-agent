@@ -7,14 +7,13 @@
     }
   },
   "routes": [
+    { "handle": "filesystem" },
     { "src": "/chat/stream", "dest": "/api/index.py" },
     { "src": "/chat/workflow", "dest": "/api/index.py" },
     { "src": "/chat", "dest": "/api/index.py" },
     { "src": "/health", "dest": "/api/index.py" },
     { "src": "/tools", "dest": "/api/index.py" },
     { "src": "/audit/(.*)", "dest": "/api/index.py" },
-    { "src": "/src/(.*)", "dest": "/frontend/src/$1" },
-    { "src": "/(.*)", "dest": "/frontend/index.html" }
+    { "src": "/", "dest": "/frontend/index.html" }
   ]
 }
-

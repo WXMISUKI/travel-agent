@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>旅行规划助手</title>
-    <link rel="stylesheet" href="./src/styles/main.css">
+    <link rel="stylesheet" href="/frontend/assets/main.css">
     <!-- Markdown解析库 - 使用CDN -->
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <style>
@@ -62,12 +62,12 @@
                     id="userInput" 
                     placeholder="请输入您的旅行需求，如：帮我规划一个去广东惠州的一周旅行，两个人明天从舟山出发，预算是6000"
                 >
-                <button id="stopBtn" class="stop-btn" style="display: none;" onclick="stopGenerating()">⏹️ 停止</button>
-                <button id="sendBtn" onclick="sendMessage()">发送</button>
+                <button id="stopBtn" class="stop-btn" style="display: none;" type="button">⏹️ 停止</button>
+                <button id="sendBtn" type="button">发送</button>
             </div>
         </main>
     </div>
     
-    <script src="./src/main.js"></script>
+    <script src="/frontend/assets/main.js"></script>
 </body>
 </html>
