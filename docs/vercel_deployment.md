@@ -6,8 +6,9 @@
 
 已包含以下关键文件：
 
-- `vercel.json`：路由与函数配置
-- `api/index.py`：Vercel Python 入口，暴露 `src.main:app`
+- `index.py`：Vercel FastAPI 入口，暴露 `src.main:app`
+- `public/index.html`：前端首页
+- `public/assets/*`：前端静态资源
 - `.python-version`：固定 Python 运行时版本为 `3.11`
 
 ## 2. Vercel 项目设置
@@ -18,9 +19,9 @@
 4. Output Directory 留空。
 
 说明：
-- 不要在 `vercel.json` 中给 Python 函数写 `"runtime": "python3.11"`，这会触发 `Function Runtimes must have a valid version`。
-- 当前方案通过 `.python-version` 指定 Python 版本，通过 `functions` 中的 `maxDuration` 配置函数执行时长。
-- `functions` 的匹配项使用精确路径 `api/index.py`，避免通配模式在 Vercel 构建阶段出现未匹配错误。
+- 当前方案不再依赖 `vercel.json` 配置 Python 函数，直接使用根目录 `index.py` 作为 Vercel Python 入口。
+- 通过 `.python-version` 指定 Python 版本为 `3.11`。
+- 前端静态资源放在 `public/assets/`，Vercel 会直接按文件系统提供。
 
 ## 3. 环境变量（必须）
 
@@ -46,7 +47,7 @@
 
 ## 4. 路由说明
 
-`vercel.json` 已将以下路径映射到 FastAPI：
+后端接口由根目录 `index.py` 暴露的 FastAPI 应用处理：
 
 - `/chat/stream`
 - `/chat/workflow`
@@ -57,9 +58,9 @@
 
 前端静态资源：
 
-- 使用文件系统直接提供 `frontend/assets/*`
-- `/` 返回 `frontend/index.html`
-- 不再通过 rewrite 暴露 `frontend/src/*`
+- 使用文件系统直接提供 `public/assets/*`
+- 前端首页由 `public/index.html` 提供
+- 页面内引用统一使用 `/assets/...`
 
 ## 5. 生产注意事项（企业级）
 
