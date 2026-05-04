@@ -20,6 +20,7 @@
 说明：
 - 不要在 `vercel.json` 中给 Python 函数写 `"runtime": "python3.11"`，这会触发 `Function Runtimes must have a valid version`。
 - 当前方案通过 `.python-version` 指定 Python 版本，通过 `functions` 中的 `maxDuration` 配置函数执行时长。
+- `functions` 的匹配项使用精确路径 `api/index.py`，避免通配模式在 Vercel 构建阶段出现未匹配错误。
 
 ## 3. 环境变量（必须）
 
