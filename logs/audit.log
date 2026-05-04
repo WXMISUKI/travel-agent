@@ -4047,3 +4047,142 @@
     "step_count": 0
   }
 }
+{
+  "event_id": "71366983",
+  "timestamp": "2026-05-04T11:05:59.031814",
+  "event_type": "session_start",
+  "level": "INFO",
+  "session_id": "0f266076",
+  "user_query": "你好，你是谁",
+  "intent": "",
+  "entities": {},
+  "tool_name": "",
+  "tool_params": {},
+  "tool_result": null,
+  "tool_error": "",
+  "duration_ms": 0,
+  "step_id": 0,
+  "extra": {
+    "trace_id": "eed66b40"
+  }
+}
+{
+  "event_id": "9787f0cc",
+  "timestamp": "2026-05-04T11:05:59.035315",
+  "event_type": "user_query",
+  "level": "INFO",
+  "session_id": "0f266076",
+  "user_query": "你好，你是谁",
+  "intent": "",
+  "entities": {},
+  "tool_name": "",
+  "tool_params": {},
+  "tool_result": null,
+  "tool_error": "",
+  "duration_ms": 0,
+  "step_id": 0,
+  "extra": {
+    "query_length": 6
+  }
+}
+{
+  "event_id": "852b1b2c",
+  "timestamp": "2026-05-04T11:06:08.381076",
+  "event_type": "intent",
+  "level": "INFO",
+  "session_id": "0f266076",
+  "user_query": "",
+  "intent": "general",
+  "entities": {},
+  "tool_name": "",
+  "tool_params": {},
+  "tool_result": null,
+  "tool_error": "",
+  "duration_ms": 0,
+  "step_id": 0,
+  "extra": {
+    "confidence": 1.0
+  }
+}
+{
+  "event_id": "53cbaa51",
+  "timestamp": "2026-05-04T11:06:08.384096",
+  "event_type": "tool_call",
+  "level": "INFO",
+  "session_id": "0f266076",
+  "user_query": "",
+  "intent": "",
+  "entities": {},
+  "tool_name": "web_search",
+  "tool_params": {
+    "query": "你好，你是谁"
+  },
+  "tool_result": null,
+  "tool_error": "",
+  "duration_ms": 0,
+  "step_id": 1,
+  "extra": {}
+}
+{
+  "event_id": "72dfc2cf",
+  "timestamp": "2026-05-04T11:06:09.335452",
+  "event_type": "tool_result",
+  "level": "INFO",
+  "session_id": "0f266076",
+  "user_query": "",
+  "intent": "",
+  "entities": {},
+  "tool_name": "web_search",
+  "tool_params": {},
+  "tool_result": {
+    "_truncated": true,
+    "_length": 3486
+  },
+  "tool_error": "",
+  "duration_ms": 951.3566493988037,
+  "step_id": 0,
+  "extra": {}
+}
+{
+  "event_id": "f3453a86",
+  "timestamp": "2026-05-04T11:06:17.427331",
+  "event_type": "response",
+  "level": "INFO",
+  "session_id": "0f266076",
+  "user_query": "",
+  "intent": "",
+  "entities": {},
+  "tool_name": "",
+  "tool_params": {},
+  "tool_result": null,
+  "tool_error": "",
+  "duration_ms": 0,
+  "step_id": 0,
+  "extra": {
+    "response": "你好呀😊！我是你的友好旅行助手，随时能帮你查询天气、规划行程、推荐景点等旅行相关的问题哦～有什么需要帮忙的尽管告诉我！",
+    "response_length": 59,
+    "success": true
+  }
+}
+{
+  "event_id": "3c1ec5f6",
+  "timestamp": "2026-05-04T11:06:17.433331",
+  "event_type": "session_end",
+  "level": "INFO",
+  "session_id": "0f266076",
+  "user_query": "",
+  "intent": "",
+  "entities": {},
+  "tool_name": "",
+  "tool_params": {},
+  "tool_result": null,
+  "tool_error": "",
+  "duration_ms": 0,
+  "step_id": 0,
+  "extra": {
+    "trace_id": "eed66b40",
+    "duration_ms": 18398.017,
+    "success": true,
+    "step_count": 0
+  }
+}

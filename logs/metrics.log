@@ -21,3 +21,4 @@
 {"timestamp": "2026-04-29T17:08:25.342899", "trace_id": "60191596", "session_id": "78d9b1d9", "intent": "capability", "duration_ms": 10.636, "step_count": 0, "success": true, "error_message": ""}
 {"timestamp": "2026-04-29T17:09:37.633907", "trace_id": "e9db90d6", "session_id": "58a1c63e", "intent": "trip_plan", "duration_ms": 47497.414, "step_count": 0, "success": true, "error_message": "工具执行失败，已重试 3 次: asyncio.run() cannot be called from a running event loop"}
 {"timestamp": "2026-04-29T17:20:11.405906", "trace_id": "173f93c0", "session_id": "e769af43", "intent": "general", "duration_ms": 18353.727, "step_count": 0, "success": true, "error_message": ""}
+{"timestamp": "2026-05-04T11:06:17.435336", "trace_id": "eed66b40", "session_id": "0f266076", "intent": "general", "duration_ms": 18398.017, "step_count": 0, "success": true, "error_message": ""}

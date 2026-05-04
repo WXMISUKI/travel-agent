@@ -318,12 +318,11 @@ function appendContent(text) {
         messages[messages.length - 1].content = currentAssistantBuffer;
     }
 
-    // 使用 RAF 节流渲染，避免同一帧内多次 DOM 写入导致闪烁
     if (!rafPending) {
         rafPending = true;
         requestAnimationFrame(() => {
             rafPending = false;
-            if (!window.currentContent) return;
+            if (!window.currentContent || !isStreamingContent) return;
             window.currentContent.style.whiteSpace = 'pre-wrap';
             window.currentContent.textContent = currentAssistantBuffer;
             scrollToBottom();
@@ -340,7 +339,7 @@ function toggleThinking(container) {
 
 function finishMessage() {
     showThinkingIndicator(false);
-    // 流式结束后再做一次Markdown渲染，保证最终展示质量
+    isStreamingContent = false;
     if (window.currentContent && currentAssistantBuffer) {
         try {
             if (typeof marked !== 'undefined') {
@@ -355,7 +354,6 @@ function finishMessage() {
             window.currentContent.textContent = currentAssistantBuffer;
         }
     }
-    isStreamingContent = false;
     currentAssistantBuffer = '';
 }
 

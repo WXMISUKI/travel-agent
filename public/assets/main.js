@@ -307,7 +307,7 @@ function appendContent(text) {
         rafPending = true;
         requestAnimationFrame(() => {
             rafPending = false;
-            if (!window.currentContent) return;
+            if (!window.currentContent || !isStreamingContent) return;
             window.currentContent.style.whiteSpace = 'pre-wrap';
             window.currentContent.textContent = currentAssistantBuffer;
             scrollToBottom();
@@ -324,6 +324,7 @@ function toggleThinking(container) {
 
 function finishMessage() {
     showThinkingIndicator(false);
+    isStreamingContent = false;
     if (window.currentContent && currentAssistantBuffer) {
         try {
             if (typeof marked !== 'undefined') {
@@ -338,7 +339,6 @@ function finishMessage() {
             window.currentContent.textContent = currentAssistantBuffer;
         }
     }
-    isStreamingContent = false;
     currentAssistantBuffer = '';
 }
 
